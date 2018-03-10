@@ -30,3 +30,5 @@
 | title | `String` | `false` | "file without title"
 | content | `String` | `true` | ---
 | remove | `Boolean` | `false` | false
+
+![Imgur](https://i.imgur.com/ImG90m5.png)

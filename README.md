@@ -15,7 +15,6 @@ It only need three data model, User, Folder and File.
 
 To check out more my data model, __[see It here](https://github.com/VGamezz19/MDitor/tree/master/doc/dataModel/)__
 
-
 ## Technologies
 
 | styles| Front-End | Back-End| TDD|
