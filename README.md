@@ -6,7 +6,7 @@ Editor web para crear tus apuntes, guardarlas y modificarlas en formato [MarkDow
 
 El mockup de `MDitor` se ha realizado en [Sketch](https://www.sketchapp.com/)
 
-[Demo - Mockup MDitor]()
+[Demo - Mockup MDitor](https://github.com/VGamezz19/MDitor/tree/master/doc/design/mockup)
 
 ## Tecnologias
 
