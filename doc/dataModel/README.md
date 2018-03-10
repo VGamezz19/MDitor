@@ -1,6 +1,6 @@
-## Data Model
+# Data Model
 
-### User
+## User
 
 |  | Type | Null | Default
 | :--- | :---: | :---:| :---:
@@ -12,21 +12,21 @@
 | password | `String` | `false` | ---
 | folders | `Array<Folder>` | `true` | []
 
-### Folder
+## Folder
 
 |  | Type | Null | Default
 | :--- | :---: | :---:| :---:
 | id | `String` | `false` | MongoId
 | title | `String` | `false` | "folder without title"
 | files | `Array<File>` | `true` | []
-| remuve | `Boolean` | `false` | false
+| remove | `Boolean` | `false` | false
 | JWTShare | `String` | `true` | ---
 
-### File
+## File
 
 |  | Type | Null | Default
 | :--- | :---: | :---:| :---:
 | id | `String` | `false` | MongoId
 | title | `String` | `false` | "file without title"
 | content | `String` | `true` | ---
-| remuve | `Boolean` | `false` | false
+| remove | `Boolean` | `false` | false

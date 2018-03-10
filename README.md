@@ -10,7 +10,7 @@ the mockup has been done with  [Sketch](https://www.sketchapp.com/)
 
 ## Data Model
 
-Only need three data model, User, Folder and File.
+It only need three data model, User, Folder and File.
 `Users` will have {N}  `Folder`, and the Folders will contains {N} `Files`.
 
 To check out more my data model, __[see It here](https://github.com/VGamezz19/MDitor/tree/master/doc/dataModel/)__
