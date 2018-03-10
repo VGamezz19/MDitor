@@ -1,6 +1,6 @@
 # MDitor
 
-Editor web para crear tus apuntes, guardarlas y modificarlas en formato [MarkDown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+Editor web para crear, guardar y modificar tus notas en formato [MarkDown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
 ## Diseño - Mockup
 
