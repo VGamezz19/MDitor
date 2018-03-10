@@ -1,47 +1,22 @@
 # MDitor
 
-Editor web para crear, guardar y modificar tus notas en formato [MarkDown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+Editro web to create, modify and save your notes with  [MarkDown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
-## Diseño - Mockup
+## Design - Mockup
 
-El mockup de `MDitor` se ha realizado en [Sketch](https://www.sketchapp.com/)
+the mockup has been done with  [Sketch](https://www.sketchapp.com/)
 
 [Demo - Mockup MDitor](https://github.com/VGamezz19/MDitor/tree/master/doc/design/mockup)
 
-## Modelo de datos
+## Data Model
 
-### User
+Only need three data model, User, Folder and File.
+`Users` will have {N}  `Folder`, and the Folders will contains {N} `Files`.
 
-|  | Type | Null | Default
-| :--- | :---: | :---:| :---:
-| id | `String` | `false` | MongoId
-| name | `String` | `false` | ---
-| surname | `String` | `false` | ---
-| username | `String` | `false` | ---
-| email | `String` | `false` | ---
-| password | `String` | `false` | ---
-| folders | `Array<Folder>` | `true` | []
+To check out more my data model, __[see It here](https://github.com/VGamezz19/MDitor/tree/master/doc/dataModel/)__
 
-### Folder
 
-|  | Type | Null | Default
-| :--- | :---: | :---:| :---:
-| id | `String` | `false` | MongoId
-| title | `String` | `false` | "folder without title"
-| files | `Array<File>` | `true` | []
-| remuve | `Boolean` | `false` | false
-| JWTShare | `String` | `true` | ---
-
-### File
-
-|  | Type | Null | Default
-| :--- | :---: | :---:| :---:
-| id | `String` | `false` | MongoId
-| title | `String` | `false` | "file without title"
-| content | `String` | `true` | ---
-| remuve | `Boolean` | `false` | false
-
-## Tecnologias
+## Technologies
 
 | styles| Front-End | Back-End| TDD|
 | :---------- | :----------: | :----------: | :----------: |
