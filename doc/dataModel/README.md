@@ -31,4 +31,8 @@
 | content | `String` | `true` | ---
 | remove | `Boolean` | `false` | false
 
-![Imgur](https://i.imgur.com/ImG90m5.png)
+## Draw.io
+
+You can [check it here](https://drive.google.com/file/d/1JNCK6L30wAo3_30VOl6llrdGyUGqZhMo/view?usp=sharing)
+
+![Imgur](https://i.imgur.com/UjdkArA.png)
