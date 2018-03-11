@@ -17,7 +17,11 @@ To check out more my data model, __[see It here](https://github.com/VGamezz19/MD
 
 ## UML
 
-__[Click here](https://github.com/VGamezz19/MDitor/tree/master/doc/UML/)__ to check UML
+__[Click here](https://github.com/VGamezz19/MDitor/tree/master/doc/UML/)__ to see project UML
+
+## TimeLine
+
+__[Click here](https://github.com/VGamezz19/MDitor/tree/master/doc/timeLine/)__ to see project timeline
 
 ## Technologies
 
