@@ -29,12 +29,16 @@ __[Click here](https://github.com/VGamezz19/MDitor/tree/master/doc/timeLine/)__ 
 
 Kanban board realase with **4 sections**, `TOOD, DOING, REVIEW and DONE` like a `Scrum` Kanban
 
-See it in Trelo, URL: https://trello.com/b/XFltOxOW
+See it in Trelo, URL: [https://trello.com/b/XFltOxOW](https://trello.com/b/XFltOxOW)
+
+### GIT
+
+ ---
 
 ## Technologies
 
 | styles| Front-End | Back-End| TDD|
-| :---------- | :----------: | :----------: | :----------: |
+| :----------: | :----------: | :----------: | :----------: |
 | [Sass](https://sass-lang.com/) | [ReactJS](https://reactjs.org/)  | Node   | [Jest](https://facebook.github.io/jest/)
 | [Materialize](https://react-materialize.github.io/#/) | ES6  | TS  | [Mocha](https://mochajs.org/)
 | [Flex](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) | [socket.io](https://socket.io/)  | RestFul  | [Cosmos](https://github.com/react-cosmos/react-cosmos)
