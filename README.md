@@ -19,9 +19,17 @@ To check out more my data model, __[see It here](https://github.com/VGamezz19/MD
 
 __[Click here](https://github.com/VGamezz19/MDitor/tree/master/doc/UML/)__ to see project UML
 
-## TimeLine
+## Work Flow
+
+### TimeLine
 
 __[Click here](https://github.com/VGamezz19/MDitor/tree/master/doc/timeLine/)__ to see project timeline
+
+### Agile methodologies / Scrum
+
+Kanban board realase with **4 sections**, `TOOD, DOING, REVIEW and DONE` like a `Scrum` Kanban
+
+See it in Trelo, URL: https://trello.com/b/XFltOxOW/mditor
 
 ## Technologies
 
