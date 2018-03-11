@@ -15,6 +15,10 @@ It only need three data model, User, Folder and File.
 
 To check out more my data model, __[see It here](https://github.com/VGamezz19/MDitor/tree/master/doc/dataModel/)__
 
+## UML
+
+__[Click here](https://github.com/VGamezz19/MDitor/tree/master/doc/UML/)__ to check UML
+
 ## Technologies
 
 | styles| Front-End | Back-End| TDD|
