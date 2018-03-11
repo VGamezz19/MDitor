@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Icon } from 'react-materialize'
 
 class CircleButton extends Component {
     constructor(props) {
@@ -10,9 +11,12 @@ class CircleButton extends Component {
 
     render() {
         return (
-            <a class="btn-floating btn-large waves-effect waves-light red">
-                <i class="material-icons">add</i>
-            </a>
+            <Button 
+                floating large 
+                className={this.props.ButtonClassName} 
+                waves='light'>
+                <Icon className={this.props.IconClassName}> {this.props.icon}</Icon>
+            </Button>
         )
     }
 }
