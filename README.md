@@ -29,7 +29,7 @@ __[Click here](https://github.com/VGamezz19/MDitor/tree/master/doc/timeLine/)__ 
 
 Kanban board realase with **4 sections**, `TOOD, DOING, REVIEW and DONE` like a `Scrum` Kanban
 
-See it in Trelo, URL: https://trello.com/b/XFltOxOW/mditor
+See it in Trelo, URL: https://trello.com/b/XFltOxOW
 
 ## Technologies
 
