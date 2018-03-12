@@ -1,7 +1,8 @@
 @import '../../../sass/_variables';
 @import '../../../sass/_extends';
 .files {
-    @extend %file-container;
+    @extend %rectangle-container;
+    justify-content: space-between;
     i {
         color: $main-font-color;
     }

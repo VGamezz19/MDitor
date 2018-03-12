@@ -5,7 +5,9 @@
         @extend %flex-in-column;
     }
     .collapsible-header {
-        @extend %folder-container;
+
+        @extend %rectangle-container;
+
         background-color: $side-nav-main-color !important;
         
         i { //Icons Folders Arrow and Folder
