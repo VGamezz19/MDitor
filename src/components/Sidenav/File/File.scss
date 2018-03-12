@@ -1,0 +1,8 @@
+@import '../../../sass/_variables';
+@import '../../../sass/_extends';
+.files {
+    @extend %file-container;
+    i {
+        color: $main-font-color;
+    }
+}

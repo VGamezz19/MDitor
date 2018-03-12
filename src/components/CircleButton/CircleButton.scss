@@ -1,3 +1,16 @@
-.black-font {
-    color:black !important;
+@import '../../sass/_variables';
+@import '../../sass/_extends';
+
+
+.add-folder, .add-files {
+    align-self: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    i {
+        @extend %medium-main-icon;
+    }
 }
+
+
+   

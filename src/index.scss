@@ -1,12 +1,13 @@
-html, body, main {
-  height: 100%;
-  width: 100%;
-
-  body {
-    color: #585757;
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-  }
-  
+@import 'sass/_variables';
+@import 'sass/_extends';
+html,
+body,
+main {
+    height: 100%;
+    width: 100%;
+    body {
+        @extend %main-font-app;
+        margin: 0;
+        padding: 0;
+    }
 }

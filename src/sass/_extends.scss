@@ -1,0 +1,44 @@
+%main-font-app {
+    color: $main-font-color;
+    font-family: sans-serif;
+}
+
+//====== Buttons
+%medium-main-icon {
+    color: $main-font-color !important;
+    width: auto;
+}
+
+//====== Content
+%flex-in-column {
+    display: flex;
+    flex-direction: column;
+}
+
+%folder-container {
+    display: flex;
+    color: $main-font-color;
+    height: 70px;
+     width: 100%;
+    align-items: center;
+    border-radius: 0;
+    border-bottom: solid 1px $main-border-color;
+}
+
+%file-container {
+    color: $main-font-color;
+    width: 100%;
+    margin: 0;
+    
+    align-items: center;
+    border-radius: 0;
+    height: 70px;
+}
+
+/**
+/* Usage
+/*
+**/
+// .message {
+//     @extend %column-flex
+// }

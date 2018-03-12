@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.scss';
 import CircleButton from './CircleButton'
 import Sidenav from './Sidenav'
@@ -12,12 +11,21 @@ class App extends Component {
     return (
       <section className="App">
         <article>
-          <Sidenav  
-            style={{ButtonClassName:'grey lighten-2', IconClassName:'black-font', icon:'menu'}}
-            className=''/>
+          <Sidenav
+            buttonTriggerStyle={{ buttonClassName: 'grey lighten-2', iconClassName: null, icon: 'menu' }}
+            buttonDropStyle={{ buttonClassName: null, iconClassName: 'black-font', icon: 'close' }}
+            user={{name:'Victor', surname:'Gamez'}} 
+            folders={[{
+              title:'new Folder1',
+              files: [{title: 'terst file1'},{title: 'terst file2'}]
+            },{
+              title:'new Folder2',
+              files: [{title: 'terst file1'},{title: 'terst file2'}]
+            }]}/>
+            
           <CircleButton ButtonClassName='grey lighten-2' IconClassName='black-font' icon='edit' />
         </article>
-        <div className ='MarkDownEdited'>
+        <div className='MarkDownEdited'>
           <MarkDown />
         </div>
       </section>
