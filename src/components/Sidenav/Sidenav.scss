@@ -1,5 +1,9 @@
 @import '../../sass/_variables';
 @import '../../sass/_extends';
+.triggerIcon {
+    @extend %medium-main-icon;
+}
+
 .content-sidenav {
     @extend %flex-in-column;
     header {

@@ -15,7 +15,7 @@ class CircleButton extends Component {
                 floating large 
                 className={this.props.ButtonClassName} 
                 waves='light'>
-                <Icon className={this.props.IconClassName}> {this.props.icon}</Icon>
+                <Icon className={this.props.IconClassName + " main-icon"}> {this.props.icon}</Icon>
             </Button>
         )
     }

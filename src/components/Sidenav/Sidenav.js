@@ -20,7 +20,7 @@ class Sidenav extends Component {
                         floating large
                         className={this.props.buttonTriggerStyle.buttonClassName}
                         waves='light'>
-                        <Icon> {this.props.buttonTriggerStyle.icon}</Icon>
+                        <Icon className='triggerIcon'> {this.props.buttonTriggerStyle.icon}</Icon>
                     </Button>
                 }
                 options={{ closeOnClick: true }}>
