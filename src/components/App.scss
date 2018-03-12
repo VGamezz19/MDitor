@@ -1,10 +1,23 @@
 .App {
     padding: 2em;
+    
     article {
         display: flex;
         justify-content: space-between;
     }
     .MarkDownEdited {
-        margin: 0 8em 0 8em;
+        div{
+            div {
+                .public-DraftEditor-content {
+                    padding: 0 8em 30% 8em;
+                    
+                }
+                
+            }
+            
+        }
+       
     }
+   
+
 }

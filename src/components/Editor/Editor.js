@@ -1,16 +1,46 @@
 import React, { Component } from 'react';
-import { Divider } from 'material-ui';
+import Draft, { Editor, EditorState,ContentState, convertFromHTML, RichUtils } from 'draft-js';
 
-class Editor extends Component {
+class MyEditor extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            valueEditor: '# H1',
+            editorState: EditorState.createWithContent(
+                ContentState.createFromBlockArray(
+                  convertFromHTML('<p>My initial content.</p>')
+                )
+              )
+        };
+        this.onChange = (editorState) => {
+            
+            // var rawData = Draft.convertToRaw(editorState.getCurrentContent())
+            // var editorState = Draft.EditorState.createWithContent(Draft.convertFromRaw(rawData))
+            let content = Draft.convertToRaw(editorState.getCurrentContent()).blocks.map(row=>!row.text? '\n' : row.text).join('\n')
+            console.log(content)
+            this.props.setMD(content)
+
+            this.setState({ editorState });
+        }
+    }
+    handleKeyCommand(command, editorState) {
+        const newState = RichUtils.handleKeyCommand(editorState, command);
+        if (newState) {
+          this.onChange(newState);
+          return 'handled';
+        }
+        return 'not-handled';
+      }
+
     render() {
+        
         return (
-            <pre class='wtd editor-input'>
-                <textarea>
-                    Hello there, this is some text in a text area
-                </textarea>
-            </pre>
+            <Editor  
+                editorState={this.state.editorState} 
+                handleKeyCommand={this.handleKeyCommand}
+                onChange={this.onChange} />
         );
     }
 }
 
-export default Editor
+export default MyEditor
