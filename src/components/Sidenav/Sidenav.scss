@@ -1,16 +1,14 @@
 @import '../../sass/_variables';
 @import '../../sass/_extends';
-
 .content-sidenav {
     @extend %flex-in-column;
-
     header {
         @extend %flex-in-column;
-
         align-items: center;
         height: 150px;
         padding: 1em;
-        h4,h5 {
+        h4,
+        h5 {
             color: $secondary-font-color
         }
         .delete-sidenav {
@@ -31,5 +29,4 @@
 //=== Sidenav ReactMaterialize
 .side-nav a:hover {
     background-color: unset;
-
 }

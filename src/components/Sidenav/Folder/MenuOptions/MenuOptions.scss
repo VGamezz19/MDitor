@@ -1,8 +1,15 @@
+@import '../../../../sass/_variables';
 .icon-menu {
     position: absolute !important;
     height: auto;
     align-self: flex-end;
     button {
         padding-top: 22px !important;
+
+        div {
+            svg {
+                color: $main-font-color !important;
+            }
+        }
     }
 }
