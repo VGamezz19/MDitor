@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { SideNav, SideNavItem, Button, Icon, Collapsible, CollapsibleItem, Tabs, Tab } from 'react-materialize'
 import CircleButton from '../CircleButton'
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 class Sidenav extends Component {
     constructor(props) {
@@ -47,13 +51,46 @@ class Sidenav extends Component {
                         <h5>Welcome</h5>
                     </header>
                     <Collapsible>
-                        <CollapsibleItem header='new-folder' icon={this.state.iconCollapsibleItem} onClick={this.handlerFolder}>
-                            <Tabs className='tab-demo z-depth-1'>
-                                <Tab title="Test 1">Test 1</Tab>
-                                <Tab title="Test 2" active>Test 2</Tab>
-                                <Tab title="Test 3">Test 3</Tab>
-                                <Tab title="Test 4">Test 4</Tab>
-                            </Tabs>
+
+                        <li class="">
+                            <div class="collapsible-header" onClick={this.handlerFolder}>
+                                <i class="material-icons">
+                                    {this.state.iconCollapsibleItem[0]}
+                                    {this.state.iconCollapsibleItem[1]}
+                                </i>
+                                new-folder
+                            </div>
+                            
+                            <IconMenu
+                                    key='test'
+                                    id='test'
+                                    className='icon-menu-folder'
+                                    iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+                                    anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
+                                    targetOrigin={{ horizontal: 'left', vertical: 'top' }}>
+                                    <MenuItem primaryText="Refresh" />
+                                    <MenuItem primaryText="Send feedback" />
+                                    <MenuItem primaryText="Settings" />
+                                    <MenuItem primaryText="Help" />
+                                    <MenuItem primaryText="Sign out" />
+                                </IconMenu>
+
+                            <div class="collapsible-body grey lighten-2">
+                                <div className="content-files">
+                                    <Button className= ' files grey lighten-3' waves='light'>name-file<Icon right>delete</Icon></Button>
+                                    <Button className= 'files grey lighten-3' waves='light'>name-file<Icon right>delete</Icon></Button>
+                                    <Button className= ' files grey lighten-3' waves='light'>name-file<Icon right>delete</Icon></Button>
+
+                                    <CircleButton ButtonClassName='buton-files grey lighten-3' IconClassName='black-font' icon='add' />
+
+                                </div>
+
+
+                            </div>
+                        </li>
+                        <CollapsibleItem header={`new-folder`} icon={this.state.iconCollapsibleItem} onClick={this.handlerFolder}>
+                            LoremIpsum
+
                         </CollapsibleItem>
                         <CollapsibleItem header='Second' icon='folder'>
                             Lorem ipsum dolor sit amet.

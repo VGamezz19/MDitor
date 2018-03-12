@@ -29,26 +29,59 @@
         h5 {
             color: white
         }
-    }
-
-    // Button add Folder
+    } // Button add Folder
     button {
         align-self: center;
         margin-top: 2em;
-    
     }
 }
 
 // === Collapsible Sidenav
 .collapsible {
+    li {
+        display: flex;
+        flex-direction: column;
+        .icon-menu-folder {
+            display: inline-block;
+            position: absolute !important;
+            height: auto;
+            align-self: flex-end;
+            button {
+                padding-top: 22px !important;
+            }
+        }
+    }
     .collapsible-header {
         display: flex;
         height: 70px;
         align-items: center;
         border-bottom: solid 1px grey;
-        background-color: #9e9e9e  !important;
+        background-color: #9e9e9e !important;
         i {
             margin-right: 2rem !important;
+        }
+    }
+    .collapsible-body {
+        padding: 0;
+        .content-files {
+            display: flex;
+            flex-direction: column;
+            .buton-files {
+                align-self: center;
+                margin-top: 1em;
+                margin-bottom: 1em;
+            }
+            .files {
+                color: #585757;
+                width: 100%;
+                margin: 0;
+                flex: 1;
+                border-radius: 0;
+                height: 60px;
+                i {
+                    color: #585757;
+                }
+            }
         }
     }
 }
