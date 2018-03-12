@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
-import { SideNav, SideNavItem, Button, Icon, Collapsible, CollapsibleItem } from 'react-materialize'
+import { SideNav, SideNavItem, Button, Icon, Collapsible, CollapsibleItem, Tabs, Tab } from 'react-materialize'
 import CircleButton from '../CircleButton'
 
 class Sidenav extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            iconCollapsibleItem: ['chevron_right','folder']
+            iconCollapsibleItem: ['chevron_right', 'folder']
         }
     }
 
     handlerFolder = () => {
         this.setState(prevState => {
-            if(prevState.iconCollapsibleItem[1] === 'folder'){
+            if (prevState.iconCollapsibleItem[1] === 'folder') {
                 return {
-                    iconCollapsibleItem: ['expand_more','folder_open']
+                    iconCollapsibleItem: ['expand_more', 'folder_open']
                 }
             }
 
             return {
-                iconCollapsibleItem: ['chevron_right','folder']
+                iconCollapsibleItem: ['chevron_right', 'folder']
             }
         })
     }
@@ -48,7 +48,12 @@ class Sidenav extends Component {
                     </header>
                     <Collapsible>
                         <CollapsibleItem header='new-folder' icon={this.state.iconCollapsibleItem} onClick={this.handlerFolder}>
-                            Lorem ipsum dolor sit amet.
+                            <Tabs className='tab-demo z-depth-1'>
+                                <Tab title="Test 1">Test 1</Tab>
+                                <Tab title="Test 2" active>Test 2</Tab>
+                                <Tab title="Test 3">Test 3</Tab>
+                                <Tab title="Test 4">Test 4</Tab>
+                            </Tabs>
                         </CollapsibleItem>
                         <CollapsibleItem header='Second' icon='folder'>
                             Lorem ipsum dolor sit amet.
@@ -57,7 +62,7 @@ class Sidenav extends Component {
                             Lorem ipsum dolor sit amet.
                         </CollapsibleItem>
                     </Collapsible>
-                    <CircleButton ButtonClassName='grey' IconClassName='black-font' icon='add'/>
+                    <CircleButton ButtonClassName='grey' IconClassName='black-font' icon='add' />
                     {/* <SideNavItem href='#!second'>Second Link</SideNavItem>
                     <SideNavItem divider />
                     <SideNavItem subheader>Subheader</SideNavItem>

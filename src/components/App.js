@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.scss';
 import CircleButton from './CircleButton'
 import Sidenav from './Sidenav'
+import MarkDown from './MarkDown/MarkDown'
 
 
 class App extends Component {
@@ -15,6 +16,9 @@ class App extends Component {
             className=''/>
           <CircleButton ButtonClassName='grey lighten-2' IconClassName='black-font' icon='edit' />
         </article>
+        <div className ='MarkDownEdited'>
+          <MarkDown />
+        </div>
       </section>
     );
   }
