@@ -1,21 +1,62 @@
 .black-font {
-    color:black !important;
+    color: black !important;
 }
 
 .content-sidenav {
     display: flex;
     flex-direction: column;
-    
     header {
         align-items: center;
-        height: 180px;
+        height: 150px;
         align-content: center;
         padding: 1em;
-        margin-top: 1em;
+        margin-top: 10px;
         display: flex;
         flex-direction: column;
-        h4,h5 {
-           color:white
+        .delete-sidenav {
+            align-self: flex-end;
+            position: absolute;
+            a {
+                padding: 0!important;
+                i {
+                    margin: 0 !important;
+                    font-size: 3em;
+                    width: auto;
+                }
+            }
         }
+        h4,
+        h5 {
+            color: white
+        }
+    }
+
+    // Button add Folder
+    button {
+        align-self: center;
+        margin-top: 2em;
+    
+    }
+}
+
+// === Collapsible Sidenav
+.collapsible {
+    .collapsible-header {
+        display: flex;
+        height: 70px;
+        align-items: center;
+        border-bottom: solid 1px grey;
+        background-color: #9e9e9e  !important;
+        i {
+            margin-right: 2rem !important;
+        }
+    }
+}
+
+//=== Sidenav ReactMaterialize
+.side-nav a:hover {
+    background-color: unset;
+    button {
+        position: absolute;
     }
 }
