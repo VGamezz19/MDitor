@@ -3,6 +3,9 @@ import './App.scss';
 import CircleButton from './CircleButton'
 import Sidenav from './Sidenav'
 import MarkDown from './MarkDown/MarkDown'
+import Editor from './Editor/'
+
+//import Demo from './MarkDown/test/demo'
 
 
 
@@ -26,7 +29,8 @@ class App extends Component {
           <CircleButton ButtonClassName='grey lighten-2' IconClassName='black-font' icon='edit' />
         </article>
         <div className='MarkDownEdited'>
-          <MarkDown />
+          {/* <MarkDown /> */}
+          <Editor />
         </div>
       </section>
     );

@@ -23,7 +23,10 @@ class Sidenav extends Component {
                         <Icon className='triggerIcon'> {this.props.buttonTriggerStyle.icon}</Icon>
                     </Button>
                 }
-                options={{ closeOnClick: true }}>
+                options={{ 
+                    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                    onClose: function(el) { return console.log("Closing") }
+                }}>
 
                 <section className='content-sidenav'>
                     <header>

@@ -29,7 +29,7 @@ class Folder extends Component {
                 </div>
 
                 {/* Todo handlers MenuOptions */}
-                <MenuOptions />
+                <MenuOptions title={this.props.title}/>
 
                 <div class="collapsible-body grey lighten-2">
                     <div className="content-files">
