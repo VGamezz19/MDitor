@@ -1,52 +1,91 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 
-/**
- * A modal dialog can only be closed by selecting one of the actions.
- */
-class ModalEdit extends React.Component {
+const customContentStyle = {
+  width: '30%',
+  maxWidth: 'none',
+};
+
+class ModalEdit extends Component {
   state = {
     open: false,
+    inputValue: ''
   };
 
-  handleOpen = () => {
-    this.setState({open: true});
-  };
+  componentWillReceiveProps(props) {
+    this.setState({
+      open: props.open,
+      inputValue: props.folderTitle
+    })
+  }
 
   handleClose = () => {
-    this.setState({open: false});
+    this.props.closeModal();
   };
+
+  handlerInput = (inputValue) => this.setState({ inputValue })
+
+  setNewRename = () => {
+    this.handleClose()
+    if (this.state.inputValue) {
+      return this.props.handlerEdit(this.state.inputValue)
+    }
+    return false
+  }
 
   render() {
     const actions = [
-      <FlatButton
-        label="Cancel"
+      <FlatButton label="Cancel"
         primary={true}
-        onClick={this.handleClose}
-      />,
-      <FlatButton
-        label="Submit"
+        onClick={this.handleClose} />,
+      <FlatButton label="Submit"
         primary={true}
-        disabled={true}
-        onClick={this.handleClose}
-      />,
-    ];
+        disabled={false}
+        onClick={this.handleClose} />];
 
     return (
-      <div>
-        <RaisedButton label="Modal Dialog" onClick={this.handleOpen} />
-        <Dialog
-          title="Dialog With Actions"
-          actions={actions}
-          modal={true}
-          open={this.state.open}
-        >
-          Only actions can close this dialog.
-        </Dialog>
-      </div>
+      <Dialog
+        className='testClass'
+        title="Rename Folder"
+        actions={actions}
+        modal={false}
+        contentStyle={customContentStyle}
+        open={this.state.open}>
+        Write a new name for this element:
+        {this.state.open ?
+          <FormModal
+            inputValue={this.state.inputValue}
+            handlerInput={this.handlerInput}
+            setNewRename={this.setNewRename} />
+          : false}
+
+      </Dialog>
     );
+  }
+}
+
+class FormModal extends Component {
+
+  componentDidMount() {
+    console.log("ModalEditrModal")
+    this.nameInput.focus();
+  }
+
+  render() {
+    return (
+      <form onSubmit={event => {
+        event.preventDefault()
+        this.props.setNewRename()
+      }}>
+        <input
+          ref={input => { this.nameInput = input; }}
+          autoFocus
+          type='text'
+          value={this.props.inputValue}
+          onChange={(event) => this.props.handlerInput(event.target.value)} />
+      </form>
+    )
   }
 }
 

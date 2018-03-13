@@ -34,6 +34,10 @@ class App extends Component {
     }))
   }
 
+  onRenameFolder = (titleRenamed) => {
+    console.log(titleRenamed)
+  }
+
   render() {
     return (
       <section className="App">
@@ -43,7 +47,8 @@ class App extends Component {
             buttonDropStyle={{ buttonClassName: null, iconClassName: 'black-font', icon: 'close' }}
             user={{ name: 'Victor', surname: 'Gamez' }}
             folders={this.state.folders}
-            setNewFolder = {this.newFolder} />
+            setNewFolder = {this.newFolder}
+            onRenameFolder = {this.onRenameFolder} />
 
           <CircleButton ButtonClassName='grey lighten-2' IconClassName='black-font' icon='edit' />
         </article>

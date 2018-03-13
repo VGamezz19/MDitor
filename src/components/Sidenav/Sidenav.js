@@ -52,7 +52,10 @@ class Sidenav extends Component {
                     </header>
 
                     <Collapsible>
-                        {this.props.folders.map(folder => <Folder title={folder.title} files={folder.files} />)}
+                        {this.props.folders.map(folder => <Folder 
+                                                            onRenameFolder={this.props.onRenameFolder} 
+                                                            title={folder.title} 
+                                                            files={folder.files} />)}
                     </Collapsible>
 
                     {this.state.createFolder ?

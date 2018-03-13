@@ -1,29 +1,57 @@
 import React, { Component } from 'react'
 import IconMenu from 'material-ui/IconMenu';
-// import MenuItem from 'material-ui/MenuItem';
+import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import TextFormat from 'material-ui/svg-icons/content/text-format';
+import Delete from 'material-ui/svg-icons/action/delete';
+import Divider from 'material-ui/Divider';
+import ModalEdit from './ModalEdit'
 
 class MenuOptions extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            renameFolder: false
+        }
+    }
+
+    openModalEdit = () => {
+        this.setState({ renameFolder: true })
+    }
+    closeModalEdit = () => {
+        this.setState({ renameFolder: false })
+    }
+
     render() {
         return (
-            <IconMenu
-                className='icon-menu'
-                iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-                anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
-                targetOrigin={{ horizontal: 'left', vertical: 'top' }}>
+            <div className='icon-menu'>
+                <IconMenu
+                    iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+                    anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
+                    targetOrigin={{ horizontal: 'left', vertical: 'top' }}>
 
-                {/* Todo */}
-                {/* <div className='test'>
-                    <Input s={6} label="Title Folder" defaultValue={this.props.title} />
-                </div> */}
+                    <MenuItem
+                        leftIcon={<TextFormat />}
+                        primaryText="Rename..."
+                        onClick={this.openModalEdit}
+                    />
+                    <Divider />
 
-                {/* <MenuItem primaryText="Refresh" />
-                <MenuItem primaryText="Send feedback" />
-                <MenuItem primaryText="Settings" />
-                <MenuItem primaryText="Help" />
-                <MenuItem primaryText="Sign out" /> */}
-            </IconMenu>
+                    <MenuItem
+                        leftIcon={<Delete />}
+                        primaryText="Delete"
+                      
+                    />
+                </IconMenu>
+
+                <ModalEdit 
+                    folderTitle={this.props.title} 
+                    open={this.state.renameFolder} 
+                    handlerEdit={this.props.onRenameFolder}
+                    closeModal={this.closeModalEdit} />
+            </div>
         )
     }
 }

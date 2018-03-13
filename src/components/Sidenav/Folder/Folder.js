@@ -28,8 +28,12 @@ class Folder extends Component {
                     {this.props.title}
                 </div>
 
-                {/* Todo handlers MenuOptions */}
-                <MenuOptions title={this.props.title}/>
+
+                <MenuOptions 
+                    title={this.props.title}
+                    onRenameFolder={this.props.onRenameFolder}
+                    // onDeleteFolder={/*TODO*/}
+                    />
 
                 <div class="collapsible-body grey lighten-2">
                     <div className="content-files">
