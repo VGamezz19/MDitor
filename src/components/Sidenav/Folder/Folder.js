@@ -48,27 +48,27 @@ class Folder extends Component {
                 </div>
 
 
-                <MenuOptions 
+                <MenuOptions
                     title={this.props.title}
                     onRenameFolder={this.props.onRenameFolder}
-                    // onDeleteFolder={/*TODO*/}
-                    />
+                // onDeleteFolder={/*TODO*/}
+                />
 
                 <div class="collapsible-body grey lighten-2">
                     <div className="content-files">
                         {this.props.files.map(file => <File title={file.title} />)}
                         {this.state.createFile ?
-                        <Fade left>
-                            <AddItem
-                                itemType='file'
-                                inputType='text'
-                                className='grey lighten-3'
-                                onSubmit={this.handlerCreateFile}
-                                onCancel={this.onCancelCreateFile} />
-                        </Fade>
-                        : false}
-                        <CircleButton 
-                            ButtonClassName='add-files grey lighten-3' 
+                            <Fade left>
+                                <AddItem
+                                    itemType='file'
+                                    inputType='text'
+                                    className='grey lighten-3'
+                                    onSubmit={this.handlerCreateFile}
+                                    onCancel={this.onCancelCreateFile} />
+                            </Fade>
+                            : false}
+                        <CircleButton
+                            ButtonClassName='add-files grey lighten-3'
                             IconClassName='black-font' icon='add'
                             onClick={this.onClickCreateFile} />
                     </div>

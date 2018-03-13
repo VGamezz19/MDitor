@@ -45,13 +45,16 @@ class ModalEdit extends Component {
         onClick={this.handleClose} />];
 
     return (
+
       <Dialog
         className='testClass'
         title="Rename Folder"
         actions={actions}
-        modal={true}
-        contentStyle={customContentStyle}
-        open={this.state.open}>
+        modal={false}
+        open={this.state.open}
+        onRequestClose={this.handleClose}
+        contentStyle={customContentStyle}>
+
         Write a new name for this element:
         {this.state.open ?
           <FormModal
@@ -60,33 +63,33 @@ class ModalEdit extends Component {
             setNewRename={this.setNewRename} />
           : false}
 
-      </Dialog>
-    );
-  }
-}
-
+      </ Dialog>
+        );
+      }
+    }
+    
 class FormModal extends Component {
 
-  componentDidMount() {
-    console.log("ModalEditrModal")
-    this.nameInput.focus();
-  }
-
+          componentDidMount() {
+        console.log("ModalEditrModal")
+        this.nameInput.focus();
+      }
+    
   render() {
     return (
       <form onSubmit={event => {
-        event.preventDefault()
-        this.props.setNewRename()
-      }}>
-        <input
-          ref={input => { this.nameInput = input; }}
-          autoFocus
-          type='text'
-          value={this.props.inputValue}
-          onChange={(event) => this.props.handlerInput(event.target.value)} />
-      </form>
-    )
-  }
-}
-
+          event.preventDefault()
+          this.props.setNewRename()
+        }}>
+          <input
+            ref={input => { this.nameInput = input; }}
+            autoFocus
+            type='text'
+            value={this.props.inputValue}
+            onChange={(event) => this.props.handlerInput(event.target.value)} />
+        </form>
+        )
+      }
+    }
+    
 export default ModalEdit

@@ -10,6 +10,20 @@ class AddItem extends Component {
         }
     }
 
+    componentDidMount() {
+        document.addEventListener('keydown', this._handleEscKey, false);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this._handleEscKey, false);
+    }
+
+    _handleEscKey = event => {
+        if (event.keyCode === 27) {
+            this.handlerCancel();
+        }
+    }
+
     handlerChangeInput = inputValue => this.setState({ inputValue })
 
     handlerSubmit = () => this.props.onSubmit(this.state.inputValue)
