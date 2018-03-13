@@ -25,6 +25,8 @@ class Folder extends Component {
 
     onClickCreateFile = () => this.state.createFile ? true : this.setState({ createFile: true })
 
+    onCancelCreateFile = () => this.state.createFile ? this.setState({ createFile: false }) : false
+
     handlerCreateFile = (title) => {
 
         this.setState({ createFile: false })
@@ -60,8 +62,9 @@ class Folder extends Component {
                             <AddItem
                                 itemType='file'
                                 inputType='text'
-                                className='files grey lighten-3 files'
-                                onSubmit={this.handlerCreateFile} />
+                                className='grey lighten-3'
+                                onSubmit={this.handlerCreateFile}
+                                onCancel={this.onCancelCreateFile} />
                         </Fade>
                         : false}
                         <CircleButton 

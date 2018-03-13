@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+import IconButton from 'material-ui/IconButton';
+import Delete from 'material-ui/svg-icons/content/clear';
 class AddItem extends Component {
     constructor(props) {
         super(props)
@@ -13,10 +14,12 @@ class AddItem extends Component {
 
     handlerSubmit = () => this.props.onSubmit(this.state.inputValue)
 
+    handlerCancel = () => this.props.onCancel()
+
     render() {
         return (
             <form
-                className={`grey format ${this.props.itemType} ${this.props.className}`}
+                className={`format ${this.props.itemType} ${this.props.className}`}
                 onSubmit={(event) => {
                     event.preventDefault()
                     this.handlerSubmit()
@@ -30,6 +33,10 @@ class AddItem extends Component {
                         event.preventDefault();
                         this.handlerChangeInput(event.target.value)
                     }} />
+
+                <IconButton className='button-delete' onClick={this.handlerCancel}>
+                    <Delete />
+                </IconButton>
             </form>
         )
     }

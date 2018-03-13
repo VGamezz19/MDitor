@@ -18,6 +18,8 @@ class Sidenav extends Component {
 
     onClickCreateFolder = () => this.state.createFolder ? true : this.setState({ createFolder: true })
 
+    onCancelCreateFolder = () => this.state.createFolder ? this.setState({ createFolder: false }) : false
+    
     handlerCreateFolder = (title) => {
 
         this.setState({ createFolder: false })
@@ -64,7 +66,8 @@ class Sidenav extends Component {
                             <AddItem
                                 itemType='folder'
                                 inputType='text'
-                                onSubmit={this.handlerCreateFolder} />
+                                onSubmit={this.handlerCreateFolder}
+                                onCancel={this.onCancelCreateFolder} />
                         </Fade>
                         : false}
 
