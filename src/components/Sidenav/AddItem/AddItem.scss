@@ -1,0 +1,16 @@
+@import '../../../sass/_variables';
+@import '../../../sass/_extends';
+
+.format {
+    @extend %flex-in-column;
+    @extend %rectangle-container;
+    
+}
+
+.file {
+
+}
+
+.folder {
+    background-color: $side-nav-main-color !important;
+}

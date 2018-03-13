@@ -6098,6 +6098,12 @@ react-materialize@^2.1.0:
     react "^16.2.0"
     react-dom "^16.2.0"
 
+react-reveal@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-reveal/-/react-reveal-1.2.1.tgz#b82b04603a095b020720016fa5cc25392fd61d81"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-transition-group@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.2.1.tgz#e11f72b257f921b213229a774df46612346c7ca6"

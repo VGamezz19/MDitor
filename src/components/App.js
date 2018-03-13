@@ -13,11 +13,25 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      mdSrc: '# Welcome to MDitor!'
+      mdSrc: '# Welcome to MDitor!',
+      folders : [{
+        title: 'new Folder1',
+        files: [{ title: 'terst file1' }, { title: 'terst file2' }]
+      }, {
+        title: 'new Folder2',
+        files: [{ title: 'terst file1' }, { title: 'terst file2' }]
+      }]
+
     }
   }
   onChangeEditor = (mdSrc) => {
     this.setState({ mdSrc })
+  }
+
+  newFolder = (title) => {
+    this.setState(prevState => ({
+        folders: [...prevState.folders, {title, files:[]}]
+    }))
   }
 
   render() {
@@ -28,13 +42,8 @@ class App extends Component {
             buttonTriggerStyle={{ buttonClassName: 'grey lighten-2', iconClassName: null, icon: 'menu' }}
             buttonDropStyle={{ buttonClassName: null, iconClassName: 'black-font', icon: 'close' }}
             user={{ name: 'Victor', surname: 'Gamez' }}
-            folders={[{
-              title: 'new Folder1',
-              files: [{ title: 'terst file1' }, { title: 'terst file2' }]
-            }, {
-              title: 'new Folder2',
-              files: [{ title: 'terst file1' }, { title: 'terst file2' }]
-            }]} />
+            folders={this.state.folders}
+            setNewFolder = {this.newFolder} />
 
           <CircleButton ButtonClassName='grey lighten-2' IconClassName='black-font' icon='edit' />
         </article>

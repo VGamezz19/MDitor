@@ -9,11 +9,17 @@ class CircleButton extends Component {
         }
     }
 
+    handlerOnClick = () => {
+        console.log("circle clicked")
+        this.props.onClick()
+    }
+
     render() {
         return (
             <Button 
                 floating large 
                 className={this.props.ButtonClassName} 
+                onClick={this.handlerOnClick}
                 waves='light'>
                 <Icon className={this.props.IconClassName + " main-icon"}> {this.props.icon}</Icon>
             </Button>
