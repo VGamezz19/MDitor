@@ -56,9 +56,12 @@ class Folder extends Component {
 
                 <div class="collapsible-body grey lighten-2">
                     <div className="content-files">
-                        {this.props.files.map(file => <File title={file.title} />)}
+                        {this.props.files.map(file => {
+                            return <File title={file.title} />
+                        })}
                         {this.state.createFile ?
                             <Fade left>
+                                {/* <Fade left collapse when={this.state.createFile}> */}
                                 <AddItem
                                     itemType='file'
                                     inputType='text'

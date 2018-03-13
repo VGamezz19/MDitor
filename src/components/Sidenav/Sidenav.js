@@ -5,14 +5,12 @@ import Folder from './Folder'
 import { Fade } from 'react-reveal'
 import AddItem from './AddItem'
 
-
-//import { Button, Icon } from 'react-materialize'
-
 class Sidenav extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            createFolder: false
+            createFolder: false,
+            canceled: false
         }
     }
 
@@ -53,11 +51,11 @@ class Sidenav extends Component {
                     </header>
 
                     <Collapsible>
-                        {this.props.folders.map(folder => <Folder 
-                                                            onRenameFolder={this.props.onRenameFolder} 
-                                                            onAddFile={this.props.onAddFile}
-                                                            title={folder.title} 
-                                                            files={folder.files} />)}
+                        {this.props.folders.map(folder => <Folder
+                            onRenameFolder={this.props.onRenameFolder}
+                            onAddFile={this.props.onAddFile}
+                            title={folder.title}
+                            files={folder.files} />)}
                     </Collapsible>
 
                     {this.state.createFolder ?

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
+import { IconMenu } from 'material-ui/';
+import { MenuItem } from 'material-ui/';
+import { IconButton } from 'material-ui/';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import TextFormat from 'material-ui/svg-icons/content/text-format';
 import Delete from 'material-ui/svg-icons/action/delete';
-import Divider from 'material-ui/Divider';
+import { Divider } from 'material-ui/';
 import ModalEdit from './ModalEdit'
 
 class MenuOptions extends Component {
@@ -42,13 +42,13 @@ class MenuOptions extends Component {
                     <MenuItem
                         leftIcon={<Delete />}
                         primaryText="Delete"
-                      
+
                     />
                 </IconMenu>
 
-                <ModalEdit 
-                    folderTitle={this.props.title} 
-                    open={this.state.renameFolder} 
+                <ModalEdit
+                    folderTitle={this.props.title}
+                    open={this.state.renameFolder}
                     handlerEdit={this.props.onRenameFolder}
                     closeModal={this.closeModalEdit} />
             </div>
