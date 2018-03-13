@@ -19,7 +19,7 @@ class Sidenav extends Component {
     onClickCreateFolder = () => this.state.createFolder ? true : this.setState({ createFolder: true })
 
     onCancelCreateFolder = () => this.state.createFolder ? this.setState({ createFolder: false }) : false
-    
+
     handlerCreateFolder = (title) => {
 
         this.setState({ createFolder: false })
@@ -40,8 +40,7 @@ class Sidenav extends Component {
                     </Button>
                 }
                 options={{
-                    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                    onClose: function (el) { return console.log("Closing") }
+                    closeOnClick: true
                 }}>
 
                 <section className='content-sidenav'>
