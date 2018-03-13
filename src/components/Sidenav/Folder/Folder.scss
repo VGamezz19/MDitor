@@ -9,6 +9,8 @@
         @extend %rectangle-container;
 
         background-color: $side-nav-main-color !important;
+        border-bottom: 1px solid gray !important;
+        border-top: unset !important;
         
         i { //Icons Folders Arrow and Folder
             margin-right: 2rem !important;

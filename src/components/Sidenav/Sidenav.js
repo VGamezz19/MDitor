@@ -18,7 +18,7 @@ class Sidenav extends Component {
 
     onClickCreateFolder = () => this.state.createFolder ? true : this.setState({ createFolder: true })
 
-    handlerCreateForlder = (title) => {
+    handlerCreateFolder = (title) => {
 
         this.setState({ createFolder: false })
 
@@ -54,6 +54,7 @@ class Sidenav extends Component {
                     <Collapsible>
                         {this.props.folders.map(folder => <Folder 
                                                             onRenameFolder={this.props.onRenameFolder} 
+                                                            onAddFile={this.props.onAddFile}
                                                             title={folder.title} 
                                                             files={folder.files} />)}
                     </Collapsible>
@@ -63,7 +64,7 @@ class Sidenav extends Component {
                             <AddItem
                                 itemType='folder'
                                 inputType='text'
-                                onSubmit={this.handlerCreateForlder} />
+                                onSubmit={this.handlerCreateFolder} />
                         </Fade>
                         : false}
 

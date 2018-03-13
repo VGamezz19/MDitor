@@ -16,12 +16,13 @@ class AddItem extends Component {
     render() {
         return (
             <form
-                class={`grey format ${this.props.itemType}`}
+                className={`grey format ${this.props.itemType} ${this.props.className}`}
                 onSubmit={(event) => {
                     event.preventDefault()
                     this.handlerSubmit()
                 }}>
                 <input
+                    className='inputItem'
                     autoFocus
                     type={this.props.inputType}
                     value={this.state.value}

@@ -2,8 +2,36 @@
 @import '../../../sass/_extends';
 .files {
     @extend %rectangle-container;
+    border-bottom: unset;
     justify-content: space-between;
+    padding: 0 2em;
     i {
         color: $main-font-color;
+    }
+}
+
+
+.li-item-file {
+    @extend %flex-in-column;
+    position: relative;
+    align-items: flex-end;
+    .button-delete {
+        position: absolute !important;
+        top:10px;
+    }
+    .button-delete:hover {
+        div {
+            svg{
+                color:$delete-color !important;
+            }
+        }
+        
+    }
+    .files {
+
+        @extend %rectangle-container;
+
+        border-bottom: 1px solid $main-border-color !important;
+        border-top: unset !important;
     }
 }

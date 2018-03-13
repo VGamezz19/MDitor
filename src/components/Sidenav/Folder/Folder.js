@@ -2,11 +2,16 @@ import React, { Component } from 'react'
 import MenuOptions from './MenuOptions'
 import File from '../File'
 import CircleButton from '../../CircleButton'
+import { Fade } from 'react-reveal'
+import AddItem from '../AddItem'
+
+
 class Folder extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            folderIcon: ['chevron_right', 'folder']
+            folderIcon: ['chevron_right', 'folder'],
+            createFile: false
         }
     }
 
@@ -17,6 +22,18 @@ class Folder extends Component {
             return { folderIcon: ['chevron_right', 'folder'] }
         })
     }
+
+    onClickCreateFile = () => this.state.createFile ? true : this.setState({ createFile: true })
+
+    handlerCreateFile = (title) => {
+
+        this.setState({ createFile: false })
+        console.log("create-new File")
+        //TODO
+        // this.props.setNewFile(title)
+    }
+
+
     render() {
         return (
             <li>
@@ -38,7 +55,19 @@ class Folder extends Component {
                 <div class="collapsible-body grey lighten-2">
                     <div className="content-files">
                         {this.props.files.map(file => <File title={file.title} />)}
-                        <CircleButton ButtonClassName='add-files grey lighten-3' IconClassName='black-font' icon='add' />
+                        {this.state.createFile ?
+                        <Fade left>
+                            <AddItem
+                                itemType='file'
+                                inputType='text'
+                                className='files grey lighten-3 files'
+                                onSubmit={this.handlerCreateFile} />
+                        </Fade>
+                        : false}
+                        <CircleButton 
+                            ButtonClassName='add-files grey lighten-3' 
+                            IconClassName='black-font' icon='add'
+                            onClick={this.onClickCreateFile} />
                     </div>
                 </div>
             </li>

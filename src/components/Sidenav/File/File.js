@@ -1,10 +1,25 @@
 import React, { Component } from 'react'
-import { Button, Icon } from 'react-materialize'
+import IconButton from 'material-ui/IconButton';
+import Delete from 'material-ui/svg-icons/action/delete';
+
 
 class File extends Component {
+    handlerClickFile = () => {
+        console.log('click FILE')
+    }
+    handllerClickDelete = () => {
+        console.log('delete Filde')
+    }
     render() {
         return (
-            <Button className=' files grey lighten-3' waves='light'>{this.props.title}<Icon right>delete</Icon></Button>
+            <li class='li-item-file'>
+                <button type='submit' class="files grey lighten-3" onClick={this.handlerClickFile}>
+                    {this.props.title}
+                </button>
+                <IconButton className='button-delete' onClick={this.handllerClickDelete}>
+                    <Delete />
+                </IconButton>
+            </li>
         )
     }
 }

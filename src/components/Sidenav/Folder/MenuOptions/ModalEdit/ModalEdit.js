@@ -49,7 +49,7 @@ class ModalEdit extends Component {
         className='testClass'
         title="Rename Folder"
         actions={actions}
-        modal={false}
+        modal={true}
         contentStyle={customContentStyle}
         open={this.state.open}>
         Write a new name for this element:

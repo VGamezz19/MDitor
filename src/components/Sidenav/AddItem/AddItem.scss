@@ -4,14 +4,11 @@
 .format {
     @extend %flex-in-column;
     @extend %rectangle-container;
-    
 }
-
-.file {
-
-}
-
+.file{
+    padding: 0 4em 0 2em !important;
+} 
 .folder {
     background-color: $side-nav-main-color !important;
-    padding: 0px 3.4em;
+    padding: 0px 4.4em;
 }
