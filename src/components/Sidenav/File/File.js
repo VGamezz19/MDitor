@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import IconButton from 'material-ui/IconButton';
 import Delete from 'material-ui/svg-icons/action/delete';
-import { Link } from "react-router-dom"
+import { Link, Route } from "react-router-dom"
 
 class File extends Component {
     handlerClickFile = () => {
@@ -10,30 +10,36 @@ class File extends Component {
     handllerClickDelete = () => {
         const idFolder = this.props.idFolder
         const idFile = this.props.idFile
- 
+
         this.props.deleteFile(idFolder, idFile)
     }
-    handlerSelectOneFile =  () => {
+    handlerSelectOneFile = () => {
         const idFolder = this.props.idFolder
         const idFile = this.props.idFile
         const options = this.props.options
 
-        
+
 
         this.props.selectOneFile(options, idFolder, idFile)
     }
     render() {
         return (
-            <li className={`li-item-file ${this.props.selected ? 'focus-file': false}`}>
-                <button type='submit' className="files grey lighten-3" onClick={this.handlerSelectOneFile}>
-                    <Link to ={`/edit/${this.props.idFolder}/edit/${this.props.idFile}`}>
-                    {this.props.title}
-                    </Link>
-                </button>
-                <IconButton className='button-delete' onClick={this.handllerClickDelete}>
-                    <Delete />
-                </IconButton>
-            </li>
+            <Route
+                path={`/edit/${this.props.idFolder}/edit/${this.props.idFile}`}
+                children={({ match }) => (
+                    <li className={`li-item-file  gey lighten-3 ${match ? 'focus-file' : false}`}>
+                        <Link className='files grey lighten-3"' to={`/edit/${this.props.idFolder}/edit/${this.props.idFile}`}>
+                            <button type='submit' className="files grey lighten-3" onClick={this.handlerSelectOneFile}>
+
+                                {this.props.title}
+
+                            </button>
+                        </Link>
+                        <IconButton className='button-delete' onClick={this.handllerClickDelete}>
+                            <Delete />
+                        </IconButton>
+                    </li>
+                )} />
         )
     }
 }
