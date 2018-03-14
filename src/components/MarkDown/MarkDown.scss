@@ -1,0 +1,23 @@
+.MarkDownEdited {
+    .mardownViwer {
+        padding: 0px 7em;
+        hr {
+            border: 1px solid grey !important;
+        }
+        strong {
+            font-weight: bold !important;
+        }
+        pre {
+            padding: 1.5em;
+            background: #e0dbdb !important;
+        }
+        code {
+            background: #e0dbdb !important;
+        }
+        p {
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+}
