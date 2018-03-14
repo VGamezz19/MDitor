@@ -6,6 +6,8 @@ import Sidenav from './Sidenav'
 import MyEditor from './MyEditor/'
 import MarkDown from './MarkDown'
 
+let id = 2;
+
 class App extends Component {
   constructor() {
     super();
@@ -33,12 +35,25 @@ class App extends Component {
 
   newFolder = (title) => {
     this.setState(prevState => ({
-      folders: [...prevState.folders, { title, files: [] }]
+      folders: [...prevState.folders, { title, id: id++, files: [] }]
     }))
   }
 
-  onRenameFolder = (titleRenamed) => {
-    console.log(titleRenamed)
+  updateFolder = (id, newTitle) => {
+    console.log(id, newTitle)
+    this.setState(prevState =>({
+      folders: prevState.folders.map(folder => {
+        if (folder.id === id) folder.title = newTitle
+        return folder
+      })
+    }))
+  }
+
+  deleteFolder = (id) => {
+    console.log(id)
+    this.setState(prevState =>({
+      folders: prevState.folders.filter(folder => folder.id !== id)
+    }))
   }
 
   handlerMyEditor = (mdSrc) => this.setState({ mdSrc })
@@ -52,8 +67,11 @@ class App extends Component {
             buttonDropStyle={{ buttonClassName: null, iconClassName: 'black-font', icon: 'close' }}
             user={{ name: this.state.user.name, surname: this.state.user.surname }}
             folders={this.state.folders}
-            setNewFolder={this.newFolder}
-            onRenameFolder={this.onRenameFolder} />
+            logicFolder={{
+              newFolder: this.newFolder,
+              updateFolder: this.updateFolder,
+              deleteFolder: this.deleteFolder
+            }}/>
 
           <CircleButton ButtonClassName='grey lighten-2' IconClassName='black-font' icon='edit' />
         </article>

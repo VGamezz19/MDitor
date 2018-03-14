@@ -22,7 +22,7 @@ class Sidenav extends Component {
 
         this.setState({ createFolder: false })
 
-        this.props.setNewFolder(title)
+        this.props.logicFolder.newFolder(title)
     }
 
     render() {
@@ -42,7 +42,7 @@ class Sidenav extends Component {
                     <Collapsible>
                         {this._renderBodySidenav()}
                     </ Collapsible>
-                    
+
                     {this._renderCreateFolder()}
 
                     <CircleButton ButtonClassName='add-folder grey' icon='add' onClick={this.onClickCreateFolder} />
@@ -87,10 +87,15 @@ class Sidenav extends Component {
 
     _renderBodySidenav() {
         return this.props.folders.map(folder => <Folder
-            onRenameFolder={this.props.onRenameFolder}
-            onAddFile={this.props.onAddFile}
-            title={folder.title}
-            files={folder.files} />)
+            logicFolder={{
+                updateFolder: this.props.logicFolder.updateFolder,
+                deleteFolder: this.props.logicFolder.deleteFolder
+            }}
+            folder={{
+                id: folder.id,
+                title: folder.title,
+                files: folder.files
+            }} />)
     }
 }
 

@@ -42,14 +42,15 @@ class MenuOptions extends Component {
                     <MenuItem
                         leftIcon={<Delete />}
                         primaryText="Delete"
+                        onClick={() => this.props.logicOptions.onDelete(this.props.item.id)}
 
                     />
                 </IconMenu>
-
                 <ModalEdit
-                    folderTitle={this.props.title}
+                    itemTitle={this.props.item.title}
+                    itemId={this.props.item.id}
                     open={this.state.renameFolder}
-                    handlerEdit={this.props.onRenameFolder}
+                    handlerEdit={this.props.logicOptions.onUpdate}
                     closeModal={this.closeModalEdit} />
             </div>
         )

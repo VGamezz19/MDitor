@@ -42,10 +42,11 @@ class Folder extends Component {
                 {this._renderBodyFolder()}
 
                 <MenuOptions
-                    title={this.props.title}
-                    onRenameFolder={this.props.onRenameFolder}
-                // onDeleteFolder={/*TODO*/}
-                />
+                    item={this.props.folder}
+                    logicOptions={{
+                        onDelete:this.props.logicFolder.deleteFolder,
+                        onUpdate: this.props.logicFolder.updateFolder
+                    }}/>
 
                 {this._renderFiles()}
             </li>
@@ -59,7 +60,7 @@ class Folder extends Component {
                     {this.state.folderIcon[0]}
                     {this.state.folderIcon[1]}
                 </i>
-                {this.props.title}
+                {this.props.folder.title}
             </div>
         )
     }
@@ -68,7 +69,7 @@ class Folder extends Component {
         return (
             <div class="collapsible-body grey lighten-2">
                 <div className="content-files">
-                    {this.props.files.map(file => {
+                    {this.props.folder.files.map(file => {
                         return <File title={file.title} />
                     })}
                     {this.state.createFile ?

@@ -16,7 +16,8 @@ class ModalEdit extends Component {
   componentWillReceiveProps(props) {
     this.setState({
       open: props.open,
-      inputValue: props.folderTitle
+      inputValue: props.itemTitle,
+      itemId : props.itemId
     })
   }
 
@@ -28,8 +29,9 @@ class ModalEdit extends Component {
 
   setNewRename = () => {
     this.handleClose()
+
     if (this.state.inputValue) {
-      return this.props.handlerEdit(this.state.inputValue)
+      return this.props.handlerEdit(this.state.itemId, this.state.inputValue)
     }
     return false
   }
@@ -64,32 +66,32 @@ class ModalEdit extends Component {
           : false}
 
       </ Dialog>
-        );
-      }
-    }
-    
+    );
+  }
+}
+
 class FormModal extends Component {
 
-          componentDidMount() {
-        console.log("ModalEditrModal")
-        this.nameInput.focus();
-      }
-    
+  componentDidMount() {
+    console.log("ModalEditrModal")
+    this.nameInput.focus();
+  }
+
   render() {
     return (
       <form onSubmit={event => {
-          event.preventDefault()
-          this.props.setNewRename()
-        }}>
-          <input
-            ref={input => { this.nameInput = input; }}
-            autoFocus
-            type='text'
-            value={this.props.inputValue}
-            onChange={(event) => this.props.handlerInput(event.target.value)} />
-        </form>
-        )
-      }
-    }
-    
+        event.preventDefault()
+        this.props.setNewRename()
+      }}>
+        <input
+          ref={input => { this.nameInput = input; }}
+          autoFocus
+          type='text'
+          value={this.props.inputValue}
+          onChange={(event) => this.props.handlerInput(event.target.value)} />
+      </form>
+    )
+  }
+}
+
 export default ModalEdit
