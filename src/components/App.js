@@ -6,7 +6,7 @@ import Sidenav from './Sidenav'
 import MyEditor from './MyEditor/'
 import MarkDown from './MarkDown'
 
-let id = 2;
+let id = 6;
 
 class App extends Component {
   constructor() {
@@ -16,11 +16,11 @@ class App extends Component {
       folders: [{
         id: 0,
         title: 'new Folder1',
-        files: [{ title: 'terst file1' }, { title: 'terst file2' }]
+        files: [{ id: 2, title: 'terst file1', content:'' }, { id: 3, title: 'terst file2', content:'' }]
       }, {
         id: 1,
         title: 'new Folder2',
-        files: [{ title: 'terst file1' }, { title: 'terst file2' }]
+        files: [{ id: 4, title: 'terst file1', content:'' }, { id: 5, title: 'terst file2', content:'' }]
       }],
       user: {
         name: 'Victor',
@@ -40,8 +40,7 @@ class App extends Component {
   }
 
   updateFolder = (id, newTitle) => {
-    console.log(id, newTitle)
-    this.setState(prevState =>({
+    this.setState(prevState => ({
       folders: prevState.folders.map(folder => {
         if (folder.id === id) folder.title = newTitle
         return folder
@@ -50,11 +49,44 @@ class App extends Component {
   }
 
   deleteFolder = (id) => {
-    console.log(id)
-    this.setState(prevState =>({
+    this.setState(prevState => ({
       folders: prevState.folders.filter(folder => folder.id !== id)
     }))
   }
+
+  newFile = (idFolder, title) => {
+    this.setState(prevState => ({
+      folders: prevState.folders.map(folder => {
+        if (folder.id === idFolder) {
+          folder.files = [...folder.files, { title }]
+        }
+        return folder
+      })
+    }))
+  }
+
+  // updateFile = (idFolder, newTitle) => {
+  //   this.setState(prevState => ({
+  //     folders: prevState.folders.map(folder => {
+  //       if (folder.id === id) folder.title = newTitle
+  //       return folder
+  //     })
+  //   }))
+  // }
+
+  deleteFile = (idFolder, idFile) => {
+    console.log(idFolder, idFile)
+    this.setState(prevState => ({
+      folders: prevState.folders.filter(folder => {
+        if (folder.id === idFolder) {
+          folder.files = folder.files.filter(file => file.id !== idFile)
+        }
+        return folder
+      })
+    }))
+  }
+
+
 
   handlerMyEditor = (mdSrc) => this.setState({ mdSrc })
 
@@ -70,8 +102,13 @@ class App extends Component {
             logicFolder={{
               newFolder: this.newFolder,
               updateFolder: this.updateFolder,
-              deleteFolder: this.deleteFolder
-            }}/>
+              deleteFolder: this.deleteFolder,
+              logicFile: {
+                newFile: this.newFile,
+                updateFile: this.updateFile,
+                deleteFile: this.deleteFile
+              }
+            }} />
 
           <CircleButton ButtonClassName='grey lighten-2' IconClassName='black-font' icon='edit' />
         </article>

@@ -89,7 +89,11 @@ class Sidenav extends Component {
         return this.props.folders.map(folder => <Folder
             logicFolder={{
                 updateFolder: this.props.logicFolder.updateFolder,
-                deleteFolder: this.props.logicFolder.deleteFolder
+                deleteFolder: this.props.logicFolder.deleteFolder,
+                logicFile: {
+                    newFile: this.props.logicFolder.logicFile.newFile,
+                    deleteFile: this.props.logicFolder.logicFile.deleteFile
+                }
             }}
             folder={{
                 id: folder.id,

@@ -28,11 +28,11 @@ class Folder extends Component {
     onCancelCreateFile = () => this.state.createFile ? this.setState({ createFile: false }) : false
 
     handlerCreateFile = (title) => {
+        const titleFile = title
+        const idFoler = this.props.folder.id
 
         this.setState({ createFile: false })
-        console.log("create-new File")
-        //TODO
-        // this.props.setNewFile(title)
+        this.props.logicFolder.logicFile.newFile(idFoler, titleFile)
     }
 
 
@@ -44,9 +44,9 @@ class Folder extends Component {
                 <MenuOptions
                     item={this.props.folder}
                     logicOptions={{
-                        onDelete:this.props.logicFolder.deleteFolder,
+                        onDelete: this.props.logicFolder.deleteFolder,
                         onUpdate: this.props.logicFolder.updateFolder
-                    }}/>
+                    }} />
 
                 {this._renderFiles()}
             </li>
@@ -70,7 +70,11 @@ class Folder extends Component {
             <div class="collapsible-body grey lighten-2">
                 <div className="content-files">
                     {this.props.folder.files.map(file => {
-                        return <File title={file.title} />
+                        return <File 
+                            idFile={file.id} 
+                            idFolder={this.props.folder.id}
+                            title={file.title}
+                            deleteFile = {this.props.logicFolder.logicFile.deleteFile}  />
                     })}
                     {this.state.createFile ?
                         <Fade left>

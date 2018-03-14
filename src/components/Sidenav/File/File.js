@@ -8,12 +8,15 @@ class File extends Component {
         console.log('click FILE')
     }
     handllerClickDelete = () => {
-        console.log('delete Filde')
+        const idFoler = this.props.idFolder
+        const idFile = this.props.idFile
+ 
+        this.props.deleteFile(idFoler, idFile)
     }
     render() {
         return (
-            <li class='li-item-file'>
-                <button type='submit' class="files grey lighten-3" onClick={this.handlerClickFile}>
+            <li className='li-item-file'>
+                <button type='submit' className="files grey lighten-3" onClick={this.handlerClickFile}>
                     {this.props.title}
                 </button>
                 <IconButton className='button-delete' onClick={this.handllerClickDelete}>
