@@ -1,21 +1,29 @@
 import React from 'react';
-import Draft, { Editor, EditorState } from 'draft-js';
+import Draft, { Editor, EditorState, ContentState } from 'draft-js';
+
 
 class MyEditor extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { editorState: EditorState.createEmpty() };
+        const folderId = this.props.folderId
+        const fileId = this.props.fileId
+    
+        const src = this.props.folders.find( folder => folder.id == folderId).files.find(file => file.id == fileId)
+
+        this.state = { editorState: EditorState.createWithContent(ContentState.createFromText(src.content)) };
     }
     onChange = (editorState) => {
 
         let rawObject = Draft.convertToRaw(editorState.getCurrentContent())
 
-        let content = rawObject.blocks.map(raw => raw.text ? '\n'+raw.text : '\n\n').join(' ')
+        let content = rawObject.blocks.map(raw => raw.text ? '\n' + raw.text : '\n\n').join(' ')
 
         this.setState({ editorState })
 
-        //TODO CLICK!
-         this.props.handlerMyEditor(content)
+        const folderId = this.props.folderId
+        const fileId = this.props.fileId
+
+        this.props.handlerMyEditor(folderId, fileId, content)
     };
     render() {
         return (
