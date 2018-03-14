@@ -39,14 +39,7 @@ class Folder extends Component {
     render() {
         return (
             <li>
-                <div class="collapsible-header" onClick={this.handlerClickFolder}>
-                    <i class="material-icons">
-                        {this.state.folderIcon[0]}
-                        {this.state.folderIcon[1]}
-                    </i>
-                    {this.props.title}
-                </div>
-
+                {this._renderBodyFolder()}
 
                 <MenuOptions
                     title={this.props.title}
@@ -54,29 +47,47 @@ class Folder extends Component {
                 // onDeleteFolder={/*TODO*/}
                 />
 
-                <div class="collapsible-body grey lighten-2">
-                    <div className="content-files">
-                        {this.props.files.map(file => {
-                            return <File title={file.title} />
-                        })}
-                        {this.state.createFile ?
-                            <Fade left>
-                                {/* <Fade left collapse when={this.state.createFile}> */}
-                                <AddItem
-                                    itemType='file'
-                                    inputType='text'
-                                    className='grey lighten-3'
-                                    onSubmit={this.handlerCreateFile}
-                                    onCancel={this.onCancelCreateFile} />
-                            </Fade>
-                            : false}
-                        <CircleButton
-                            ButtonClassName='add-files grey lighten-3'
-                            IconClassName='black-font' icon='add'
-                            onClick={this.onClickCreateFile} />
-                    </div>
-                </div>
+                {this._renderFiles()}
             </li>
+        )
+    }
+
+    _renderBodyFolder() {
+        return (
+            <div class="collapsible-header" onClick={this.handlerClickFolder}>
+                <i class="material-icons">
+                    {this.state.folderIcon[0]}
+                    {this.state.folderIcon[1]}
+                </i>
+                {this.props.title}
+            </div>
+        )
+    }
+
+    _renderFiles() {
+        return (
+            <div class="collapsible-body grey lighten-2">
+                <div className="content-files">
+                    {this.props.files.map(file => {
+                        return <File title={file.title} />
+                    })}
+                    {this.state.createFile ?
+                        <Fade left>
+                            {/* <Fade left collapse when={this.state.createFile}> */}
+                            <AddItem
+                                itemType='file'
+                                inputType='text'
+                                className='grey lighten-3'
+                                onSubmit={this.handlerCreateFile}
+                                onCancel={this.onCancelCreateFile} />
+                        </Fade>
+                        : false}
+                    <CircleButton
+                        ButtonClassName='add-files grey lighten-3'
+                        IconClassName='black-font' icon='add'
+                        onClick={this.onClickCreateFile} />
+                </div>
+            </div>
         )
     }
 }

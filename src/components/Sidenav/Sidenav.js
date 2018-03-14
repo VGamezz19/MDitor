@@ -94,9 +94,4 @@ class Sidenav extends Component {
     }
 }
 
-
-
 export default Sidenav
-
-
-

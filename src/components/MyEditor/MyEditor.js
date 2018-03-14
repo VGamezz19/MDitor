@@ -1,6 +1,5 @@
 import React from 'react';
 import Draft, { Editor, EditorState } from 'draft-js';
-import { draftToMarkdown } from 'markdown-draft-js';
 
 class MyEditor extends React.Component {
     constructor(props) {
@@ -12,14 +11,11 @@ class MyEditor extends React.Component {
         let rawObject = Draft.convertToRaw(editorState.getCurrentContent())
 
         let content = rawObject.blocks.map(raw => raw.text ? '\n'+raw.text : '\n\n').join(' ')
-        //let markdownString = draftToMarkdown(rawObject);
-        console.log(rawObject)
-        console.log(content)
+
         this.setState({ editorState })
 
+        //TODO CLICK!
          this.props.handlerMyEditor(content)
-        // console.log(markdownString)
-
     };
     render() {
         return (
