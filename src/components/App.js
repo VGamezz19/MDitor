@@ -72,7 +72,6 @@ class App extends Component {
   }
 
   updateFileContent = (idFolder, idFile, content) => {
-    console.log(content)
     this.setState(prevState => ({
       folders: prevState.folders.map(folder => {
         if (folder.id == idFolder) {
@@ -117,6 +116,30 @@ class App extends Component {
     }))
   }
 
+  selectOneFile = (props, folderId, fileId) => {
+    this.setState(prevState => ({
+        folders: prevState.folders.map(folder => {
+          if (folder.id == folderId) {
+            folder.files = folder.files.map(file => {
+              if (file.id == fileId) {
+
+                file.selected = true
+              }
+              return file
+            })
+          }
+          return folder
+        }),
+        // select: {
+        //   folderId,
+        //   fileId
+        // }
+      }))
+
+    this.handleRouteToEdit(props, folderId, fileId)
+
+  }
+
   handlerMyEditor = (mdSrc) => this.setState({ mdSrc })
 
   onChangeEditor = (mdSrc) => {
@@ -159,7 +182,9 @@ class App extends Component {
             logicFile: {
               newFile: this.newFile,
               updateFile: this.updateFile,
-              deleteFile: this.deleteFile
+              deleteFile: this.deleteFile,
+              selectOneFile: this.selectOneFile,
+              options: props
             }
           }} />
         {props.match.path === '/' ?
@@ -169,13 +194,13 @@ class App extends Component {
               ButtonClassName='grey lighten-2'
               IconClassName='black-font'
               icon='edit'
-              onClick={() => this.handleRouteToEdit(props)} />
+              onClick={() => this.handleRouteToEdit(props, params.folderId, params.fileId)} />
             :
             <CircleButton
               ButtonClassName='grey lighten-2'
               IconClassName='black-font'
               icon='remove_red_eye'
-              onClick={() => this.handleRouteToView(props)} />}
+              onClick={() => this.handleRouteToView(props, params.folderId, params.fileId)} />}
 
       </article>
 
@@ -194,12 +219,12 @@ class App extends Component {
     </section>
   }
 
-  handleRouteToEdit = (props) => {
-    props.history.push(`/edit/${this.state.select.folderId}/edit/${this.state.select.fileId}`)
+  handleRouteToEdit = (props, folderId, fileId) => {
+    props.history.push(`/edit/${folderId}/edit/${fileId}`)
   }
 
-  handleRouteToView = (props) => {
-    props.history.push(`/view/${this.state.select.folderId}/view/${this.state.select.fileId}`)
+  handleRouteToView = (props, folderId, fileId) => {
+    props.history.push(`/view/${folderId}/view/${fileId}`)
   }
 }
 

@@ -92,7 +92,9 @@ class Sidenav extends Component {
                 deleteFolder: this.props.logicFolder.deleteFolder,
                 logicFile: {
                     newFile: this.props.logicFolder.logicFile.newFile,
-                    deleteFile: this.props.logicFolder.logicFile.deleteFile
+                    deleteFile: this.props.logicFolder.logicFile.deleteFile,
+                    selectOneFile: this.props.logicFolder.logicFile.selectOneFile,
+                    options: this.props.logicFolder.logicFile.options
                 }
             }}
             folder={{

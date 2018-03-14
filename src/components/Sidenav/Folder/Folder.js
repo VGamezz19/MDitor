@@ -66,6 +66,7 @@ class Folder extends Component {
     }
 
     _renderFiles() {
+        
         return (
             <div class="collapsible-body grey lighten-2">
                 <div className="content-files">
@@ -73,8 +74,11 @@ class Folder extends Component {
                         return <File 
                             idFile={file.id} 
                             idFolder={this.props.folder.id}
+                            selected={file.selected}
                             title={file.title}
-                            deleteFile = {this.props.logicFolder.logicFile.deleteFile}  />
+                            deleteFile = {this.props.logicFolder.logicFile.deleteFile}
+                            selectOneFile={this.props.logicFolder.logicFile.selectOneFile}
+                            options= {this.props.logicFolder.logicFile.options}  />
                     })}
                     {this.state.createFile ?
                         <Fade left>
