@@ -5,25 +5,46 @@ import Draft, { Editor, EditorState, ContentState } from 'draft-js';
 class MyEditor extends React.Component {
     constructor(props) {
         super(props);
-        const folderId = this.props.folderId
-        const fileId = this.props.fileId
-    
-        const src = this.props.folders.find( folder => folder.id == folderId).files.find(file => file.id == fileId)
-
-        this.state = { editorState: EditorState.createWithContent(ContentState.createFromText(src.content)) };
+        console.log("constructor",props)
+        this.state = {
+            editorState: EditorState.createEmpty()
+        }
     }
+
+    componentWillMount(){
+        this.setState({
+            editorState: EditorState.createWithContent(ContentState.createFromText(this.props.file.content))
+        })
+    }
+
+    // componentWillReceiveProps(props) {
+    //     const file = props.file
+    //     console.log("ReciveProps",props)
+
+    //     //WARN
+   
+    //     this.setState(prevState =>({
+    //         editorState: EditorState.push(prevState.editorState, ContentState.createFromText(file.content)),
+    //         fileId: file.id
+    //     }))
+    // }
+
+    componentDidMount() {
+        console.log("DidMount",this.props)
+    }
+
+    componentWillUpdate() {
+        console.log("willUpdate",this.props)
+    }
+
     onChange = (editorState) => {
-
         let rawObject = Draft.convertToRaw(editorState.getCurrentContent())
-
+        // WARN!!!!
         let content = rawObject.blocks.map(raw => raw.text ? '\n' + raw.text : '\n\n').join(' ')
 
         this.setState({ editorState })
 
-        const folderId = this.props.folderId
-        const fileId = this.props.fileId
-
-        this.props.handlerMyEditor(folderId, fileId, content)
+        this.props.handlerMyEditor(content)
     };
     render() {
         return (

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './App.scss';
 
-import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Switch, Link } from "react-router-dom";
 
 import CircleButton from './CircleButton'
 import Sidenav from './Sidenav'
 import MyEditor from './MyEditor/'
 import MarkDown from './MarkDown'
+
+import APICLIENT from './APIClient'
 
 let id = 6;
 
@@ -14,11 +16,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      select: {
+      currentSelected: {
         folderId: 0,
-        fileId: 2
+        fileId: 2,
+        currentContent: {content:''}
       },
-      mdSrc: '',
       view: true,
       folders: [{
         id: 0,
@@ -39,16 +41,12 @@ class App extends Component {
     }
   }
 
-  newFolder = (title) => {
-    this.setState(prevState => ({
-      folders: [...prevState.folders, { title, id: id++, files: [] }]
-    }))
-  }
+  createFolder = (title) => this.setState(prevState => ({ folders: [...prevState.folders, { title, id: id++, files: [] }] }))
 
-  updateFolder = (id, newTitle) => {
+  updateFolder = (id, title) => {
     this.setState(prevState => ({
       folders: prevState.folders.map(folder => {
-        if (folder.id === id) folder.title = newTitle
+        if (folder.id === id) folder.title = title
         return folder
       })
     }))
@@ -60,10 +58,10 @@ class App extends Component {
     }))
   }
 
-  newFile = (idFolder, title) => {
+  createFile = (folderId, title) => {
     this.setState(prevState => ({
       folders: prevState.folders.map(folder => {
-        if (folder.id === idFolder) {
+        if (folder.id === folderId) {
           folder.files = [...folder.files, { title, selected: false, content: '', id: id++ }]
         }
         return folder
@@ -71,79 +69,81 @@ class App extends Component {
     }))
   }
 
-  updateFileContent = (idFolder, idFile, content) => {
-    this.setState(prevState => ({
-      folders: prevState.folders.map(folder => {
-        if (folder.id == idFolder) {
-          folder.files = folder.files.map(file => {
-            if (file.id == idFile) {
-
-              file.content = content
-              console.log(file)
-            }
-            return file
-          })
-        }
-        return folder
-      })
-    }))
-  }
-
-  selectFile = (idFolder, idFile) => {
-    this.setState(prevState => ({
-      folders: prevState.folders.map(folder => {
-        if (folder.id == idFolder) {
-          folder.files = folder.files.map(file => {
-            if (file.id == idFile) {
-              file.selected = true
-            }
-            return file
-          })
-        }
-        return folder
-      })
-    }))
-  }
-
-  deleteFile = (idFolder, idFile) => {
+  deleteFile = (folderId, id) => {
     this.setState(prevState => ({
       folders: prevState.folders.filter(folder => {
-        if (folder.id === idFolder) {
-          folder.files = folder.files.filter(file => file.id !== idFile)
+        if (folder.id === folderId) {
+          folder.files = folder.files.filter(file => file.id !== id)
         }
         return folder
       })
     }))
   }
 
-  selectOneFile = (props, folderId, fileId) => {
+  writeFileContent = (folderId, id, content) => {
+    
     this.setState(prevState => ({
-        folders: prevState.folders.map(folder => {
-          if (folder.id == folderId) {
-            folder.files = folder.files.map(file => {
-              if (file.id == fileId) {
-
-                file.selected = true
-              }
-              return file
-            })
-          }
-          return folder
-        }),
-        // select: {
-        //   folderId,
-        //   fileId
-        // }
-      }))
-
-    this.handleRouteToEdit(props, folderId, fileId)
-
+      folders: prevState.folders.map(folder => {
+        if (folder.id === folderId) {
+          folder.files = folder.files.map(file => {
+            if (file.id === id) {
+              
+              file.content = content
+            }
+            return file
+          })
+        }
+        return folder
+      }),
+      currentSelected: { folderId, fileId: id, currentContent: this.findFilterContent(folderId, id, prevState.folders)}
+    }))
   }
 
-  handlerMyEditor = (mdSrc) => this.setState({ mdSrc })
+  findFilterContent = (folderId, fileId, folders) => {
 
-  onChangeEditor = (mdSrc) => {
-    this.setState({ mdSrc })
+    let folder = folders.find(folder => folder.id === folderId)
+    
+
+    let file = folder.files.find(file => file.id === fileId)
+
+    return file
+  }
+
+  //==== Event APP === 
+
+  onSelectFile = (options, folderId, id) => {
+    this.onChangeTargetSelected(folderId, id)
+    this.onHandleRouteToView(options, folderId, id)
+  }
+
+  onHandleRouteToEdit = (props, folderId, fileId) => {
+    props.history.push(`/edit/${folderId}/edit/${fileId}`)
+  }
+
+  onHandleRouteToView = (props, folderId, fileId) => {
+    props.history.push(`/view/${folderId}/view/${fileId}`)
+  }
+
+  onChangeTargetSelected = (folderId, fileId) => {
+    this.setState(prevState => ({
+      folders: prevState.folders.map(folder => {
+        if (folder.id === folderId) {
+          folder.files = folder.files.map(file => {
+            if (file.id === fileId) {
+              file.selected = true
+            }
+            file.selected = false //DesSelect Other Files.  
+            return file
+          })
+        }
+        return folder
+      }),
+      currentSelected: { folderId, fileId, currentContent: this.findFilterContent(folderId, fileId, prevState.folders) }
+    }))
+  }
+
+  onHandlerMyEditor = (content) => {
+    this.writeFileContent(this.state.currentSelected.folderId, this.state.currentSelected.fileId, content)
   }
 
   render() {
@@ -167,6 +167,17 @@ class App extends Component {
 
   _renderApp = (props) => {
     const params = props.match.params
+    const match= props.match
+    //If URL have some ID Folder/File, then change target selected
+    
+    if (match.path !== '/') {
+      const folderId =parseInt(params.folderId)
+      const fileId = parseInt(params.fileId) 
+
+      if ( folderId  !== this.state.currentSelected.folderId || fileId !== this.state.currentSelected.fileId) {
+        this.onChangeTargetSelected(folderId, fileId)
+      }
+    }
 
     return <section className="App">
       <article>
@@ -176,14 +187,14 @@ class App extends Component {
           user={{ name: this.state.user.name, surname: this.state.user.surname }}
           folders={this.state.folders}
           logicFolder={{
-            newFolder: this.newFolder,
+            newFolder: this.createFolder,
             updateFolder: this.updateFolder,
             deleteFolder: this.deleteFolder,
             logicFile: {
-              newFile: this.newFile,
+              newFile: this.createFile,
               updateFile: this.updateFile,
               deleteFile: this.deleteFile,
-              selectOneFile: this.selectOneFile,
+              selectOneFile: this.onSelectFile,
               options: props
             }
           }} />
@@ -194,13 +205,13 @@ class App extends Component {
               ButtonClassName='grey lighten-2'
               IconClassName='black-font'
               icon='edit'
-              onClick={() => this.handleRouteToEdit(props, params.folderId, params.fileId)} />
+              onClick={() => this.onHandleRouteToEdit(props, this.state.currentSelected.folderId, this.state.currentSelected.fileId)} />
             :
             <CircleButton
               ButtonClassName='grey lighten-2'
               IconClassName='black-font'
               icon='remove_red_eye'
-              onClick={() => this.handleRouteToView(props, params.folderId, params.fileId)} />}
+              onClick={() => this.onHandleRouteToView(props, this.state.currentSelected.folderId, this.state.currentSelected.fileId)} />}
 
       </article>
 
@@ -209,25 +220,17 @@ class App extends Component {
           <MarkDown initial={true} />
           :
           params.action === 'view' ?
-            <MarkDown folders={this.state.folders} folderId={params.folderId} fileId={params.fileId} />
+            <MarkDown
+              initial={false}
+              file={this.state.currentSelected.currentContent} />
             :
             <MyEditor
-              folders={this.state.folders}
-              handlerMyEditor={this.updateFileContent} folderId={params.folderId} fileId={params.fileId} />
+              handlerMyEditor={this.onHandlerMyEditor}
+              file={this.state.currentSelected.currentContent} />
         }
       </div>
     </section>
   }
-
-  handleRouteToEdit = (props, folderId, fileId) => {
-    props.history.push(`/edit/${folderId}/edit/${fileId}`)
-  }
-
-  handleRouteToView = (props, folderId, fileId) => {
-    props.history.push(`/view/${folderId}/view/${fileId}`)
-  }
 }
-
-
 
 export default App;
