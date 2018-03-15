@@ -5,14 +5,24 @@
     @extend %rectangle-container;
     flex-direction: row !important;
     justify-content: space-between;
+
+    .inputItem {
+        border-bottom: 1px solid $main-border-color !important;
+    }
+
+    .inputItem:focus {
+        border-bottom: 1px solid $main-border-color !important;
+        box-shadow: 0 1px 0 0 $main-border-color !important;
+    }
 }
 
 .file {
+    background-color: $file-item-color;
     padding: 0 1em 0 2em !important
 }
 
 .folder {
-    background-color: $side-nav-main-color !important;
+    background-color: $folder-item-color!important;
     padding: 0px 1em 0 4.4em;
 }
 
@@ -23,3 +33,6 @@
         }
     }
 }
+
+$folder-item-color: #9e9e9e;
+$file-item-color: #eee;

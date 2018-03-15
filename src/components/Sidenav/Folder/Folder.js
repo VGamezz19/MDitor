@@ -97,7 +97,6 @@ class Folder extends Component {
                     <AddItem
                         itemType='file'
                         inputType='text'
-                        className='grey lighten-3'
                         onSubmit={this.onCreateFile}
                         onCancel={this.handlerCreatingFile} />
                 </Fade>)
