@@ -55,7 +55,7 @@ class Sidenav extends Component {
 
                     {this._renderCreateFolder(creatingFolder)}
 
-                    <CircleButton ButtonClassName='add-folder grey' icon='add' onClick={this.handlerCreatingFolder} />
+                    <CircleButton className='add-folder grey' icon='add' onClick={this.handlerCreatingFolder} />
                 </section>
             </SideNav>
         )

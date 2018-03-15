@@ -23,8 +23,6 @@ class AddItem extends Component {
 
     handlerChangeInput = value => this.setState({ value })
 
-    // handlerSubmit = () => this.props.onSubmit(this.state.value)
-
     handlerCancel = () => this.props.onCancel()
 
     render() {

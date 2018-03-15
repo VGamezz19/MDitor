@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import { Fade } from 'react-reveal'
+
 import MenuOptions from './MenuOptions'
 import File from '../File'
 import CircleButton from '../../CircleButton'
-import { Fade } from 'react-reveal'
 import AddItem from '../AddItem'
 
 
@@ -107,8 +108,8 @@ class Folder extends Component {
     _renderCircleButton() {
         return (
             <CircleButton
-                ButtonClassName='add-files grey lighten-3'
-                IconClassName='black-font' icon='add'
+                className='add-files grey lighten-3'
+                iconClassName='black-font' icon='add'
                 onClick={this.handlerCreatingFile} />)
     }
 }

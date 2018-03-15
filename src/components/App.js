@@ -75,7 +75,7 @@ class App extends Component {
     const retrieve = logicApp.Folder.retrieve(folderId, folders) && logicApp.File.retrieve(folderId, fileId, folders)
 
     if (!retrieve && match.path !== '/') {
-      
+
       return this.onHandlerRouteToRoot(this.props)
     }
 
@@ -124,14 +124,14 @@ class App extends Component {
             false
             : params.action === 'view' ?
               <CircleButton
-                ButtonClassName='grey lighten-2'
-                IconClassName='black-font'
+                className='grey lighten-2'
+                iconClassName='black-font'
                 icon='edit'
                 onClick={() => this.onHandlerRouteToEdit(this.props, folderId, fileId)} />
               :
               <CircleButton
-                ButtonClassName='grey lighten-2'
-                IconClassName='black-font'
+                className='grey lighten-2'
+                iconClassName='black-font'
                 icon='remove_red_eye'
                 onClick={() => this.onHandlerRouteToView(this.props, folderId, fileId)} />}
 

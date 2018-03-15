@@ -1,30 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button, Icon } from 'react-materialize'
 
-class CircleButton extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
+function CircleButton(props) {
 
+    const { className, iconClassName, icon, onClick  } = props
+
+    const handlerOnClick = () => {
+        if (onClick) {
+            return onClick()
         }
     }
+    
+    return (
+        <Button
+            floating large
+            className={className}
+            onClick={handlerOnClick}
+            waves='light'>
+            <Icon className={iconClassName + " main-icon"}> {icon}</Icon>
+        </Button>
+    )
 
-    handlerOnClick = () => {
-        console.log("circle clicked")
-        this.props.onClick()
-    }
-
-    render() {
-        return (
-            <Button 
-                floating large 
-                className={this.props.ButtonClassName} 
-                onClick={this.props.onClick ? this.handlerOnClick : null}
-                waves='light'>
-                <Icon className={this.props.IconClassName + " main-icon"}> {this.props.icon}</Icon>
-            </Button>
-        )
-    }
 }
 
 export default CircleButton
