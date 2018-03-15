@@ -5,10 +5,6 @@ import registerServiceWorker from './registerServiceWorker';
 import {App, RoutingApp} from './components/';
 
 import './index.scss';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-ReactDOM.render(
-    <MuiThemeProvider>
-        <RoutingApp app={App} />
-    </MuiThemeProvider>, document.getElementById('root'));
+ReactDOM.render( <RoutingApp app={App} />, document.getElementById('root'));
 registerServiceWorker();

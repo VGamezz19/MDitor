@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import IconButton from 'material-ui/IconButton'
 import Delete from 'material-ui/svg-icons/content/clear'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class AddItem extends Component {
     constructor(props) {
@@ -23,10 +24,24 @@ class AddItem extends Component {
 
     handlerChangeInput = value => this.setState({ value })
 
-    handlerCancel = () => this.props.onCancel()
+    handlerCancel = () => {
+        const { onCancel } = this.props
+
+        if (onCancel) {
+            onCancel()
+        }
+    }
+
+    handlerSubmit = (value) => {
+        const { onSubmit } = this.props
+
+        if (onSubmit) {
+            onSubmit(value)
+        }
+    }
 
     render() {
-        const { itemType, className, inputType, onSubmit } = this.props
+        const { itemType, className, inputType } = this.props
         const { value } = this.state
 
         return (
@@ -34,7 +49,7 @@ class AddItem extends Component {
                 className={`format ${itemType} ${className}`}
                 onSubmit={(event) => {
                     event.preventDefault()
-                    onSubmit(value)
+                    this.handlerSubmit(value)
                 }}>
                 <input
                     className='inputItem'
@@ -46,9 +61,12 @@ class AddItem extends Component {
                         this.handlerChangeInput(event.target.value)
                     }} />
 
-                <IconButton className='button-delete' onClick={this.handlerCancel}>
-                    <Delete />
-                </IconButton>
+                <MuiThemeProvider>
+                    <IconButton className='button-delete' onClick={this.handlerCancel}>
+                        <Delete />
+                    </IconButton>
+                </MuiThemeProvider>
+
             </form>
         )
     }

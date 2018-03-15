@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const customContentStyle = {
   width: '30%',
@@ -47,23 +48,25 @@ class ModalEdit extends Component {
         onClick={this.actionerModal} />];
 
     return (
-      <Dialog
-        title="Rename Element"
-        actions={actions}
-        modal={false}
-        open={this.state.open}
-        onRequestClose={this.handleClose}
-        contentStyle={customContentStyle}>
+      <MuiThemeProvider>
+        <Dialog
+          title="Rename Element"
+          actions={actions}
+          modal={false}
+          open={this.state.open}
+          onRequestClose={this.handleClose}
+          contentStyle={customContentStyle}>
 
-        Write a new name for this element:
+          Write a new name for this element:
         {this.state.open ?
-          <FormModal
-            inputValue={this.state.inputValue}
-            handlerInput={this.handlerInput}
-            submitModal={this.actionerModal} />
-          : false}
+            <FormModal
+              inputValue={this.state.inputValue}
+              handlerInput={this.handlerInput}
+              submitModal={this.actionerModal} />
+            : false}
 
-      </ Dialog>
+        </ Dialog>
+      </MuiThemeProvider>
     );
   }
 }

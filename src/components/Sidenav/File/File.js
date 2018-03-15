@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import IconButton from 'material-ui/IconButton';
 import Delete from 'material-ui/svg-icons/action/delete';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Link, Route } from "react-router-dom"
 
 class File extends Component {
@@ -17,9 +18,11 @@ class File extends Component {
                                 {file.title}
                             </button>
                         </Link>
-                        <IconButton className='button-delete' onClick={() => logicFile.delete(folderId, file.id)}>
-                            <Delete />
-                        </IconButton>
+                        <MuiThemeProvider>
+                            <IconButton className='button-delete' onClick={() => logicFile.delete(folderId, file.id)}>
+                                <Delete />
+                            </IconButton>
+                        </MuiThemeProvider>
                     </li>
                 )} />
         )
