@@ -8,7 +8,7 @@ import Sidenav from './Sidenav'
 import MyEditor from './MyEditor/'
 import MarkDown from './MarkDown'
 
-import APICLIENT from './APIClient'
+// import APICLIENT from './APIClient'
 
 let id = 6;
 
@@ -26,12 +26,12 @@ class App extends Component {
         id: 0,
         title: 'new Folder1',
         files: [{
-          id: 2, title: 'terst file1', content: '', selected: false
-        }, { id: 3, title: 'terst file2', content: '', selected: false }]
+          id: 2, title: 'terst file1', content: ''
+        }, { id: 3, title: 'terst file2', content: '' }]
       }, {
         id: 1,
         title: 'new Folder2',
-        files: [{ id: 4, title: 'terst file1', content: '', selected: false }, { id: 5, title: 'terst file2', content: '', selected: false }]
+        files: [{ id: 4, title: 'terst file1', content: '' }, { id: 5, title: 'terst file2', content: '' }]
       }],
       user: {
         name: 'Victor',
@@ -62,7 +62,7 @@ class App extends Component {
     this.setState(prevState => ({
       folders: prevState.folders.map(folder => {
         if (folder.id === folderId) {
-          folder.files = [...folder.files, { title, selected: false, content: '', id: id++ }]
+          folder.files = [...folder.files, { title, content: '', id: id++ }]
         }
         return folder
       })
@@ -138,7 +138,6 @@ class App extends Component {
     const params = props.match.params
     const match= props.match
 
-    console.log("Recive this propsAPP",props)
     //If URL have some ID Folder/File, then change target selected
     
     if (match.path !== '/') {
@@ -152,7 +151,7 @@ class App extends Component {
   } 
 
   render() {
-    console.log(this.state)
+
     return (
       this._renderApp(this.props)
     );
@@ -232,8 +231,6 @@ const Routing = ()  =>{
         <div>
           <Switch>
             <Route exact path='/:folderId/:fileId/:action(view|edit)' component={App}/>
-
-            {/* <Route path='/:folderId/:action/:fileId' component={App} /> */}
 
             <Route exact path='/' component={App} />
 

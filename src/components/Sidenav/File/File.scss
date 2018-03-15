@@ -15,6 +15,9 @@
     @extend %flex-in-column;
     position: relative;
     align-items: flex-end;
+    a {
+        padding: 0 !important;
+    }
     .button-delete {
         position: absolute !important;
         top:10px;

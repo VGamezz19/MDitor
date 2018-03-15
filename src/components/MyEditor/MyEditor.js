@@ -5,7 +5,7 @@ import Draft, { Editor, EditorState, ContentState } from 'draft-js';
 class MyEditor extends React.Component {
     constructor(props) {
         super(props);
-        console.log("constructor",props)
+
         this.state = {
             editorState: EditorState.createEmpty(),
             fileId :''
@@ -13,9 +13,11 @@ class MyEditor extends React.Component {
     }
 
     componentWillMount(){
-        this.setState({
-            editorState: EditorState.createWithContent(ContentState.createFromText(this.props.file.content)),
-            fileId :this.props.file.id
+        this.setState(prevState => {
+            return {
+                editorState: EditorState.push(prevState.editorState,ContentState.createFromText(this.props.file.content)),
+                fileId :this.props.file.id 
+            }
         })
     }
 
@@ -23,19 +25,12 @@ class MyEditor extends React.Component {
         this.setState(prevState => {
             if( prevState.fileId !== props.file.id) {
                 return {
-                    editorState: EditorState.createWithContent(ContentState.createFromText(props.file.content)),
+                    editorState: EditorState.push(prevState.editorState,ContentState.createFromText(props.file.content)),
                     fileId :props.file.id 
                 }
             }
         })
     }
-    // componentDidMount() {
-    //     console.log("DidMount",this.props)
-    // }
-
-    // componentWillUpdate() {
-    //     console.log("willUpdate",this.props)
-    // }
 
     onChange = (editorState) => {
         let rawObject = Draft.convertToRaw(editorState.getCurrentContent())
