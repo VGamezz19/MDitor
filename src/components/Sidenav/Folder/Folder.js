@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Fade } from 'react-reveal'
 
 import MenuOptions from './MenuOptions'
-import File from '../File'
+import File from './File'
 import CircleButton from '../../CircleButton'
 import AddItem from '../AddItem'
 

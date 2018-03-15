@@ -14,7 +14,7 @@ class File extends Component {
                 path={`/${folderId}/${file.id}/(view|edit)`}
                 children={({ match }) => (
                     <li className={`li-item-file ${match ? 'focus-file' : false}`}>
-                        <Link className='files grey lighten-3"' to={`/${folderId}/${file.id}/(view|edit)`}>
+                        <Link className='files grey lighten-3"' to={`/${folderId}/${file.id}/edit`}>
                             <button type='submit' className="files grey lighten-3">
                                 {file.title}
                             </button>

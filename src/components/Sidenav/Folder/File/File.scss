@@ -1,5 +1,5 @@
-@import '../../../sass/_variables';
-@import '../../../sass/_extends';
+@import '../../../../sass/_variables';
+@import '../../../../sass/_extends';
 .files {
     @extend %rectangle-container;
     border-bottom: unset;
