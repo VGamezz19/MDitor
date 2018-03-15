@@ -1,26 +1,34 @@
-import AddItem  from './';
-import './AddItem.scss'
-//    handlerCancel = () => this.props.onCancel()
+import File  from './';
+import './File.scss';
+import API from '../../../api/ApiClient'
 
-// render() {
-//   const { itemType, className, inputType, onSubmit } = this.props
+const folder = API.getFolders()
+
+const file = folder[0].files[0]
+const folderId = folder[0].id
+const logicFile = {
+  create : () => console.log("Create file"),
+  delete : () => console.log("Delete file")
+}
 
 export default [{
-  component: AddItem,
-  name: "AddItem Folder",
+  component: File,
+  name: "File",
+  url: '/0/2/view',
   props: {
-    itemType: 'folder',
-    inputType: 'text',
-    onSubmit: value => console.log(`Submit ${value}`),
-    onCancle: () => console.log("cancel")
+    file,
+    folderId,
+    logicFile
   }
-}, {
-  component: AddItem,
-  name: "AddItem File",
-  props: {
-    itemType: 'file',
-    inputType: 'text',
-    onSubmit: value => console.log(`Submit ${value}`),
-    onCancle: () => console.log("cancel")
-  }
-}];
+},
+//  {
+//   component: AddItem,
+//   name: "AddItem File",
+//   props: {
+//     itemType: 'file',
+//     inputType: 'text',
+//     onSubmit: value => console.log(`Submit ${value}`),
+//     onCancle: () => console.log("cancel")
+//   }
+// }
+];

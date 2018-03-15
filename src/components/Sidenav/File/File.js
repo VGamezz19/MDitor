@@ -6,14 +6,15 @@ import { Link, Route } from "react-router-dom"
 
 class File extends Component {
     render() {
+        
         const { file, folderId, logicFile } = this.props
-        console.log(this.props)
+
         return (
             <Route
-                path={`/${folderId}/${file.id}/edit`}
+                path={`/${folderId}/${file.id}/(view|edit)`}
                 children={({ match }) => (
                     <li className={`li-item-file ${match ? 'focus-file' : false}`}>
-                        <Link className='files grey lighten-3"' to={`/${folderId}/${file.id}/edit`}>
+                        <Link className='files grey lighten-3"' to={`/${folderId}/${file.id}/(view|edit)`}>
                             <button type='submit' className="files grey lighten-3">
                                 {file.title}
                             </button>

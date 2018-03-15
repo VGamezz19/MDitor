@@ -1,0 +1,7 @@
+// cosmos.proxies.js
+import createRouterProxy from 'react-cosmos-router-proxy';
+
+export default [
+  createRouterProxy()
+  // ...other proxies
+];
