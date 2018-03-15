@@ -66,7 +66,9 @@ class Sidenav extends Component {
             <SideNavItem className='delete-sidenav'>
                 <Icon className={this.props.buttonDropStyle.iconClassName}>{this.props.buttonDropStyle.icon}</Icon>
             </SideNavItem>
-            <h4>{this.props.user.name[0]}{this.props.user.surname[0]}</h4>
+            {this.props.user.name ? 
+                <h4>{this.props.user.name[0]}{this.props.user.surname[0]}</h4> : false }
+            
             <h5>Welcome</h5>
         </header>
 
