@@ -1,11 +1,22 @@
 export default `
 # Welcome MDitor.
-This is Just a BETA!
 
-# Support 
+> Editro web to create, modify and save your notes with [MarkDown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+>
+> **\`this is just a beta!\`**
+
+# .- Support 
+
+### **Bold**
+
+### *ITALIC*
+
+### \`Block\`
+
+### <HR> Line
 ---
 
-## H1 - H6
+### H1 - H6
 
 # h1
 ## h2
@@ -15,28 +26,19 @@ This is Just a BETA!
 ###### h6
 paragraf
 
-## <HR> Line
----
+### [Ancors](www.google.com)
 
-## **Bold**
-
-## *ITALIC*
-
-## \`Block\`
-
-## [Ancors](www.google.com)
-
-## IMG
+### IMG
 
 ![Imgur](https://i.imgur.com/v0DzY7P.png)
 
-## Table
+### Table
 
 |test table | test table 2|
 |----|----|
 content table| content table 2 |
 
-## No Color Code support...
+### No Color Code support...
 
 \`\`\`javascript
 no code support...

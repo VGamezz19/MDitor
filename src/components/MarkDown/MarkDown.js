@@ -3,30 +3,55 @@ import ReactMarkdown from 'react-markdown'
 import initialText from './initialText'
 
 class MarkDown extends React.Component {
+
   constructor(props) {
     super(props);
+
     this.state = {
       content: initialText,
+      fileId: undefined
+    }
+  }
+  componentWillMount() {
+    
+    const { showInitialMarkDown } = this.props
+
+    if (!showInitialMarkDown) {
+
+      const { file: { content, id: fileId }} = this.props;
+
+      this.setState({ content, fileId })
     }
   }
 
-  componentDidMount() {
-    if (!this.props.initial) {
-      const file= this.props.file
+  componentWillReceiveProps(props) {
 
-      this.setState({ content: file.content })
+    const { showInitialMarkDown } = props
+
+    if (!showInitialMarkDown) {
+
+      const { file: { content, id }} = props;
+
+      this.setState(({ fileId }) => {
+
+        if (fileId !== id) {
+
+          return { content, fileId: id }
+        }
+      })
     }
   }
 
   render() {
-    return this.props.initial ? 
-              <ReactMarkdown 
-                className='mardownViwer' 
-                source={initialText} /> 
-                : 
-              <ReactMarkdown 
-                className='mardownViwer' 
-                source={this.state.content} />
+
+    const { showInitialMarkDown } = this.props
+    const { content } = this.state
+
+    return (
+      <ReactMarkdown
+        className='mardownViwer'
+        source={showInitialMarkDown ? initialText : content} />
+    )
   }
 }
 

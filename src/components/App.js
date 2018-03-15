@@ -9,8 +9,10 @@ import API from '../api/ApiClient'
 import logicApp from './logicApp'
 
 class App extends Component {
+
   constructor() {
     super();
+    
     this.state = {
       currentSelected: {
         folderId: undefined,
@@ -139,7 +141,7 @@ class App extends Component {
         <div className='MarkDownEdited'>
           {folderId !== undefined ?
             match.path === '/' ?
-              <MarkDown initial={true} />
+              <MarkDown showInitialMarkDown={true} />
               :
               this.checkFileExist({ folderId, fileId, match }, folders) ?
                 params.action === 'view' ?
@@ -149,7 +151,7 @@ class App extends Component {
                     file={logicApp.File.retrieve(folderId, fileId, folders)}
                     emitCurrentContent={this.onHandlerMyEditor} />
                 : false
-            : <MarkDown initial={true} />}
+            : <MarkDown showInitialMarkDown={true} />}
         </div>
       </section>
     );
