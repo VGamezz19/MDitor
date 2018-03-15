@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import './App.scss';
-
-import { BrowserRouter as Redirect } from "react-router-dom";
 
 import CircleButton from './CircleButton'
 import Sidenav from './Sidenav'
@@ -15,7 +12,6 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      hasError: false,
       currentSelected: {
         folderId: undefined,
         fileId: undefined,
@@ -38,9 +34,6 @@ class App extends Component {
   writeFile = (folderId, id, content) => this.setState(({ folders }) => ({ folders: logicApp.File.write(folderId, id, content, folders) }))
 
   //===== EVENTS, Handlers and Helpers APP
-
-  componentDidCatch = (err, info) => this.setState({ hasError: true })
-
   componentDidMount = () => {
     const folders = API.getFolders()
     const user = API.getUser()
@@ -88,12 +81,6 @@ class App extends Component {
     return true
   }
 
-  ////// DELETE!
-  onSelectFile = (options, folderId, id) => {
-    //this.onChangeTargetSelected(folderId, id)
-    //this.r(options, folderId, id)
-  }
-
   onHandlerMyEditor = (content) => {
 
     const { currentSelected: { folderId, fileId } } = this.state
@@ -112,16 +99,13 @@ class App extends Component {
     const { match, match: { params } } = this.props
     const { currentSelected: { folderId, fileId }, user: { name, surname }, folders } = this.state
 
-    const logicFoler = {
-      newFolder: this.createFolder,
-      updateFolder: this.updateFolder,
-      deleteFolder: this.deleteFolder,
+    const logicFolder = {
+      create: this.createFolder,
+      update: this.updateFolder,
+      delete: this.deleteFolder,
       logicFile: {
-        newFile: this.createFile,
-        updateFile: this.updateFile,
-        deleteFile: this.deleteFile,
-        selectOneFile: this.onSelectFile, /// DELETE
-        options: this.props /// DELETE
+        create: this.createFile,
+        delete: this.deleteFile,
       }
     }
 
@@ -129,11 +113,11 @@ class App extends Component {
       <section className="App">
         <article>
           <Sidenav
-            buttonTriggerStyle={{ buttonClassName: 'grey lighten-2', iconClassName: null, icon: 'menu' }}
-            buttonDropStyle={{ buttonClassName: null, iconClassName: 'black-font', icon: 'close' }}
+            buttonTriggerStyle={{ className: 'grey lighten-2', iconClassName: null, icon: 'menu' }}
+            buttonDropStyle={{ className: null, iconClassName: 'black-font', icon: 'close' }}
             user={{ name, surname }}
             folders={folders}
-            logicFolder={logicFoler} />
+            logicFolder={logicFolder} />
 
           {match.path === '/' ?
             false

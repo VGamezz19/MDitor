@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { IconMenu } from 'material-ui/';
-import { MenuItem } from 'material-ui/';
-import { IconButton } from 'material-ui/';
+
+import { IconMenu , MenuItem, IconButton, Divider} from 'material-ui/';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import TextFormat from 'material-ui/svg-icons/content/text-format';
 import Delete from 'material-ui/svg-icons/action/delete';
-import { Divider } from 'material-ui/';
+
 import ModalEdit from './ModalEdit'
 
 class MenuOptions extends Component {
@@ -13,18 +12,23 @@ class MenuOptions extends Component {
         super(props)
 
         this.state = {
-            renameFolder: false
+            openModal: false
         }
     }
+    handlerModalEdit = () => {
+        const {openModal} = this.state
+        
+        if(openModal) {
+           return this.setState({ openModal: false })
+        }
 
-    openModalEdit = () => {
-        this.setState({ renameFolder: true })
-    }
-    closeModalEdit = () => {
-        this.setState({ renameFolder: false })
+        return this.setState({ openModal: true })
     }
 
     render() {
+        const {logicOptions, item }= this.props
+        const { openModal } = this.state
+        
         return (
             <div className='icon-menu'>
                 <IconMenu
@@ -35,23 +39,23 @@ class MenuOptions extends Component {
                     <MenuItem
                         leftIcon={<TextFormat />}
                         primaryText="Rename..."
-                        onClick={this.openModalEdit}
+                        onClick={this.handlerModalEdit}
                     />
                     <Divider />
 
                     <MenuItem
                         leftIcon={<Delete />}
                         primaryText="Delete"
-                        onClick={() => this.props.logicOptions.onDelete(this.props.item.id)}
+                        onClick={() => logicOptions.onDelete(item.id)}
 
                     />
                 </IconMenu>
                 <ModalEdit
-                    itemTitle={this.props.item.title}
-                    itemId={this.props.item.id}
-                    open={this.state.renameFolder}
-                    handlerEdit={this.props.logicOptions.onUpdate}
-                    closeModal={this.closeModalEdit} />
+                    itemTitle={item.title}
+                    itemId={item.id}
+                    open={openModal}
+                    handlerEdit={logicOptions.onUpdate}
+                    closeModal={this.handlerModalEdit} />
             </div>
         )
     }

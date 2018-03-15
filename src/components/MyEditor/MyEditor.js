@@ -13,7 +13,6 @@ class MyEditor extends React.Component {
     }
 
     componentWillMount(){
-        console.log(this.props)
         this.setState(prevState => {
             return {
                 editorState: EditorState.push(prevState.editorState,ContentState.createFromText(this.props.file.content)),
@@ -23,7 +22,6 @@ class MyEditor extends React.Component {
     }
 
     componentWillReceiveProps(props){
-        console.log(props)
         this.setState(prevState => {
             if( prevState.fileId !== props.file.id) {
                 return {

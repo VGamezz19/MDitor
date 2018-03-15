@@ -11,93 +11,105 @@ class Folder extends Component {
         super(props)
         this.state = {
             folderIcon: ['chevron_right', 'folder'],
-            createFile: false
+            creatingFile: false
         }
     }
 
     handlerClickFolder = () => {
-        this.setState(prevState => {
-            if (prevState.folderIcon[1] === 'folder') return { folderIcon: ['expand_more', 'folder_open'] }
+        this.setState(({ folderIcon }) => {
+            if (folderIcon[1] === 'folder') return { folderIcon: ['expand_more', 'folder_open'] }
 
             return { folderIcon: ['chevron_right', 'folder'] }
         })
     }
 
-    onClickCreateFile = () => this.state.createFile ? true : this.setState({ createFile: true })
+    handlerCreatingFile = () => {
+        const { creatingFile } = this.state
 
-    onCancelCreateFile = () => this.state.createFile ? this.setState({ createFile: false }) : false
+        if (creatingFile) {
 
-    handlerCreateFile = (title) => {
-        const titleFile = title
-        const idFoler = this.props.folder.id
+            return this.setState({ creatingFile: false })
+        }
 
-        this.setState({ createFile: false })
-        this.props.logicFolder.logicFile.newFile(idFoler, titleFile)
+        return this.setState({ creatingFile: true })
     }
 
+    onCreateFile = (title) => {
+        const folderId = this.props.folder.id
+
+        this.setState({ creatingFile: false })
+
+        this.props.logicFolder.logicFile.create(folderId, title)
+    }
 
     render() {
+        const { folder, logicFolder, logicFolder: { logicFile } } = this.props
+        const { creatingFile, folderIcon } = this.state
+
         return (
             <li>
-                {this._renderBodyFolder()}
+                {this._renderFolderElement(folder, folderIcon)}
 
                 <MenuOptions
-                    item={this.props.folder}
+                    item={folder}
                     logicOptions={{
-                        onDelete: this.props.logicFolder.deleteFolder,
-                        onUpdate: this.props.logicFolder.updateFolder
+                        onDelete: logicFolder.delete,
+                        onUpdate: logicFolder.update
                     }} />
 
-                {this._renderFiles()}
+                {this._renderFiles(folder, logicFile, creatingFile)}
             </li>
         )
     }
 
-    _renderBodyFolder() {
+    _renderFolderElement(folder, folderIcon) {
         return (
-            <div class="collapsible-header" onClick={this.handlerClickFolder}>
-                <i class="material-icons">
-                    {this.state.folderIcon[0]}
-                    {this.state.folderIcon[1]}
+            <div className="collapsible-header" onClick={this.handlerClickFolder}>
+                <i className="material-icons">
+                    {folderIcon[0]}
+                    {folderIcon[1]}
                 </i>
-                {this.props.folder.title}
+                {folder.title}
             </div>
         )
     }
 
-    _renderFiles() {
-        
+    _renderFiles(folder, logicFile, createFile) {
+
         return (
-            <div class="collapsible-body grey lighten-2">
+            <div className="collapsible-body grey lighten-2">
                 <div className="content-files">
-                    {this.props.folder.files.map(file => {
-                        return <File 
-                            idFile={file.id} 
-                            idFolder={this.props.folder.id}
-                            selected={file.selected}
-                            title={file.title}
-                            deleteFile = {this.props.logicFolder.logicFile.deleteFile}
-                            selectOneFile={this.props.logicFolder.logicFile.selectOneFile}
-                            options= {this.props.logicFolder.logicFile.options}  />
-                    })}
-                    {this.state.createFile ?
-                        <Fade left>
-                            {/* <Fade left collapse when={this.state.createFile}> */}
-                            <AddItem
-                                itemType='file'
-                                inputType='text'
-                                className='grey lighten-3'
-                                onSubmit={this.handlerCreateFile}
-                                onCancel={this.onCancelCreateFile} />
-                        </Fade>
-                        : false}
-                    <CircleButton
-                        ButtonClassName='add-files grey lighten-3'
-                        IconClassName='black-font' icon='add'
-                        onClick={this.onClickCreateFile} />
+                    {folder.files.map(file => <File file={file} folderId={folder.id} logicFile={logicFile} />)}
+
+                    {this._renderCreateFile(createFile)}
+
+                    {this._renderCircleButton()}
                 </div>
             </div>
         )
+    }
+
+    _renderCreateFile(createFile) {
+        if (createFile) {
+            return (
+                <Fade left>
+                    <AddItem
+                        itemType='file'
+                        inputType='text'
+                        className='grey lighten-3'
+                        onSubmit={this.onCreateFile}
+                        onCancel={this.handlerCreatingFile} />
+                </Fade>)
+        }
+        return false
+    }
+
+    _renderCircleButton() {
+        return (
+            <CircleButton
+                ButtonClassName='add-files grey lighten-3'
+                IconClassName='black-font' icon='add'
+                onClick={this.handlerCreatingFile} />)
     }
 }
 

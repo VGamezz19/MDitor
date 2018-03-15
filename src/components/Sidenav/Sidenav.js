@@ -1,109 +1,106 @@
 import React, { Component } from 'react';
 import { SideNav, SideNavItem, Button, Icon, Collapsible } from 'react-materialize'
+import { Fade } from 'react-reveal'
+
 import CircleButton from '../CircleButton'
 import Folder from './Folder'
-import { Fade } from 'react-reveal'
 import AddItem from './AddItem'
 
 class Sidenav extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            createFolder: false,
-            canceled: false
+            creatingFolder: false
         }
     }
 
-    onClickCreateFolder = () => this.state.createFolder ? true : this.setState({ createFolder: true })
+    handlerCreatingFolder = () => {
+        const { creatingFolder } = this.state
 
-    onCancelCreateFolder = () => this.state.createFolder ? this.setState({ createFolder: false }) : false
+        if (creatingFolder) {
 
-    handlerCreateFolder = (title) => {
+          return  this.setState({ creatingFolder: false })
+        }
 
-        this.setState({ createFolder: false })
+        return this.setState({ creatingFolder: true })
+    } 
 
-        this.props.logicFolder.newFolder(title)
+    onCreateFolder = (title) => {
+
+        this.setState({ creatingFolder: false })
+
+        this.props.logicFolder.create(title)
     }
 
     render() {
+        const { buttonTriggerStyle, buttonDropStyle, user, folders, logicFolder } = this.props
+        const { creatingFolder } = this.state
+
         return (
             <SideNav
                 className='side-nav grey lighten-2'
                 trigger={
-                    this._renderTriggerButton()
+                    this._renderTriggerButton(buttonTriggerStyle)
                 }
                 options={{
                     closeOnClick: true
                 }}>
 
                 <section className='content-sidenav'>
-                    {this._renderHeader()}
+                    {this._renderHeader(user, buttonDropStyle)}
 
                     <Collapsible>
-                        {this._renderBodySidenav()}
+                        {this._renderBodySidenav(folders, logicFolder)}
                     </ Collapsible>
 
-                    {this._renderCreateFolder()}
+                    {this._renderCreateFolder(creatingFolder)}
 
-                    <CircleButton ButtonClassName='add-folder grey' icon='add' onClick={this.onClickCreateFolder} />
+                    <CircleButton ButtonClassName='add-folder grey' icon='add' onClick={this.handlerCreatingFolder} />
                 </section>
-
             </SideNav>
         )
     }
 
-    _renderTriggerButton() {
+    _renderTriggerButton({className, icon}) {
         return <Button
             floating large
-            className={this.props.buttonTriggerStyle.buttonClassName}
+            className={className}
             waves='light'>
-            <Icon className='triggerIcon'> {this.props.buttonTriggerStyle.icon}</Icon>
+            <Icon className='triggerIcon'> {icon}</Icon>
         </Button>
     }
 
-    _renderHeader() {
-        return <header>
-            <SideNavItem className='delete-sidenav'>
-                <Icon className={this.props.buttonDropStyle.iconClassName}>{this.props.buttonDropStyle.icon}</Icon>
-            </SideNavItem>
-            {this.props.user.name ? 
-                <h4>{this.props.user.name[0]}{this.props.user.surname[0]}</h4> : false }
-            
-            <h5>Welcome</h5>
-        </header>
-
+    _renderHeader({ name, surname }, { iconClassName, icon}) {
+        if (name || surname) {
+            return (
+                <header>
+                    <SideNavItem className='delete-sidenav'>
+                        <Icon className={iconClassName}>{icon}</Icon>
+                    </SideNavItem>
+                    <h4 id={'user-header'}>{name[0]}{surname[0]}</h4>
+                    <h5>Welcome</h5>
+                </header>)
+        }
+        return false
     }
 
-    _renderCreateFolder() {
-        return this.state.createFolder ?
+    _renderBodySidenav(folders, logicFolder) {
+        return folders.map(folder => <Folder logicFolder={logicFolder} folder={folder} />)
+    }
+
+    _renderCreateFolder(creatingFolder) {
+        if (creatingFolder) {
+           return (
             <Fade left>
                 <AddItem
                     itemType='folder'
                     inputType='text'
-                    onSubmit={this.handlerCreateFolder}
-                    onCancel={this.onCancelCreateFolder} />
+                    onSubmit={this.onCreateFolder}
+                    onCancel={this.handlerCreatingFolder} />
             </Fade>
-            : false
-
-    }
-
-    _renderBodySidenav() {
-        return this.props.folders.map(folder => <Folder
-            logicFolder={{
-                updateFolder: this.props.logicFolder.updateFolder,
-                deleteFolder: this.props.logicFolder.deleteFolder,
-                logicFile: {
-                    newFile: this.props.logicFolder.logicFile.newFile,
-                    deleteFile: this.props.logicFolder.logicFile.deleteFile,
-                    selectOneFile: this.props.logicFolder.logicFile.selectOneFile,
-                    options: this.props.logicFolder.logicFile.options
-                }
-            }}
-            folder={{
-                id: folder.id,
-                title: folder.title,
-                files: folder.files
-            }} />)
+           ) 
+        }       
+        return false
     }
 }
 

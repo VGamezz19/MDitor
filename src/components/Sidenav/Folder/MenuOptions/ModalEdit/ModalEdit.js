@@ -17,7 +17,7 @@ class ModalEdit extends Component {
     this.setState({
       open: props.open,
       inputValue: props.itemTitle,
-      itemId : props.itemId
+      itemId: props.itemId
     })
   }
 
@@ -27,9 +27,9 @@ class ModalEdit extends Component {
 
   handlerInput = (inputValue) => this.setState({ inputValue })
 
-  setNewRename = () => {
+  actionerModal = () => {
     this.handleClose()
-    
+
     if (this.state.inputValue) {
       return this.props.handlerEdit(this.state.itemId, this.state.inputValue)
     }
@@ -44,13 +44,11 @@ class ModalEdit extends Component {
       <FlatButton label="Submit"
         primary={true}
         disabled={false}
-        onClick={this.setNewRename} />];
+        onClick={this.actionerModal} />];
 
     return (
-
       <Dialog
-        className='testClass'
-        title="Rename Folder"
+        title="Rename Element"
         actions={actions}
         modal={false}
         open={this.state.open}
@@ -62,7 +60,7 @@ class ModalEdit extends Component {
           <FormModal
             inputValue={this.state.inputValue}
             handlerInput={this.handlerInput}
-            setNewRename={this.setNewRename} />
+            submitModal={this.actionerModal} />
           : false}
 
       </ Dialog>
@@ -72,16 +70,17 @@ class ModalEdit extends Component {
 
 class FormModal extends Component {
 
-  componentDidMount() {
-    console.log("ModalEditrModal")
-    this.nameInput.focus();
-  }
+  //WARNIN BUG FOCUSE
+  // componentDidMount() {
+  //   console.log("ModalEditrModal")
+  //   this.nameInput.focus();
+  // }
 
   render() {
     return (
       <form onSubmit={event => {
         event.preventDefault()
-        this.props.setNewRename()
+        this.props.submitModal()
       }}>
         <input
           ref={input => { this.nameInput = input; }}
