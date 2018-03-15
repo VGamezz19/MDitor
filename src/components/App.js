@@ -75,6 +75,7 @@ class App extends Component {
     const retrieve = logicApp.Folder.retrieve(folderId, folders) && logicApp.File.retrieve(folderId, fileId, folders)
 
     if (!retrieve && match.path !== '/') {
+      
       return this.onHandlerRouteToRoot(this.props)
     }
 
