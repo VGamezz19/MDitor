@@ -1,5 +1,9 @@
 import AddItem  from './';
 import './AddItem.scss'
+//    handlerCancel = () => this.props.onCancel()
+
+// render() {
+//   const { itemType, className, inputType, onSubmit } = this.props
 
 export default [{
   component: AddItem,
