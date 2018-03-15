@@ -24,8 +24,8 @@ const logicApp = {
         }),
 
         retrieve: (folderId, id, folders) => {
-            //Warn! BUG!
-            const folder = this.a.Folder.retrieve(folderId, folders)
+            
+            const folder = logicApp.Folder.retrieve(folderId, folders)
 
             if (!folder) return false
 
