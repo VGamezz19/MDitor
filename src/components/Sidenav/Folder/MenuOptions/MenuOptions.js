@@ -29,6 +29,7 @@ class MenuOptions extends Component {
     render() {
         const { logicOptions, item } = this.props
         const { openModal } = this.state
+        const modalStyleSize = {width: '30%', maxWidth: 'none'};
 
         return (
             <div className='icon-menu'>
@@ -57,6 +58,7 @@ class MenuOptions extends Component {
                     itemTitle={item.title}
                     itemId={item.id}
                     open={openModal}
+                    modalSize={modalStyleSize}
                     handlerEdit={logicOptions.onUpdate}
                     closeModal={this.handlerModalEdit} />
             </div>

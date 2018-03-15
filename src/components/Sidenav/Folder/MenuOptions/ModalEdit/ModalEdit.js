@@ -3,11 +3,6 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-const customContentStyle = {
-  width: '30%',
-  maxWidth: 'none',
-};
-
 class ModalEdit extends Component {
   state = {
     open: false,
@@ -15,29 +10,41 @@ class ModalEdit extends Component {
   };
 
   componentWillReceiveProps(props) {
-    this.setState({
-      open: props.open,
-      inputValue: props.itemTitle,
-      itemId: props.itemId
-    })
+    const { open, itemTitle: inputValue, itemId } = props
+
+    this.setState({ open, inputValue, itemId })
+  }
+
+  componentDidMount() {
+    const { open, itemTitle: inputValue, itemId } = this.props
+
+    this.setState({ open, inputValue, itemId })
   }
 
   handleClose = () => {
-    this.props.closeModal();
-  };
+    this.setState({ open: false })
+    this.props.closeModal()
+  }
 
   handlerInput = (inputValue) => this.setState({ inputValue })
 
   actionerModal = () => {
-    this.handleClose()
 
-    if (this.state.inputValue) {
-      return this.props.handlerEdit(this.state.itemId, this.state.inputValue)
+    const { handlerEdit } = this.props
+    const { itemId, inputValue } = this.state
+
+    if (inputValue) {
+
+      this.handleClose();
+      return handlerEdit(itemId, inputValue)
     }
+
     return false
   }
 
   render() {
+    const { open, inputValue } = this.state
+
     const actions = [
       <FlatButton label="Cancel"
         primary={true}
@@ -53,14 +60,14 @@ class ModalEdit extends Component {
           title="Rename Element"
           actions={actions}
           modal={false}
-          open={this.state.open}
+          open={open}
           onRequestClose={this.handleClose}
-          contentStyle={customContentStyle}>
+          contentStyle={this.props.modalSize}>
 
           Write a new name for this element:
-        {this.state.open ?
+        {open ?
             <FormModal
-              inputValue={this.state.inputValue}
+              inputValue={inputValue}
               handlerInput={this.handlerInput}
               submitModal={this.actionerModal} />
             : false}
@@ -71,29 +78,18 @@ class ModalEdit extends Component {
   }
 }
 
-class FormModal extends Component {
-
-  //WARNIN BUG FOCUSE
-  // componentDidMount() {
-  //   console.log("ModalEditrModal")
-  //   this.nameInput.focus();
-  // }
-
-  render() {
-    return (
-      <form onSubmit={event => {
-        event.preventDefault()
-        this.props.submitModal()
-      }}>
-        <input
-          ref={input => { this.nameInput = input; }}
-          autoFocus
-          type='text'
-          value={this.props.inputValue}
-          onChange={(event) => this.props.handlerInput(event.target.value)} />
-      </form>
-    )
-  }
+function FormModal(props) {
+  //WARNING BUG FOCUSE
+  const { submitModal, handlerInput, inputValue } = props
+  return (
+    <form onSubmit={event => { event.preventDefault(); submitModal() }}>
+      <input
+        autoFocus
+        type='text'
+        value={inputValue}
+        onChange={(event) => handlerInput(event.target.value)} />
+    </form>
+  )
 }
 
 export default ModalEdit
