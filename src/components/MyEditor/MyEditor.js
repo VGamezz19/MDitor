@@ -1,46 +1,54 @@
 import React from 'react';
-import Draft, { Editor, EditorState, ContentState } from 'draft-js';
-
+import Draft, { Editor } from 'draft-js';
 
 class MyEditor extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            editorState: EditorState.createEmpty(),
-            fileId :''
+            editorState: Draft.EditorState.createEmpty(),
+            fileId: undefined
         }
     }
 
-    componentWillMount(){
-        this.setState(prevState => {
-            return {
-                editorState: EditorState.push(prevState.editorState,ContentState.createFromText(this.props.file.content)),
-                fileId :this.props.file.id 
-            }
-        })
+    componentWillMount() {
+
+        const { file: { content, id: fileId } } = this.props;
+        const draftContentState = Draft.ContentState.createFromText(content)
+
+        this.setState(({ editorState }) => ({
+            editorState: Draft.EditorState.push(editorState, draftContentState),
+            fileId
+        }))
     }
 
-    componentWillReceiveProps(props){
+    componentWillReceiveProps(props) {
+
+        const { file: { content, id: fileId } } = props;
+
         this.setState(prevState => {
-            if( prevState.fileId !== props.file.id) {
+
+            if (prevState.fileId !== fileId) {
+
+                const draftContentState = Draft.ContentState.createFromText(content)
+
                 return {
-                    editorState: EditorState.push(prevState.editorState,ContentState.createFromText(props.file.content)),
-                    fileId :props.file.id 
+                    editorState: Draft.EditorState.push(prevState.editorState, draftContentState),
+                    fileId
                 }
             }
         })
     }
 
     onChange = (editorState) => {
-        let rawObject = Draft.convertToRaw(editorState.getCurrentContent())
-        // WARN!!!!
-        let content = rawObject.blocks.map(raw => raw.text ? '\n' + raw.text : '\n\n').join(' ')
+
+        const content = editorState.getCurrentContent().getPlainText()
 
         this.setState({ editorState })
 
-        this.props.handlerMyEditor(content)
-    };
+        this.props.emitCurrentContent(content)
+    }
+
     render() {
         return (
             <Editor editorState={this.state.editorState} onChange={this.onChange} />

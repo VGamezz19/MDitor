@@ -136,23 +136,21 @@ class App extends Component {
                 onClick={() => this.onHandlerRouteToView(this.props, folderId, fileId)} />}
 
         </article>
-        {folderId !== undefined ?
-          <div className='MarkDownEdited'>
-            {match.path === '/' ?
+        <div className='MarkDownEdited'>
+          {folderId !== undefined ?
+            match.path === '/' ?
               <MarkDown initial={true} />
               :
               this.checkFileExist({ folderId, fileId, match }, folders) ?
-              params.action === 'view' ?
-                <MarkDown file={logicApp.File.retrieve(folderId, fileId, folders)} />
-                :
-                <MyEditor
-                  file={logicApp.File.retrieve(folderId, fileId, folders)}
-                  handlerMyEditor={this.onHandlerMyEditor} />
-                  : false
-            }
-          </div>
-          : <div className='MarkDownEdited'><MarkDown initial={true} /></div>}
-
+                params.action === 'view' ?
+                  <MarkDown file={logicApp.File.retrieve(folderId, fileId, folders)} />
+                  :
+                  <MyEditor
+                    file={logicApp.File.retrieve(folderId, fileId, folders)}
+                    emitCurrentContent={this.onHandlerMyEditor} />
+                : false
+            : <MarkDown initial={true} />}
+        </div>
       </section>
     );
   }
