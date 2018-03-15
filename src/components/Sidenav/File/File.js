@@ -25,10 +25,10 @@ class File extends Component {
     render() {
         return (
             <Route
-                path={`/edit/${this.props.idFolder}/edit/${this.props.idFile}`}
+                path={`/${this.props.idFolder}/${this.props.idFile}/edit`}
                 children={({ match }) => (
                     <li className={`li-item-file  gey lighten-3 ${match ? 'focus-file' : false}`}>
-                        <Link className='files grey lighten-3"' to={`/edit/${this.props.idFolder}/edit/${this.props.idFile}`}>
+                        <Link className='files grey lighten-3"' to={`/${this.props.idFolder}/${this.props.idFile}/edit`}>
                             <button type='submit' className="files grey lighten-3" onClick={this.handlerSelectOneFile}>
 
                                 {this.props.title}

@@ -95,7 +95,7 @@ class App extends Component {
         }
         return folder
       }),
-      currentSelected: { folderId, fileId: id, currentContent: this.findFilterContent(folderId, id, prevState.folders)}
+      currentSelected: { folderId, fileId: id, currentContent: this.findFilterContent(folderId, id, this.state.folders)}
     }))
   }
 
@@ -113,70 +113,64 @@ class App extends Component {
 
   onSelectFile = (options, folderId, id) => {
     this.onChangeTargetSelected(folderId, id)
-    this.onHandleRouteToView(options, folderId, id)
+    //this.onHandleRouteToView(options, folderId, id)
   }
 
   onHandleRouteToEdit = (props, folderId, fileId) => {
-    props.history.push(`/edit/${folderId}/edit/${fileId}`)
+    props.history.push(`/${folderId}/${fileId}/edit`)
   }
 
   onHandleRouteToView = (props, folderId, fileId) => {
-    props.history.push(`/view/${folderId}/view/${fileId}`)
+    props.history.push(`/${folderId}/${fileId}/view`)
   }
 
   onChangeTargetSelected = (folderId, fileId) => {
-    this.setState(prevState => ({
-      folders: prevState.folders.map(folder => {
-        if (folder.id === folderId) {
-          folder.files = folder.files.map(file => {
-            if (file.id === fileId) {
-              file.selected = true
-            }
-            file.selected = false //DesSelect Other Files.  
-            return file
-          })
-        }
-        return folder
-      }),
-      currentSelected: { folderId, fileId, currentContent: this.findFilterContent(folderId, fileId, prevState.folders) }
-    }))
+    this.setState({
+      currentSelected: { folderId, fileId, currentContent: this.findFilterContent(folderId, fileId, this.state.folders) }
+    })
   }
 
   onHandlerMyEditor = (content) => {
     this.writeFileContent(this.state.currentSelected.folderId, this.state.currentSelected.fileId, content)
   }
 
+  componentWillReceiveProps = (props) => {
+    const params = props.match.params
+    const match= props.match
+
+    console.log("Recive this propsAPP",props)
+    //If URL have some ID Folder/File, then change target selected
+    
+    if (match.path !== '/') {
+      const folderId = parseInt(params.folderId)
+      const fileId = parseInt(params.fileId) 
+      
+      //this.setState({currentSelected: { folderId, fileId, currentContent: {content:''}}})
+      this.onChangeTargetSelected(folderId, fileId)
+
+    }
+  } 
+
   render() {
+    console.log(this.state)
     return (
-      <Router>
-        <div>
-          <Switch>
-            <Route path='/view/:folderId/:action/:fileId' render={this._renderApp} />
-
-            <Route path='/edit/:folderId/:action/:fileId' render={this._renderApp} />
-
-            <Route exact path='/' render={this._renderApp} />
-
-            <Redirect to="/" />
-          </Switch>
-
-        </div>
-      </Router>
+      this._renderApp(this.props)
     );
   }
 
   _renderApp = (props) => {
     const params = props.match.params
     const match= props.match
+
+    //console.log(props)
     //If URL have some ID Folder/File, then change target selected
     
     if (match.path !== '/') {
       const folderId =parseInt(params.folderId)
       const fileId = parseInt(params.fileId) 
 
-      if ( folderId  !== this.state.currentSelected.folderId || fileId !== this.state.currentSelected.fileId) {
-        this.onChangeTargetSelected(folderId, fileId)
-      }
+      //this.onChangeTargetSelected(folderId, fileId)
+    
     }
 
     return <section className="App">
@@ -233,4 +227,21 @@ class App extends Component {
   }
 }
 
-export default App;
+const Routing = ()  =>{
+  return <Router>
+        <div>
+          <Switch>
+            <Route exact path='/:folderId/:fileId/:action(view|edit)' component={App}/>
+
+            {/* <Route path='/:folderId/:action/:fileId' component={App} /> */}
+
+            <Route exact path='/' component={App} />
+
+            <Redirect to="/" />
+          </Switch>
+
+        </div>
+      </Router>
+}
+ 
+export default Routing;

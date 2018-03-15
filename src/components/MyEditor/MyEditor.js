@@ -7,35 +7,35 @@ class MyEditor extends React.Component {
         super(props);
         console.log("constructor",props)
         this.state = {
-            editorState: EditorState.createEmpty()
+            editorState: EditorState.createEmpty(),
+            fileId :''
         }
     }
 
     componentWillMount(){
         this.setState({
-            editorState: EditorState.createWithContent(ContentState.createFromText(this.props.file.content))
+            editorState: EditorState.createWithContent(ContentState.createFromText(this.props.file.content)),
+            fileId :this.props.file.id
         })
     }
 
-    // componentWillReceiveProps(props) {
-    //     const file = props.file
-    //     console.log("ReciveProps",props)
-
-    //     //WARN
-   
-    //     this.setState(prevState =>({
-    //         editorState: EditorState.push(prevState.editorState, ContentState.createFromText(file.content)),
-    //         fileId: file.id
-    //     }))
+    componentWillReceiveProps(props){
+        this.setState(prevState => {
+            if( prevState.fileId !== props.file.id) {
+                return {
+                    editorState: EditorState.createWithContent(ContentState.createFromText(props.file.content)),
+                    fileId :props.file.id 
+                }
+            }
+        })
+    }
+    // componentDidMount() {
+    //     console.log("DidMount",this.props)
     // }
 
-    componentDidMount() {
-        console.log("DidMount",this.props)
-    }
-
-    componentWillUpdate() {
-        console.log("willUpdate",this.props)
-    }
+    // componentWillUpdate() {
+    //     console.log("willUpdate",this.props)
+    // }
 
     onChange = (editorState) => {
         let rawObject = Draft.convertToRaw(editorState.getCurrentContent())
