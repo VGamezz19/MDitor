@@ -29,7 +29,7 @@ class ModalEdit extends Component {
 
   setNewRename = () => {
     this.handleClose()
-
+    
     if (this.state.inputValue) {
       return this.props.handlerEdit(this.state.itemId, this.state.inputValue)
     }
@@ -44,7 +44,7 @@ class ModalEdit extends Component {
       <FlatButton label="Submit"
         primary={true}
         disabled={false}
-        onClick={this.handleClose} />];
+        onClick={this.setNewRename} />];
 
     return (
 

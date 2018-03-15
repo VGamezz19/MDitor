@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 
-import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+import { BrowserRouter as Redirect } from "react-router-dom";
 
 import CircleButton from './CircleButton'
 import Sidenav from './Sidenav'
@@ -9,8 +9,7 @@ import MyEditor from './MyEditor/'
 import MarkDown from './MarkDown'
 
 import API from '../api/ApiClient'
-
-let id = 6;
+import logicApp from './logicApp'
 
 class App extends Component {
   constructor() {
@@ -26,79 +25,19 @@ class App extends Component {
     }
   }
 
-  createFolder = (title) => this.setState(prevState => ({ folders: [...prevState.folders, { title, id: id++, files: [] }] }))
+  createFolder = (title) => this.setState(({ folders }) => ({ folders: logicApp.Folder.create(title, folders) }))
 
-  updateFolder = (id, title) => {
-    this.setState(prevState => ({
-      folders: prevState.folders.map(folder => {
-        if (folder.id === id) folder.title = title
-        return folder
-      })
-    }))
-  }
+  updateFolder = (id, title) => this.setState(({ folders }) => ({ folders: logicApp.Folder.update(id, title, folders) }))
 
-  deleteFolder = (id) => {
-    this.setState(prevState => ({
-      folders: prevState.folders.filter(folder => folder.id !== id)
-    }))
-  }
+  deleteFolder = (id) => this.setState(({ folders }) => ({ folders: logicApp.Folder.remove(id, folders) }))
 
-  createFile = (folderId, title) => {
-    this.setState(prevState => ({
-      folders: prevState.folders.map(folder => {
-        if (folder.id === folderId) {
-          folder.files = [...folder.files, { title, content: '', id: id++ }]
-        }
-        return folder
-      })
-    }))
-  }
+  createFile = (folderId, title) => this.setState(({ folders }) => ({ folders: logicApp.File.create(folderId, title, folders) }))
 
-  deleteFile = (folderId, id) => {
-    this.setState(prevState => ({
-      folders: prevState.folders.filter(folder => {
-        if (folder.id === folderId) {
-          folder.files = folder.files.filter(file => file.id !== id)
-        }
-        return folder
-      })
-    }))
-  }
+  deleteFile = (folderId, id) => this.setState(({ folders }) => ({ folders: logicApp.File.remove(folderId, id, folders) }))
 
-  writeFile = (folderId, id, content) => {
+  writeFile = (folderId, id, content) => this.setState(({ folders }) => ({ folders: logicApp.File.write(folderId, id, content, folders) }))
 
-    this.setState(prevState => ({
-      folders: prevState.folders.map(folder => {
-        if (folder.id === folderId) {
-          folder.files = folder.files.map(file => {
-            if (file.id === id) {
-
-              file.content = content
-            }
-            return file
-          })
-        }
-        return folder
-      })
-    }))
-  }
-
-  retrieveFolder = (id, folders) => {
-    const folder = folders.find(folder => folder.id === id)
-    return folder
-  }
-
-  retrieveFile = (folderId, id, folders) => {
-    const folder = this.retrieveFolder(folderId, folders)
-
-    if (!folder) return false
-
-    const file = folder.files.find(file => file.id === id)
-
-    return file
-  }
-
-  //===== EVENTS and Handlers APP
+  //===== EVENTS, Handlers and Helpers APP
 
   componentDidCatch = (err, info) => this.setState({ hasError: true })
 
@@ -133,16 +72,23 @@ class App extends Component {
 
   onChangeTargetSelected = ({ folderId, fileId, match }, folders) => {
 
-    const retrieve = this.retrieveFolder(folderId, folders) && this.retrieveFile(folderId, fileId, folders)
+    const fileExist = this.checkFileExist({ folderId, fileId, match }, folders)
 
-    if (retrieve) return this.setState({ currentSelected: { folderId, fileId } })
-
-    else if (match.path !== '/') {
-      return this.onHandlerRouteToRoot(this.props)
-    }
+    if (fileExist) return this.setState({ currentSelected: { folderId, fileId } })
   }
 
+  checkFileExist = ({ folderId, fileId, match }, folders) => {
 
+    const retrieve = logicApp.Folder.retrieve(folderId, folders) && logicApp.File.retrieve(folderId, fileId, folders)
+
+    if (!retrieve && match.path !== '/') {
+      return this.onHandlerRouteToRoot(this.props)
+    }
+
+    return true
+  }
+
+  ////// DELETE!
   onSelectFile = (options, folderId, id) => {
     //this.onChangeTargetSelected(folderId, id)
     //this.r(options, folderId, id)
@@ -162,13 +108,9 @@ class App extends Component {
   onHandlerRouteToRoot = (props) => props.history.push('/')
 
   render() {
-    if (this.state.hasError) {
-      return <Redirect to='/' />
-    }
 
     const { match, match: { params } } = this.props
     const { currentSelected: { folderId, fileId }, user: { name, surname }, folders } = this.state
-    const matchFolderFile = this.retrieveFile(folderId, fileId, folders) && this.retrieveFolder(folderId, folders)
 
     const logicFoler = {
       newFolder: this.createFolder,
@@ -178,8 +120,8 @@ class App extends Component {
         newFile: this.createFile,
         updateFile: this.updateFile,
         deleteFile: this.deleteFile,
-        selectOneFile: this.onSelectFile,
-        options: this.props
+        selectOneFile: this.onSelectFile, /// DELETE
+        options: this.props /// DELETE
       }
     }
 
@@ -214,14 +156,14 @@ class App extends Component {
             {match.path === '/' ?
               <MarkDown initial={true} />
               :
-              matchFolderFile ?
-                params.action === 'view' ?
-                  <MarkDown file={this.retrieveFile(folderId, fileId, folders)} />
-                  :
-                  <MyEditor
-                    file={this.retrieveFile(folderId, fileId, folders)}
-                    handlerMyEditor={this.onHandlerMyEditor} />
-                : <Redirect to='/' />
+              this.checkFileExist({ folderId, fileId, match }, folders) ?
+              params.action === 'view' ?
+                <MarkDown file={logicApp.File.retrieve(folderId, fileId, folders)} />
+                :
+                <MyEditor
+                  file={logicApp.File.retrieve(folderId, fileId, folders)}
+                  handlerMyEditor={this.onHandlerMyEditor} />
+                  : false
             }
           </div>
           : <div className='MarkDownEdited'><MarkDown initial={true} /></div>}
@@ -231,20 +173,4 @@ class App extends Component {
   }
 }
 
-const Routing = (props) => {
-  return <Router>
-    <div>
-      <Switch>
-        <Route exact path='/:folderId/:fileId/:action(view|edit)' component={App} />
-
-        <Route exact path='/' component={App} />
-
-        <Redirect to="/" />
-      </Switch>
-
-    </div>
-  </Router>
-}
-
-
-export default Routing;
+export default App;
