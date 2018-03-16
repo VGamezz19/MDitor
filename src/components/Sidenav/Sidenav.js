@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SideNav, SideNavItem, Button, Icon, Collapsible } from 'react-materialize'
+import { SideNav, SideNavItem, Button, Icon } from 'react-materialize'
 import { Fade } from 'react-reveal'
 
 import CircleButton from '../CircleButton'

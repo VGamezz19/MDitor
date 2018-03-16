@@ -38,16 +38,4 @@ export default [
       logicFolder: logicFolder
     }
   }
-  // {
-  //   component: Sidenav,
-  //   name: "Sidenav Empty Content",
-  //   url: '/0/2/edit',
-  //   props: {
-  //     buttonTriggerStyle: { className: 'grey lighten-2', iconClassName: null, icon: 'menu' },
-  //     buttonDropStyle: { className: null, iconClassName: 'black-font', icon: 'close' },
-  //     user: { name: user.name, surname: user.surname },
-  //     folders: [],
-  //     logicFolder: logicFolder
-  //   }
-  // }
 ];
