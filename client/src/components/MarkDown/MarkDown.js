@@ -2,6 +2,8 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown'
 import initialText from './initialText'
 
+import PropTypes from 'prop-types';
+
 class MarkDown extends React.Component {
 
   constructor(props) {
@@ -43,10 +45,9 @@ class MarkDown extends React.Component {
   }
 
   render() {
-    var Prism = require('prismjs');
     const { showInitialMarkDown } = this.props
     const { content } = this.state
-    
+
     return (
       <ReactMarkdown
         className='mardownViwer'
@@ -54,5 +55,10 @@ class MarkDown extends React.Component {
     )
   }
 }
+
+MarkDown.propTypes = { 
+  file: PropTypes.object,
+  showInitialMarkDown: PropTypes.bool,
+ }
 
 export default MarkDown

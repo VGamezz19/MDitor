@@ -9,6 +9,7 @@ import AddItem from './AddItem'
 class Sidenav extends Component {
     constructor(props) {
         super(props)
+        
         this.state = {
             creatingFolder: false
         }
@@ -47,11 +48,10 @@ class Sidenav extends Component {
                 }}>
 
                 <section className='content-sidenav'>
-                    {this._renderHeader(user, buttonDropStyle)}
 
-                    
-                        {this._renderBodySidenav(folders, logicFolder)}
-                  
+                    {this._renderHeader(user, buttonDropStyle)}  
+
+                    {this._renderBodySidenav(folders, logicFolder)}
 
                     {this._renderCreateFolder(creatingFolder)}
 
