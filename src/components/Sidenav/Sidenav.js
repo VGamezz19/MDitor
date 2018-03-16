@@ -49,9 +49,9 @@ class Sidenav extends Component {
                 <section className='content-sidenav'>
                     {this._renderHeader(user, buttonDropStyle)}
 
-                    <Collapsible>
+                    
                         {this._renderBodySidenav(folders, logicFolder)}
-                    </ Collapsible>
+                  
 
                     {this._renderCreateFolder(creatingFolder)}
 

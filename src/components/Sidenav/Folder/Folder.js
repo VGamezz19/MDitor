@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Fade } from 'react-reveal'
+import {Collapsible } from 'react-materialize'
 
 import MenuOptions from './MenuOptions'
 import File from './File'
@@ -48,6 +49,7 @@ class Folder extends Component {
         const { creatingFile, folderIcon } = this.state
 
         return (
+            <Collapsible>
             <li>
                 {this._renderFolderElement(folder, folderIcon)}
 
@@ -60,6 +62,7 @@ class Folder extends Component {
 
                 {this._renderFiles(folder, logicFile, creatingFile)}
             </li>
+            </Collapsible>
         )
     }
 
