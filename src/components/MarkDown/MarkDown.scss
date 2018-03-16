@@ -1,23 +1,36 @@
-.MarkDownEdited {
-    .mardownViwer {
-        padding: 0px 7em;
-        hr {
-            border: 1px solid grey !important;
+.mardownViwer {
+    padding: 0px 7em;
+    hr {
+        border: 1px solid grey !important;
+    }
+    ul {
+        padding-left: 40px;
+        list-style-position: inside !important;
+        li {
+            list-style-type: disc !important;
         }
-        strong {
-            font-weight: bold !important;
-        }
-        pre {
-            padding: 1.5em;
-            background: #e0dbdb !important;
-        }
+    }
+    strong {
+        font-weight: bold !important;
+    }
+    pre {
+        padding: 1.5em;
+        background: #e0dbdb !important;
         code {
-            background: #e0dbdb !important;
+            margin: 0;
+            padding: 0 !important;
+            border-radius: 0 !important;
         }
-        p {
-            img {
-                max-width: 100%;
-            }
+    }
+    code {
+        margin: 0 3px;
+        padding: 0 4px;
+        border-radius: 3px;
+        background: #e0dbdb !important;
+    }
+    p {
+        img {
+            max-width: 100%;
         }
     }
 }

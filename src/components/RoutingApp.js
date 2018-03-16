@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-d
 
 const Routing = (props) => {
     return <Router>
-      <div>
+      
         <Switch>
           <Route exact path='/:folderId/:fileId/:action(view|edit)' component={props.app} />
   
@@ -12,7 +12,7 @@ const Routing = (props) => {
           <Redirect to="/" />
         </Switch>
   
-      </div>
+     
     </Router>
 }
 
