@@ -56,4 +56,10 @@ Hey! if you doesn't know how to write in MarkDown, **be calm**! we provide you s
 * \`inlineCode\` - Inline code (\`<code>\`)
 * \`code\` - Block of code (\`<pre><code>\`)
 * \`html\` - HTML node (Best-effort rendering)
+
+
+\`\`\`javascript
+console.log("Test Color")
+\`\`\`
 `
+

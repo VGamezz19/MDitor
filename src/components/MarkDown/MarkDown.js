@@ -43,10 +43,10 @@ class MarkDown extends React.Component {
   }
 
   render() {
-
+    var Prism = require('prismjs');
     const { showInitialMarkDown } = this.props
     const { content } = this.state
-
+    
     return (
       <ReactMarkdown
         className='mardownViwer'
