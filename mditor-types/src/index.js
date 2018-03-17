@@ -55,15 +55,11 @@ function () {
     }
 
     if (_type == "folder") {
-      this.files = [];
-
-      if (_files) {
-        this.files = _files;
-      }
+      this.files = _files || [];
     }
 
     if (_type == "file") {
-      this.content = _content;
+      this.content = _content || "";
     }
 
     this.id = _id;
