@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Fade } from 'react-reveal'
 import {Collapsible } from 'react-materialize'
+import PropTypes from 'prop-types';
+import File from 'mditor-types';
 
 import MenuOptions from './MenuOptions'
 import VisualFile from './VisualFile'
@@ -37,7 +39,7 @@ class Folder extends Component {
     }
 
     onCreateFile = (title) => {
-        const folderId = this.props.folder.id
+        const folderId = this.props.folder.getId()
 
         this.setState({ creatingFile: false })
 
@@ -115,5 +117,23 @@ class Folder extends Component {
                 onClick={this.handlerCreatingFile} />)
     }
 }
+
+Folder.propTypes = { 
+    /**
+     * mandatory type
+     * File from ('mditor-types');
+     */
+    folders: PropTypes.arrayOf(PropTypes.instanceOf(File)),
+    /**
+     * Object with logic
+     */
+    logiFolder: PropTypes.shape({
+        create: PropTypes.func.isRequired,
+        update: PropTypes.func.isRequired,
+        delete: PropTypes.func.isRequired,
+        logicFile: PropTypes.objectOf(PropTypes.func.isRequired)
+      }),
+    // logicFolder:  PropTypes.objectOf(PropTypes.func.isRequired),
+   }
 
 export default Folder
