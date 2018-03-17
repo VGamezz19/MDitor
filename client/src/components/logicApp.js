@@ -1,3 +1,7 @@
+import File from 'mditor-types'
+
+console.log(new File("file","2","hello"))
+
 let appId = 123
 
 const logicApp = {

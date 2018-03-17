@@ -8,11 +8,13 @@ import MarkDown from './MarkDown'
 import API from '../api/ApiClient'
 import logicApp from './logicApp'
 
+import File from 'mditor-types'
+
 class App extends Component {
 
   constructor() {
     super();
-    
+
     this.state = {
       currentSelected: {
         folderId: undefined,
@@ -37,8 +39,29 @@ class App extends Component {
 
   //===== EVENTS, Handlers and Helpers APP
   componentDidMount = () => {
-    const folders = API.getFolders()
+    const folderDataAPI = API.getFolders()
     const user = API.getUser()
+
+    let folders = []
+
+    for (let i = 0; i < folderDataAPI.length; i++) {
+
+      let filesToFolder = []
+      const {id, title, files: folderFiles} = folderDataAPI[i];
+      if(folderFiles) {
+
+        let fileLength = folderFiles.length
+
+        for (let i = 0; i < fileLength; i ++) {
+
+          const {id, title, content} = folderFiles[i];
+
+          filesToFolder.push(new File('file',id, title, content))
+        }
+      }
+
+      folders.push(new File("folder", id, title, undefined, filesToFolder))
+    }
 
     this.onChangeTargetSelected(this.extractParamsFromRoute(this.props), folders)
 

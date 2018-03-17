@@ -1,0 +1,30 @@
+{
+  "name": "mditor-types",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "src/",
+  "scripts": {
+    "type-check": "tsc",
+    "build": "babel src --out-dir src --extensions \".ts,.tsx\"",
+    "test": "mocha -r ts-node/register tests/*.spec.ts"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.32",
+    "@babel/core": "^7.0.0-beta.32",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.32",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.32",
+    "@babel/preset-env": "^7.0.0-beta.32",
+    "@babel/preset-typescript": "^7.0.0-beta.32",
+    "@types/chai": "^4.1.2",
+    "@types/mocha": "^2.2.48",
+    "babel-loader": "^8.0.0-beta.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.0.4",
+    "ts-node": "^5.0.1",
+    "typescript": "^2.7.2",
+    "webpack": "^4.1.1"
+  },
+  "dependencies": {
+    "webpack-cli": "^2.0.12"
+  }
+}
