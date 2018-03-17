@@ -1,10 +1,11 @@
-import {App, RoutingApp} from './'
-
+import {App} from './'
+const match = {
+    url: '/',
+    path:'/'
+}
 export default [{
-    component: RoutingApp,
+    component: App,
     name: 'Main App',
     url: '/',
-    props: {
-     app: App   
-    }
+    props: { match }
 }]
