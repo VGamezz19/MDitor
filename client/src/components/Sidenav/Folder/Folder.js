@@ -3,7 +3,7 @@ import { Fade } from 'react-reveal'
 import {Collapsible } from 'react-materialize'
 
 import MenuOptions from './MenuOptions'
-import File from './File'
+import VisualFile from './VisualFile'
 import CircleButton from '../../CircleButton'
 import AddItem from '../AddItem'
 
@@ -73,7 +73,7 @@ class Folder extends Component {
                     {folderIcon[0]}
                     {folderIcon[1]}
                 </i>
-                {folder.title}
+                {folder.getTitle()}
             </div>
         )
     }
@@ -83,7 +83,7 @@ class Folder extends Component {
         return (
             <div className="collapsible-body grey lighten-2">
                 <div className="content-files">
-                    {folder.files.map(file => <File file={file} folderId={folder.id} logicFile={logicFile} />)}
+                    {folder.files.map(file => <VisualFile file={file} folderId={folder.getId()} logicFile={logicFile} />)}
 
                     {this._renderCreateFile(createFile)}
 

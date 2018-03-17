@@ -4,7 +4,7 @@ import Delete from 'material-ui/svg-icons/action/delete';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Link, Route } from "react-router-dom"
 
-class File extends Component {
+class VisualFile extends Component {
     render() {
         
         const { file, folderId, logicFile } = this.props
@@ -30,4 +30,4 @@ class File extends Component {
     }
 }
 
-export default File
+export default VisualFile
