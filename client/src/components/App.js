@@ -8,7 +8,7 @@ import MarkDown from './MarkDown'
 import API from '../api/ApiClient'
 import logicApp from './logicApp'
 
-import File from 'mditor-types'
+// import File from 'mditor-types'
 
 class App extends Component {
 
@@ -31,37 +31,17 @@ class App extends Component {
 
   deleteFolder = (id) => this.setState(({ folders }) => ({ folders: logicApp.removeFolder(id, folders) }))
 
-  createFile = (folderId, title) => this.setState(({ folders }) => ({ folders: logicApp.File.create(folderId, title, folders) }))
+  createFile = (folderId, title) => this.setState(({ folders }) => ({ folders: logicApp.createFile(folderId, title, folders) }))
 
-  deleteFile = (folderId, id) => this.setState(({ folders }) => ({ folders: logicApp.File.remove(folderId, id, folders) }))
+  deleteFile = (folderId, id) => this.setState(({ folders }) => ({ folders: logicApp.removeFile(folderId, id, folders) }))
 
-  writeFile = (folderId, id, content) => this.setState(({ folders }) => ({ folders: logicApp.File.write(folderId, id, content, folders) }))
+  writeFile = (folderId, id, content) => this.setState(({ folders }) => ({ folders: logicApp.writeFile(folderId, id, content, folders) }))
 
   //===== EVENTS, Handlers and Helpers APP
   componentDidMount = () => {
     const folderDataAPI = API.getFolders()
     const user = API.getUser()
-
-    let folders = []
-
-    for (let i = 0; i < folderDataAPI.length; i++) {
-
-      let filesToFolder = []
-      const {id, title, files: folderFiles} = folderDataAPI[i];
-      if(folderFiles) {
-
-        let fileLength = folderFiles.length
-
-        for (let i = 0; i < fileLength; i ++) {
-
-          const {id, title, content} = folderFiles[i];
-
-          filesToFolder.push(new File('file',id, title, content))
-        }
-      }
-
-      folders.push(new File("folder", id, title, undefined, filesToFolder))
-    }
+    const folders = logicApp.refactorDataToFileType(folderDataAPI)
 
     this.onChangeTargetSelected(this.extractParamsFromRoute(this.props), folders)
 
@@ -97,7 +77,7 @@ class App extends Component {
 
   checkFileExist = ({ folderId, fileId, match }, folders) => {
 
-    const retrieve = logicApp.retrieveFolder(folderId, folders) && logicApp.File.retrieve(folderId, fileId, folders)
+    const retrieve = logicApp.retrieveFolder(folderId, folders) && logicApp.retrieveFile(folderId, fileId, folders)
 
     if (!retrieve && match.path !== '/') {
 
@@ -168,10 +148,10 @@ class App extends Component {
               :
               this.checkFileExist({ folderId, fileId, match }, folders) ?
                 params.action === 'view' ?
-                  <MarkDown file={logicApp.File.retrieve(folderId, fileId, folders)} />
+                  <MarkDown file={logicApp.retrieveFile(folderId, fileId, folders)} />
                   :
                   <MyEditor
-                    file={logicApp.File.retrieve(folderId, fileId, folders)}
+                    file={logicApp.retrieveFile(folderId, fileId, folders)}
                     emitCurrentContent={this.onHandlerMyEditor} />
                 : false
             : <MarkDown showInitialMarkDown={true} />}

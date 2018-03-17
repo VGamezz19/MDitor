@@ -3,59 +3,78 @@ import File from 'mditor-types'
 let appId = 123
 
 const logicApp = {
-        createFolder: (title, folders) => ([...folders, new File('folder', appId ++, title)]),
 
-        retrieveFolder: (id, folders) => {
-            const folder = folders.find(folder => folder.id === id)
-            return folder
-        },
+    createFolder: (title, folders) => ([...folders, new File('folder', appId++, title)]),
 
-        updateFolder: (id, title, folders) => folders.map(folder => {
-            if (folder.id === id) folder.setTitle(title)
-            return folder
-        }),
+    retrieveFolder: (id, folders) => {
+        const folder = folders.find(folder => folder.id === id)
+        return folder
+    },
 
-        removeFolder: (id, folders) => folders.filter(folder => folder.id !== id)
-        ,
-    File: {
-        create: (folderId, title, folders) => folders.map(folder => {
-            if (folder.id === folderId) {
-                folder.files = [...folder.files, { title, content: '', id: appId++ }]
+    updateFolder: (id, title, folders) => folders.map(folder => {
+        if (folder.id === id) folder.setTitle(title)
+        return folder
+    }),
+
+    removeFolder: (id, folders) => folders.filter(folder => folder.id !== id),
+
+    createFile: (folderId, title, folders) => folders.map(folder => {
+        if (folder.id === folderId) {
+            folder.add(new File('file', appId++, title))
+        }
+        return folder
+    }),
+
+    retrieveFile: (folderId, id, folders) => {
+
+        const folder = logicApp.retrieveFolder(folderId, folders)
+
+        if (!folder) return false
+
+        const file = folder.getFile(id)
+
+        return file
+    },
+
+    removeFile: (folderId, id, folders) => folders.filter(folder => {
+        if (folder.id === folderId) {
+            folder.remove(folder.getFile(id))
+        }
+        return folder
+    }),
+
+    writeFile: (folderId, id, content, folders) => folders.map(folder => {
+        if (folder.id === folderId) {
+            folder.getFile(id).setContent(content)
+        }
+        return folder
+    }),
+
+    refactorDataToFileType: (dataFolder) => {
+        let folders = []
+
+        for (let i = 0; i < dataFolder.length; i++) {
+
+            let filesToFolder = []
+            const { id, title, files: folderFiles } = dataFolder[i];
+
+            if (folderFiles) {
+
+                let fileLength = folderFiles.length
+
+                for (let i = 0; i < fileLength; i++) {
+
+                    const { id, title, content } = folderFiles[i];
+
+                    filesToFolder.push(new File('file', id, title, content))
+                }
             }
-            return folder
-        }),
 
-        retrieve: (folderId, id, folders) => {
-            
-            const folder = logicApp.retrieveFolder(folderId, folders)
+            folders.push(new File("folder", id, title, undefined, filesToFolder))
+        }
+        return folders
+    },
 
-            if (!folder) return false
-
-            const file = folder.files.find(file => file.id === id)
-
-            return file
-        },
-
-        remove: (folderId, id, folders) => folders.filter(folder => {
-            if (folder.id === folderId) {
-                folder.files = folder.files.filter(file => file.id !== id)
-            }
-            return folder
-        }),
-
-        write: (folderId, id, content, folders) => folders.map(folder => {
-            if (folder.id === folderId) {
-                folder.files = folder.files.map(file => {
-                    if (file.id === id) {
-
-                        file.content = content
-                    }
-                    return file
-                })
-            }
-            return folder
-        })
-    }
 }
 
-export default  logicApp 
+export default logicApp 

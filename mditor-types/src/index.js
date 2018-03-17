@@ -93,8 +93,10 @@ function () {
     }
   }, {
     key: "getFile",
-    value: function getFile(i) {
-      return this.type === "folder" ? this.files[i] : this.throwError("is not a function", this.getFile.name);
+    value: function getFile(id) {
+      return this.type === "folder" ? this.files.find(function (file) {
+        return file.id === id;
+      }) : this.throwError("is not a function", this.getFile.name);
     }
   }, {
     key: "setTitle",
