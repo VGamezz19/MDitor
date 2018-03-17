@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { SideNav, SideNavItem, Button, Icon } from 'react-materialize'
 import { Fade } from 'react-reveal'
+import PropTypes from 'prop-types';
+import File from 'mditor-types';
 
 import CircleButton from '../CircleButton'
 import Folder from './Folder'
@@ -103,5 +105,23 @@ class Sidenav extends Component {
         return false
     }
 }
+
+Sidenav.propTypes = { 
+    /**
+     * mandatory type
+     * File from ('mditor-types');
+     */
+    folders: PropTypes.arrayOf(PropTypes.instanceOf(File)),
+    /**
+     * Object with logic
+     */
+    logiFolder: PropTypes.shape({
+        create: PropTypes.func.isRequired,
+        update: PropTypes.func.isRequired,
+        delete: PropTypes.func.isRequired,
+        logicFile: PropTypes.objectOf(PropTypes.func.isRequired)
+      }),
+    // logicFolder:  PropTypes.objectOf(PropTypes.func.isRequired),
+   }
 
 export default Sidenav

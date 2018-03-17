@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import initialText from './initialText'
 
 import PropTypes from 'prop-types';
+import File from 'mditor-types';
 
 class MarkDown extends React.Component {
 
@@ -20,9 +21,9 @@ class MarkDown extends React.Component {
 
     if (!showInitialMarkDown) {
 
-      const { file: { content, id: fileId }} = this.props;
+      const { file } = this.props;
 
-      this.setState({ content, fileId })
+      this.setState({ content : file.getContent(), fileId: file.getId() })
     }
   }
 
@@ -32,13 +33,13 @@ class MarkDown extends React.Component {
 
     if (!showInitialMarkDown) {
 
-      const { file: { content, id }} = props;
+      const { file } = props;
 
       this.setState(({ fileId }) => {
 
-        if (fileId !== id) {
+        if (fileId !== file.getId()) {
 
-          return { content, fileId: id }
+          return { content: file.getContent(), fileId: file.getId()  }
         }
       })
     }
@@ -57,7 +58,11 @@ class MarkDown extends React.Component {
 }
 
 MarkDown.propTypes = { 
-  file: PropTypes.object,
+  /**
+   * mandatory type
+   * File from ('mditor-types');
+   */
+  file: PropTypes.instanceOf(File),
   showInitialMarkDown: PropTypes.bool,
  }
 

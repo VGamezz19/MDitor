@@ -1,5 +1,7 @@
 import React from 'react';
 import Draft, { Editor } from 'draft-js';
+import PropTypes from 'prop-types';
+import File from 'mditor-types';
 
 class MyEditor extends React.Component {
     constructor(props) {
@@ -13,28 +15,28 @@ class MyEditor extends React.Component {
 
     componentWillMount() {
 
-        const { file: { content, id: fileId } } = this.props;
-        const draftContentState = Draft.ContentState.createFromText(content)
+        const { file } = this.props;
+        const draftContentState = Draft.ContentState.createFromText(file.getContent())
 
         this.setState(({ editorState }) => ({
             editorState: Draft.EditorState.push(editorState, draftContentState),
-            fileId
+            fileId: file.getId()
         }))
     }
 
     componentWillReceiveProps(props) {
 
-        const { file: { content, id: fileId } } = props;
+        const { file } = props;
 
         this.setState(prevState => {
 
-            if (prevState.fileId !== fileId) {
+            if (prevState.fileId !== file.getId()) {
 
-                const draftContentState = Draft.ContentState.createFromText(content)
+                const draftContentState = Draft.ContentState.createFromText(file.getContent())
 
                 return {
                     editorState: Draft.EditorState.push(prevState.editorState, draftContentState),
-                    fileId
+                    fileId: file.getId()
                 }
             }
         })
@@ -55,5 +57,17 @@ class MyEditor extends React.Component {
         );
     }
 }
+
+MyEditor.propTypes = { 
+    /**
+     * mandatory type
+     * File from ('mditor-types');
+     */
+    file: PropTypes.instanceOf(File),
+    /**
+     * Need handler to take content Editor
+     */
+    emitCurrentContent: PropTypes.func.isRequired,
+   }
 
 export default MyEditor
