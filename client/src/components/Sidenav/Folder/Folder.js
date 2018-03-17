@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Fade } from 'react-reveal'
-import {Collapsible } from 'react-materialize'
+import { Collapsible } from 'react-materialize'
 import PropTypes from 'prop-types';
 import File from 'mditor-types';
 
@@ -52,18 +52,18 @@ class Folder extends Component {
 
         return (
             <Collapsible>
-            <li>
-                {this._renderFolderElement(folder, folderIcon)}
+                <li>
+                    {this._renderFolderElement(folder, folderIcon)}
 
-                <MenuOptions
-                    item={folder}
-                    logicOptions={{
-                        onDelete: logicFolder.delete,
-                        onUpdate: logicFolder.update
-                    }} />
+                    <MenuOptions
+                        item={folder}
+                        logicOptions={{
+                            onDelete: logicFolder.delete,
+                            onUpdate: logicFolder.update
+                        }} />
 
-                {this._renderFiles(folder, logicFile, creatingFile)}
-            </li>
+                    {this._renderFiles(folder, logicFile, creatingFile)}
+                </li>
             </Collapsible>
         )
     }
@@ -118,7 +118,7 @@ class Folder extends Component {
     }
 }
 
-Folder.propTypes = { 
+Folder.propTypes = {
     /**
      * mandatory type
      * File from ('mditor-types');
@@ -132,8 +132,7 @@ Folder.propTypes = {
         update: PropTypes.func.isRequired,
         delete: PropTypes.func.isRequired,
         logicFile: PropTypes.objectOf(PropTypes.func.isRequired)
-      }),
-    // logicFolder:  PropTypes.objectOf(PropTypes.func.isRequired),
-   }
+    })
+}
 
 export default Folder
