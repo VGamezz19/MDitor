@@ -40,7 +40,7 @@ class File {
 
     getContent(): string | never { return this.type === "file" ? this.content : this.throwError("is not a function", this.getContent.name); }
 
-    getFile(i: number): File | never { return this.type === "folder" ? this.files[i] : this.throwError("is not a function", this.getFile.name); }
+    getFile(id: string): File | never { return this.type === "folder" ? this.files.find(file => file.id === id) : this.throwError("is not a function", this.getFile.name); }
 
     setTitle(title: string) { this.title = title; }
 

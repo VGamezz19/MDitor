@@ -25,11 +25,11 @@ class App extends Component {
     }
   }
 
-  createFolder = (title) => this.setState(({ folders }) => ({ folders: logicApp.Folder.create(title, folders) }))
+  createFolder = (title) => this.setState(({ folders }) => ({ folders: logicApp.createFolder(title, folders) }))
 
-  updateFolder = (id, title) => this.setState(({ folders }) => ({ folders: logicApp.Folder.update(id, title, folders) }))
+  updateFolder = (id, title) => this.setState(({ folders }) => ({ folders: logicApp.updateFolder(id, title, folders) }))
 
-  deleteFolder = (id) => this.setState(({ folders }) => ({ folders: logicApp.Folder.remove(id, folders) }))
+  deleteFolder = (id) => this.setState(({ folders }) => ({ folders: logicApp.removeFolder(id, folders) }))
 
   createFile = (folderId, title) => this.setState(({ folders }) => ({ folders: logicApp.File.create(folderId, title, folders) }))
 
@@ -97,7 +97,7 @@ class App extends Component {
 
   checkFileExist = ({ folderId, fileId, match }, folders) => {
 
-    const retrieve = logicApp.Folder.retrieve(folderId, folders) && logicApp.File.retrieve(folderId, fileId, folders)
+    const retrieve = logicApp.retrieveFolder(folderId, folders) && logicApp.File.retrieve(folderId, fileId, folders)
 
     if (!retrieve && match.path !== '/') {
 

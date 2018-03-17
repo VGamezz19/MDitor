@@ -216,9 +216,9 @@ describe("Type File as a Folder", () => {
 
     expect(folder.files).length(2);
 
-    expect(folder.getFile(0)).to.equal(file);
+    expect(folder.getFile(idFile)).to.equal(file);
 
-    expect(folder.getFile(0)).to.be.an.instanceof(File);
+    expect(folder.getFile(idFile)).to.be.an.instanceof(File);
 
   });
 
@@ -263,9 +263,9 @@ describe("Type File as a Folder", () => {
 
     expect(folder.files).length(1);
 
-    expect(folder.getFile(0)).to.equal(file);
+    expect(folder.getFile(idFile)).to.equal(file);
 
-    expect(folder.getFile(0)).to.be.an.instanceof(File);
+    expect(folder.getFile(idFile)).to.be.an.instanceof(File);
 
   });
 
@@ -310,13 +310,15 @@ describe("Type File as a Folder", () => {
 
     expect(folder.files).length(1);
 
-    expect(folder.getFile(0)).to.equal(file);
+    expect(folder.getFile(idFile)).to.equal(file);
 
-    expect(folder.getFile(0)).to.be.an.instanceof(File);
+    expect(folder.getFile(idFile)).to.be.an.instanceof(File);
 
     folder.remove(file);
 
     expect(folder.files).length(0);
+
+    expect(folder.getFile(id)).to.be.equal(undefined);
 
   });
 });

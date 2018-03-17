@@ -1,24 +1,22 @@
 import File from 'mditor-types'
 
-console.log(new File("file","2","hello"))
-
 let appId = 123
 
 const logicApp = {
-    Folder: {
-        create: (title, folders) => ([...folders, { title, id: appId++, files: [] }]),
+        createFolder: (title, folders) => ([...folders, new File('folder', appId ++, title)]),
 
-        retrieve: (id, folders) => {
+        retrieveFolder: (id, folders) => {
             const folder = folders.find(folder => folder.id === id)
             return folder
         },
-        update: (id, title, folders) => folders.map(folder => {
-            if (folder.id === id) folder.title = title
+
+        updateFolder: (id, title, folders) => folders.map(folder => {
+            if (folder.id === id) folder.setTitle(title)
             return folder
         }),
 
-        remove: (id, folders) => folders.filter(folder => folder.id !== id)
-    },
+        removeFolder: (id, folders) => folders.filter(folder => folder.id !== id)
+        ,
     File: {
         create: (folderId, title, folders) => folders.map(folder => {
             if (folder.id === folderId) {
@@ -29,7 +27,7 @@ const logicApp = {
 
         retrieve: (folderId, id, folders) => {
             
-            const folder = logicApp.Folder.retrieve(folderId, folders)
+            const folder = logicApp.retrieveFolder(folderId, folders)
 
             if (!folder) return false
 
