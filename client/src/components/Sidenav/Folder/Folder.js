@@ -84,13 +84,13 @@ class Folder extends Component {
 
         return (
             <div className="collapsible-body grey lighten-2">
-                <div className="content-files">
-                    {folder.files.map(file => <VisualFile file={file} folderId={folder.getId()} logicFile={logicFile} />)}
+                <ul className="content-files">
+                    {folder.files.map(file => <VisualFile key={file.getId()} file={file} folderId={folder.getId()} logicFile={logicFile} />)}
 
                     {this._renderCreateFile(createFile)}
 
                     {this._renderCircleButton()}
-                </div>
+                </ul>
             </div>
         )
     }

@@ -87,7 +87,7 @@ class Sidenav extends Component {
     }
 
     _renderBodySidenav(folders, logicFolder) {
-        return folders.map(folder => <Folder logicFolder={logicFolder} folder={folder} />)
+        return folders.map(folder => <Folder key={folder.getId()} logicFolder={logicFolder} folder={folder} />)
     }
 
     _renderCreateFolder(creatingFolder) {
