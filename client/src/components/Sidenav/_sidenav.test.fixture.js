@@ -1,8 +1,14 @@
 import Sidenav from './';
 import './Sidenav.scss';
 import API from '../../api/ApiClient'
+import logicApp from '../logicApp'
 
-const folders = API.getFolders()
+const dataFolders = API.getFolders()
+
+/**
+ * Mandatory data type FILE
+ */
+const folders = logicApp.refactorDataToFileType(dataFolders)
 
 const logicFolder = {
   create: () => console.log("Create Folder"),
@@ -22,7 +28,7 @@ export default [{
   url: '/0/2/edit',
   props: {
     buttonTriggerStyle: { className: 'grey lighten-2', iconClassName: null, icon: 'menu' },
-    buttonDropStyle: { className: null, iconClassName: 'black-font', icon: 'close' },
+    buttonDropStyle: { className: 'grey lighten-2', iconClassName: 'black-font', icon: 'close' },
     user: { name: user.name, surname: user.surname },
     folders: folders,
     logicFolder: logicFolder
@@ -34,7 +40,7 @@ export default [{
   url: '/0/2/edit',
   props: {
     buttonTriggerStyle: { className: 'grey lighten-2', iconClassName: null, icon: 'menu' },
-    buttonDropStyle: { className: null, iconClassName: 'black-font', icon: 'close' },
+    buttonDropStyle: { className: 'grey lighten-2', iconClassName: 'black-font', icon: 'close' },
     user: { name: user.name, surname: user.surname },
     folders: [],
     logicFolder: logicFolder
