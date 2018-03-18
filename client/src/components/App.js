@@ -120,7 +120,7 @@ class App extends Component {
         <article>
           <Sidenav
             buttonTriggerStyle={{ className: 'grey lighten-2', iconClassName: null, icon: 'menu' }}
-            buttonDropStyle={{ className: null, iconClassName: 'black-font', icon: 'close' }}
+            buttonDropStyle={{ className: 'grey lighten-2', iconClassName: 'black-font', icon: 'close' }}
             user={{ name, surname }}
             folders={folders}
             logicFolder={logicFolder} />

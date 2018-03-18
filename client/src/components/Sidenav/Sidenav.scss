@@ -4,26 +4,29 @@
     @extend %medium-main-icon;
 }
 
-.content-sidenav {
-    @extend %flex-in-column;
-    header {
+.main-sidenav-content {
+    background-color: $side-nav-main-color;
+    .content-sidenav {
         @extend %flex-in-column;
-        align-items: center;
-        height: 150px;
-        padding: 1em;
-        h4,
-        h5 {
-            color: $secondary-font-color
-        }
-        .delete-sidenav {
-            align-self: flex-end;
-            position: absolute;
-            a {
-                padding: 0!important;
-                i {
-                    @extend %medium-main-icon;
-                    margin: 0!important;
-                    font-size: 2rem !important;
+        header {
+            @extend %flex-in-column;
+            align-items: center;
+            height: 150px;
+            padding: 1em;
+            h4,
+            h5 {
+                color: $main-font-color
+            }
+            .delete-sidenav {
+                align-self: flex-end;
+                position: absolute;
+                a {
+                    padding: 0!important;
+                    i {
+                        @extend %medium-main-icon;
+                        margin: 0!important;
+                        font-size: 2rem !important;
+                    }
                 }
             }
         }
@@ -33,4 +36,9 @@
 //=== Sidenav ReactMaterialize
 .side-nav a:hover {
     background-color: unset;
+}
+
+.collapsible {
+    margin: 0 !important;
+    border: 0 !important;
 }

@@ -47,7 +47,7 @@ class Folder extends Component {
     }
 
     render() {
-        const { folder, logicFolder, logicFolder: { logicFile } } = this.props
+        const { folder, logicFolder, logicFolder: { logicFile }, handleToggleSidenav } = this.props
         const { creatingFile, folderIcon } = this.state
 
         return (
@@ -62,7 +62,7 @@ class Folder extends Component {
                             onUpdate: logicFolder.update
                         }} />
 
-                    {this._renderFiles(folder, logicFile, creatingFile)}
+                    {this._renderFiles(folder, logicFile, creatingFile, handleToggleSidenav)}
                 </li>
             </Collapsible>
         )
@@ -80,12 +80,17 @@ class Folder extends Component {
         )
     }
 
-    _renderFiles(folder, logicFile, createFile) {
+    _renderFiles(folder, logicFile, createFile, handleToggleSidenav) {
 
         return (
             <div className="collapsible-body grey lighten-2">
                 <ul className="content-files">
-                    {folder.files.map(file => <VisualFile key={file.getId()} file={file} folderId={folder.getId()} logicFile={logicFile} />)}
+                    {folder.files.map(file => <VisualFile
+                        key={file.getId()}
+                        file={file}
+                        folderId={folder.getId()}
+                        logicFile={logicFile}
+                        handleToggleSidenav={handleToggleSidenav} />)}
 
                     {this._renderCreateFile(createFile)}
 

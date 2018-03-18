@@ -9,14 +9,14 @@ import File from 'mditor-types';
 class VisualFile extends Component {
     render() {
 
-        const { file, folderId, logicFile } = this.props
+        const { file, folderId, logicFile, handleToggleSidenav } = this.props
         const fileId = file.getId();
         const fileTitle = file.getTitle();
         return (
             <Route
                 path={`/${folderId}/${fileId}/(view|edit)`}
                 children={({ match }) => (
-                    <li className={`li-item-file ${match ? 'focus-file' : false}`}>
+                    <li className={`li-item-file ${match ? 'focus-file' : false}`} onClick={() => handleToggleSidenav()}>
                         <Link className='files grey lighten-3"' to={`/${folderId}/${fileId}/edit`}>
                             <button type='submit' className="files grey lighten-3">
                                 {fileTitle}
