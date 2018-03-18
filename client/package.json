@@ -29,6 +29,7 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
+    "jquery": "^3.3.1",
     "markdown-draft-js": "^0.6.2",
     "material-ui": "^0.20.0",
     "mditor-types": "../mditor-types",
@@ -62,6 +63,7 @@
     "cosmos:export": "cosmos-export"
   },
   "devDependencies": {
+    "hammerjs": "^2.0.8",
     "materialize-css": "^0.100.2",
     "node-sass": "^4.7.2",
     "react-cosmos": "^3.7.1",
@@ -76,8 +78,8 @@
       "<rootDir>/config/polyfills.js"
     ],
     "testMatch": [
-      "<rootDir>/tests/**/*.{js,jsx,mjs}",
-      "<rootDir>/tests/?(*.)(spec|test).{js,jsx,mjs}"
+      "<rootDir>/test/**/*.{js,jsx,mjs}",
+      "<rootDir>/test/?(*.)(spec|test).{js,jsx,mjs}"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",

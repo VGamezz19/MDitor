@@ -1,5 +1,7 @@
-import $ from 'jquery';
-global.$ = global.jQuery = $;
+require('jquery');
+require('hammerjs')
+require('materialize-css')
+
 
 if (typeof Promise === 'undefined') {
   // Rejection tracking prevents a common issue where React gets into an
