@@ -5,12 +5,14 @@ There is a MarkDown Editor to do you'r crazy notes! but **take it care** this is
 - 🎨 Check Demo MDitor http://mditor.surge.sh
 
 - 👨‍🚀 Check Demo Cosmos MDitor http://nappy-cosmos.surge.sh/
+
+
 ⚠️ Hey! if you want to know how we have done `MDitor`, you can navigate to [./doc](https://github.com/VGamezz19/MDitor/tree/master/doc/)
 
 ⚡️ If you just want to know how dowload it, test or add new features, follow theses steps  ⬇️
 
 > ... Developing
-
+124124125asdas
 <!-- ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
