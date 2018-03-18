@@ -63,6 +63,7 @@
     "cosmos:export": "cosmos-export"
   },
   "devDependencies": {
+    "enzyme": "^3.3.0",
     "hammerjs": "^2.0.8",
     "materialize-css": "^0.100.2",
     "node-sass": "^4.7.2",
