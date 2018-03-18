@@ -1,14 +1,18 @@
 import Folder from './';
 import './Folder.scss';
 import API from '../../../api/ApiClient'
+import File from 'mditor-types'
+import logicApp from '../../logicApp'
 
-const folders = API.getFolders()
+const dataFolders = API.getFolders()
+const folders = logicApp.refactorDataToFileType(dataFolders);
+
 const folder = folders[0]
-const folderWithoutFile = {
-  id: 1,
-  title: 'new Folder (2)',
-  files: []
-}
+/**
+ * Mandatory prototype File
+ */
+const folderWithoutFile = new File("folder", 2, "new Folder(2)")
+
 const logicFolder = {
   create: () => console.log("Create Folder"),
   update: () => console.log("UpdateFolder"),
@@ -19,14 +23,14 @@ const logicFolder = {
   }
 }
 
-export default [
-  {
+export default [{
     component: Folder,
     name: "Folder with Files",
     url: '/',
     props: {
       folder: folder,
-      logicFolder: logicFolder
+      logicFolder: logicFolder,
+      handleToggleSidenav: () => console.log("toggle sidenav")
     }
   },
   {
@@ -35,7 +39,8 @@ export default [
     url: '/',
     props: {
       folder: folderWithoutFile,
-      logicFolder: logicFolder
+      logicFolder: logicFolder,
+      handleToggleSidenav: () => console.log("toggle sidenav")
     }
   }
 ];
