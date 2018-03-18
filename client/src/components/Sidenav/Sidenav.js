@@ -47,8 +47,8 @@ class Sidenav extends Component {
 
         return (
             <div>
+                {this._renderTriggerButton(buttonTriggerStyle)}
                 <MuiThemeProvider>
-                    {this._renderTriggerButton(buttonTriggerStyle)}
                     <Drawer
                         containerClassName='main-sidenav-content'
                         docked={false}
