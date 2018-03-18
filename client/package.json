@@ -68,6 +68,7 @@
     "node-sass": "^4.7.2",
     "react-cosmos": "^3.7.1",
     "react-cosmos-router-proxy": "^3.6.1",
+    "react-test-renderer": "^16.2.0",
     "sass-loader": "^6.0.7"
   },
   "jest": {

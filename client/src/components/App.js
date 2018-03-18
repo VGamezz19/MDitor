@@ -119,8 +119,8 @@ class App extends Component {
       <section className="App">
         <article>
           <Sidenav
-            buttonTriggerStyle={{ className: 'grey lighten-2', iconClassName: null, icon: 'menu' }}
-            buttonDropStyle={{ className: 'grey lighten-2', iconClassName: 'black-font', icon: 'close' }}
+            buttonTriggerStyle={{ className: 'grey lighten-2', icon: 'menu' }}
+            buttonDropStyle={{ className: 'grey lighten-2', icon: 'close' }}
             user={{ name, surname }}
             folders={folders}
             logicFolder={logicFolder} />
@@ -130,13 +130,11 @@ class App extends Component {
             : params.action === 'view' ?
               <CircleButton
                 className='grey lighten-2'
-                iconClassName='black-font'
                 icon='edit'
                 onClick={() => this.onHandlerRouteToEdit(this.props, folderId, fileId)} />
               :
               <CircleButton
                 className='grey lighten-2'
-                iconClassName='black-font'
                 icon='remove_red_eye'
                 onClick={() => this.onHandlerRouteToView(this.props, folderId, fileId)} />}
 

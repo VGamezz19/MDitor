@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Icon } from 'react-materialize'
+import { Button } from 'react-materialize'
 
 function CircleButton(props) {
 
-    const { className, iconClassName, icon, onClick  } = props
+    const { className, icon, onClick  } = props
 
     const handlerOnClick = () => {
         if (onClick) {
@@ -14,10 +14,10 @@ function CircleButton(props) {
     return (
         <Button
             floating large
-            className={className}
+            className={`main-icon ${className}`}
             onClick={handlerOnClick}
+            icon={icon}
             waves='light'>
-            <Icon className={iconClassName + " main-icon"}> {icon}</Icon>
         </Button>
     )
 

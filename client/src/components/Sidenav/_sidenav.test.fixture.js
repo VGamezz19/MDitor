@@ -27,8 +27,8 @@ export default [{
   name: "Sidenav With Content",
   url: '/0/2/edit',
   props: {
-    buttonTriggerStyle: { className: 'grey lighten-2', iconClassName: null, icon: 'menu' },
-    buttonDropStyle: { className: 'grey lighten-2', iconClassName: 'black-font', icon: 'close' },
+    buttonTriggerStyle: { className: 'grey lighten-2', icon: 'menu' },
+    buttonDropStyle: { className: 'grey lighten-2', icon: 'close' },
     user: { name: user.name, surname: user.surname },
     folders: folders,
     logicFolder: logicFolder
@@ -39,8 +39,8 @@ export default [{
   name: "Sidenav Empty Content",
   url: '/0/2/edit',
   props: {
-    buttonTriggerStyle: { className: 'grey lighten-2', iconClassName: null, icon: 'menu' },
-    buttonDropStyle: { className: 'grey lighten-2', iconClassName: 'black-font', icon: 'close' },
+    buttonTriggerStyle: { className: 'grey lighten-2', icon: 'menu' },
+    buttonDropStyle: { className: 'grey lighten-2', icon: 'close' },
     user: { name: user.name, surname: user.surname },
     folders: [],
     logicFolder: logicFolder

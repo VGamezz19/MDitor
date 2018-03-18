@@ -118,7 +118,7 @@ class Folder extends Component {
         return (
             <CircleButton
                 className='add-files grey lighten-3'
-                iconClassName='black-font' icon='add'
+                icon='add'
                 onClick={this.handlerCreatingFile} />)
     }
 }

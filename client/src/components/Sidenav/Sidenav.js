@@ -79,14 +79,13 @@ class Sidenav extends Component {
         )
     }
 
-    _renderHeader({ name, surname }, { iconClassName, icon, className }) {
+    _renderHeader({ name, surname }, { icon, className }) {
         if (name || surname) {
             return (
                 <header>
                     <CircleButton
                         className={`delete-sidenav ${className}`}
                         onClick={this.handleToggle}
-                        iconClassName={iconClassName}
                         icon={icon} />
                     <h4 id={'user-header'}>{name[0]}{surname[0]}</h4>
                     <h5>Welcome</h5>

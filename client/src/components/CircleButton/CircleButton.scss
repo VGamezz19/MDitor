@@ -1,16 +1,14 @@
 @import '../../sass/_variables';
 @import '../../sass/_extends';
-
-
-.add-folder, .add-files {
+.add-folder,
+.add-files {
     align-self: center;
     margin-top: 1em;
     margin-bottom: 1em;
 }
 
 .main-icon {
-    @extend %medium-main-icon;
+    i {
+        @extend %medium-main-icon;
+    }
 }
-
-
-   
