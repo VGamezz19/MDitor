@@ -1,44 +1,97 @@
 # MDitor
 
-Editro web to create, modify and save your notes with  [MarkDown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+There is a MarkDown Editor to do you'r crazy notes! but **take it care** this is just a alpha, we are going to work to get better MDitor📝
 
-## Design - Mockup
+- 🎨 Check Demo MDitor
 
-the mockup has been done with  [Sketch](https://www.sketchapp.com/)
+- 👨‍🚀 Check Demo Cosmos MDitor
 
-[Demo - Mockup MDitor](https://github.com/VGamezz19/MDitor/tree/master/doc/design/mockup)
+⚠️ Hey! if you want to know how we have done `MDitor`, you can navigate to [./doc](https://github.com/VGamezz19/MDitor/tree/master/doc/)
 
-## Data Model
+⚡️ If you just want to know how dowload it, test or add new features, follow theses steps  ⬇️
 
-It only need three data model, User, Folder and File.
-`Users` will have {N}  `Folder`, and the Folders will contains {N} `Files`.
+> ... Developing
 
-To check out more my data model, __[see It here](https://github.com/VGamezz19/MDitor/tree/master/doc/dataModel/)__
+<!-- ## Getting Started
 
-## UML
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-__[Click here](https://github.com/VGamezz19/MDitor/tree/master/doc/UML/)__ to see project UML
+### Prerequisites
 
-## Work Flow
+What things you need to install the software and how to install them
 
-### TimeLine
+```
+Give examples
+```
 
-__[Click here](https://github.com/VGamezz19/MDitor/tree/master/doc/timeLine/)__ to see project timeline
+### Installing
 
-### Agile methodologies / Scrum
+A step by step series of examples that tell you have to get a development env running
 
-Kanban board realase with **4 sections**, `TOOD, DOING, REVIEW and DONE` like a `Scrum` Kanban
+Say what the step will be
 
-See it in Trelo, URL: [https://trello.com/b/XFltOxOW](https://trello.com/b/XFltOxOW)
+```
+Give the example
+```
 
-### GIT
+And repeat
 
- ---
+```
+until finished
+```
 
-## Technologies
+End with an example of getting some data out of the system or using it for a little demo
 
-| styles| Front-End | Back-End| TDD|
-| :----------: | :----------: | :----------: | :----------: |
-| [Sass](https://sass-lang.com/) | [ReactJS](https://reactjs.org/)  | Node   | [Jest](https://facebook.github.io/jest/)
-| [Materialize](https://react-materialize.github.io/#/) | ES6  | TS  | [Mocha](https://mochajs.org/)
-| [Flex](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) | [socket.io](https://socket.io/)  | RestFul  | [Cosmos](https://github.com/react-cosmos/react-cosmos)
+## Running the tests
+
+Explain how to run the automated tests for this system
+
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone who's code was used
+* Inspiration
+* etc -->
