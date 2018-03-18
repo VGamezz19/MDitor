@@ -1,57 +1,49 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import renderer from 'react-test-renderer';
-// import { mount } from 'enzyme';
-// import { MemoryRouter } from 'react-router';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import renderer from 'react-test-renderer';
 
-// import Sidenav from '../../src/components/Sidenav';
-// import API from '../../src/api/ApiClient';
-// import logicApp from '../../src/components/logicApp';
+import Folder from '../../../src/components/Sidenav/Folder';
+import File from 'mditor-types';
 
-// const dataFolders = API.getFolders()
+const logicFolder = {
+  create: () => console.log("Create Folder"),
+  update: () => console.log("UpdateFolder"),
+  delete: () => console.log("Delete Folder"),
+  logicFile: {
+    create: () => console.log("create File"),
+    delete: () => console.log("delete File")
+  }
+}
+/**
+ * Mandatory data type FILE
+ */
+const folder = new File("folder", 3, "title Folder")
 
-// /**
-//  * Mandatory data type FILE
-//  */
-// const folders = logicApp.refactorDataToFileType(dataFolders)
 
-// const logicFolder = {
-//     create: () => console.log("Create Folder"),
-//     update: () => console.log("UpdateFolder"),
-//     delete: () => console.log("Delete Folder"),
-//     logicFile: {
-//         create: () => console.log("create File"),
-//         delete: () => console.log("delete File")
-//     }
-// }
-// const buttonTriggerStyle = { className: 'grey lighten-2', icon: 'menu' }
-// const buttonDropStyle = { className: 'grey lighten-2', icon: 'close' }
-// const user = { name: "Victor", surname: "Gamez" }
+it('Main aplication rendering', () => {
 
-// it('Main aplication rendering', () => {
-//     const div = document.createElement('div');
+    const div = document.createElement('div');
 
-//     const wrapper = <Sidenav
-//             folders={folders}
-//             logicFolder={logicFolder}
-//             buttonTriggerStyle={buttonTriggerStyle}
-//             buttonDropStyle={buttonDropStyle}
-//             user={user} />
+    const wrapper = <Folder
+        folder={folder}
+        logicFolder={logicFolder}
+        handleToggleSidenav= {() => console.log("toggle sidenav")}/>
 
-//     ReactDOM.render(wrapper, div);
-//     ReactDOM.unmountComponentAtNode(div);
-// });
+    ReactDOM.render(wrapper, div);
 
-// it('Should create and Match same Snapshot', () => {
-//     const wrapper = <Sidenav
-//             folders={folders}
-//             logicFolder={logicFolder}
-//             buttonTriggerStyle={buttonTriggerStyle}
-//             buttonDropStyle={buttonDropStyle}
-//             user={user} />
+    ReactDOM.unmountComponentAtNode(div);
+});
 
-//     const component = renderer.create(wrapper);
-//     let tree = component.toJSON();
+it('Should create and Match same Snapshot', () => {
 
-//     expect(tree).toMatchSnapshot();
-// });
+    const wrapper = <Folder
+        folder={folder}
+        logicFolder={logicFolder}
+        handleToggleSidenav= {() => console.log("toggle sidenav")}/>
+
+    const component = renderer.create(wrapper);
+
+    let tree = component.toJSON();
+
+    expect(tree).toMatchSnapshot();
+});
