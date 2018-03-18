@@ -1,0 +1,1377 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should create and Match same Snapshot 1`] = `
+<section
+  className="App"
+>
+  <article>
+    <div>
+      <button
+        className="btn waves-effect waves-light btn-large btn-floating main-icon grey lighten-2"
+        disabled={false}
+        icon="menu"
+        onClick={[Function]}
+      >
+        <i
+          className="material-icons"
+        >
+          menu
+        </i>
+      </button>
+      <div
+        className={undefined}
+        style={undefined}
+      >
+        <div
+          className={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+              "backgroundColor": "rgba(0, 0, 0, 0.54)",
+              "height": "100%",
+              "left": "-100%",
+              "muiPrepared": true,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "fixed",
+              "top": 0,
+              "transform": "translateZ(0)",
+              "transition": "left 0ms cubic-bezier(0.23, 1, 0.32, 1) 400ms, opacity 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+              "width": "100%",
+              "willChange": "opacity",
+              "zIndex": 1200,
+            }
+          }
+        />
+        <div
+          className="main-sidenav-content"
+          style={
+            Object {
+              "WebkitOverflowScrolling": "touch",
+              "WebkitTapHighlightColor": "rgba(0,0,0,0)",
+              "backgroundColor": "#ffffff",
+              "borderRadius": "0px",
+              "boxShadow": "0 3px 10px rgba(0, 0, 0, 0.16),
+                     0 3px 10px rgba(0, 0, 0, 0.23)",
+              "boxSizing": "border-box",
+              "color": "rgba(0, 0, 0, 0.87)",
+              "fontFamily": "Roboto, sans-serif",
+              "height": "100%",
+              "left": 0,
+              "muiPrepared": true,
+              "overflow": "auto",
+              "position": "fixed",
+              "top": 0,
+              "transform": "translate(-310px, 0)",
+              "transition": "transform 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+              "width": 300,
+              "zIndex": 1300,
+            }
+          }
+        >
+          <section
+            className="content-sidenav"
+          >
+            <header>
+              <button
+                className="btn waves-effect waves-light btn-large btn-floating main-icon delete-sidenav grey lighten-2"
+                disabled={false}
+                icon="close"
+                onClick={[Function]}
+              >
+                <i
+                  className="material-icons"
+                >
+                  close
+                </i>
+              </button>
+              <h4
+                id="user-header"
+              >
+                V
+                G
+              </h4>
+              <h5>
+                Welcome
+              </h5>
+            </header>
+            <ul
+              className="collapsible"
+              data-collapsible="expandable"
+            >
+              <li
+                onSelect={[Function]}
+              >
+                <div
+                  className="collapsible-header"
+                  onClick={[Function]}
+                >
+                  <i
+                    className="material-icons"
+                  >
+                    chevron_right
+                    folder
+                  </i>
+                  new Folder (1)
+                </div>
+                <div
+                  className="icon-menu"
+                >
+                  <div
+                    className={undefined}
+                    onClick={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    style={
+                      Object {
+                        "display": "inline-block",
+                        "muiPrepared": true,
+                        "position": "relative",
+                      }
+                    }
+                  >
+                    <button
+                      disabled={false}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseOut={[Function]}
+                      onTouchStart={[Function]}
+                      style={
+                        Object {
+                          "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+                          "background": "none",
+                          "border": 10,
+                          "boxSizing": "border-box",
+                          "cursor": "pointer",
+                          "display": "inline-block",
+                          "fontFamily": "Roboto, sans-serif",
+                          "fontSize": 0,
+                          "fontWeight": "inherit",
+                          "height": 48,
+                          "margin": 0,
+                          "muiPrepared": true,
+                          "outline": "none",
+                          "overflow": "visible",
+                          "padding": 12,
+                          "position": "relative",
+                          "textDecoration": "none",
+                          "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                          "verticalAlign": null,
+                          "width": 48,
+                        }
+                      }
+                      tabIndex={0}
+                      type="button"
+                    >
+                      <div
+                        onMouseDown={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchStart={[Function]}
+                      >
+                        <svg
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          style={
+                            Object {
+                              "color": "rgba(0, 0, 0, 0.87)",
+                              "display": "inline-block",
+                              "fill": "currentColor",
+                              "height": 24,
+                              "muiPrepared": true,
+                              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                              "userSelect": "none",
+                              "width": 24,
+                            }
+                          }
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                          />
+                        </svg>
+                      </div>
+                    </button>
+                    <div
+                      style={
+                        Object {
+                          "display": "none",
+                        }
+                      }
+                    />
+                  </div>
+                </div>
+                <div
+                  className="collapsible-body grey lighten-2"
+                >
+                  <ul
+                    className="content-files"
+                  >
+                    <li
+                      className="li-item-file false"
+                      onClick={[Function]}
+                    >
+                      <a
+                        className="files grey lighten-3\\""
+                        href="/0/2/edit"
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="files grey lighten-3"
+                          type="submit"
+                        >
+                          new file (1)
+                        </button>
+                      </a>
+                      <button
+                        className="button-delete"
+                        disabled={false}
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseOut={[Function]}
+                        onTouchStart={[Function]}
+                        style={
+                          Object {
+                            "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+                            "background": "none",
+                            "border": 10,
+                            "boxSizing": "border-box",
+                            "cursor": "pointer",
+                            "display": "inline-block",
+                            "fontFamily": "Roboto, sans-serif",
+                            "fontSize": 0,
+                            "fontWeight": "inherit",
+                            "height": 48,
+                            "margin": 0,
+                            "muiPrepared": true,
+                            "outline": "none",
+                            "overflow": "visible",
+                            "padding": 12,
+                            "position": "relative",
+                            "textDecoration": "none",
+                            "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                            "verticalAlign": null,
+                            "width": 48,
+                          }
+                        }
+                        tabIndex={0}
+                        type="button"
+                      >
+                        <div
+                          onMouseDown={[Function]}
+                          onMouseLeave={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchStart={[Function]}
+                        >
+                          <svg
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            style={
+                              Object {
+                                "color": "rgba(0, 0, 0, 0.87)",
+                                "display": "inline-block",
+                                "fill": "currentColor",
+                                "height": 24,
+                                "muiPrepared": true,
+                                "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                "userSelect": "none",
+                                "width": 24,
+                              }
+                            }
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                            />
+                          </svg>
+                        </div>
+                      </button>
+                    </li>
+                    <li
+                      className="li-item-file false"
+                      onClick={[Function]}
+                    >
+                      <a
+                        className="files grey lighten-3\\""
+                        href="/0/3/edit"
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="files grey lighten-3"
+                          type="submit"
+                        >
+                          new file (2)
+                        </button>
+                      </a>
+                      <button
+                        className="button-delete"
+                        disabled={false}
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseOut={[Function]}
+                        onTouchStart={[Function]}
+                        style={
+                          Object {
+                            "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+                            "background": "none",
+                            "border": 10,
+                            "boxSizing": "border-box",
+                            "cursor": "pointer",
+                            "display": "inline-block",
+                            "fontFamily": "Roboto, sans-serif",
+                            "fontSize": 0,
+                            "fontWeight": "inherit",
+                            "height": 48,
+                            "margin": 0,
+                            "muiPrepared": true,
+                            "outline": "none",
+                            "overflow": "visible",
+                            "padding": 12,
+                            "position": "relative",
+                            "textDecoration": "none",
+                            "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                            "verticalAlign": null,
+                            "width": 48,
+                          }
+                        }
+                        tabIndex={0}
+                        type="button"
+                      >
+                        <div
+                          onMouseDown={[Function]}
+                          onMouseLeave={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchStart={[Function]}
+                        >
+                          <svg
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            style={
+                              Object {
+                                "color": "rgba(0, 0, 0, 0.87)",
+                                "display": "inline-block",
+                                "fill": "currentColor",
+                                "height": 24,
+                                "muiPrepared": true,
+                                "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                "userSelect": "none",
+                                "width": 24,
+                              }
+                            }
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                            />
+                          </svg>
+                        </div>
+                      </button>
+                    </li>
+                    <button
+                      className="btn waves-effect waves-light btn-large btn-floating main-icon add-files grey lighten-3"
+                      disabled={false}
+                      icon="add"
+                      onClick={[Function]}
+                    >
+                      <i
+                        className="material-icons"
+                      >
+                        add
+                      </i>
+                    </button>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <ul
+              className="collapsible"
+              data-collapsible="expandable"
+            >
+              <li
+                onSelect={[Function]}
+              >
+                <div
+                  className="collapsible-header"
+                  onClick={[Function]}
+                >
+                  <i
+                    className="material-icons"
+                  >
+                    chevron_right
+                    folder
+                  </i>
+                  new Folder (2)
+                </div>
+                <div
+                  className="icon-menu"
+                >
+                  <div
+                    className={undefined}
+                    onClick={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    style={
+                      Object {
+                        "display": "inline-block",
+                        "muiPrepared": true,
+                        "position": "relative",
+                      }
+                    }
+                  >
+                    <button
+                      disabled={false}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseOut={[Function]}
+                      onTouchStart={[Function]}
+                      style={
+                        Object {
+                          "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+                          "background": "none",
+                          "border": 10,
+                          "boxSizing": "border-box",
+                          "cursor": "pointer",
+                          "display": "inline-block",
+                          "fontFamily": "Roboto, sans-serif",
+                          "fontSize": 0,
+                          "fontWeight": "inherit",
+                          "height": 48,
+                          "margin": 0,
+                          "muiPrepared": true,
+                          "outline": "none",
+                          "overflow": "visible",
+                          "padding": 12,
+                          "position": "relative",
+                          "textDecoration": "none",
+                          "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                          "verticalAlign": null,
+                          "width": 48,
+                        }
+                      }
+                      tabIndex={0}
+                      type="button"
+                    >
+                      <div
+                        onMouseDown={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchStart={[Function]}
+                      >
+                        <svg
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          style={
+                            Object {
+                              "color": "rgba(0, 0, 0, 0.87)",
+                              "display": "inline-block",
+                              "fill": "currentColor",
+                              "height": 24,
+                              "muiPrepared": true,
+                              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                              "userSelect": "none",
+                              "width": 24,
+                            }
+                          }
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                          />
+                        </svg>
+                      </div>
+                    </button>
+                    <div
+                      style={
+                        Object {
+                          "display": "none",
+                        }
+                      }
+                    />
+                  </div>
+                </div>
+                <div
+                  className="collapsible-body grey lighten-2"
+                >
+                  <ul
+                    className="content-files"
+                  >
+                    <li
+                      className="li-item-file false"
+                      onClick={[Function]}
+                    >
+                      <a
+                        className="files grey lighten-3\\""
+                        href="/1/4/edit"
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="files grey lighten-3"
+                          type="submit"
+                        >
+                          new file (3)
+                        </button>
+                      </a>
+                      <button
+                        className="button-delete"
+                        disabled={false}
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseOut={[Function]}
+                        onTouchStart={[Function]}
+                        style={
+                          Object {
+                            "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+                            "background": "none",
+                            "border": 10,
+                            "boxSizing": "border-box",
+                            "cursor": "pointer",
+                            "display": "inline-block",
+                            "fontFamily": "Roboto, sans-serif",
+                            "fontSize": 0,
+                            "fontWeight": "inherit",
+                            "height": 48,
+                            "margin": 0,
+                            "muiPrepared": true,
+                            "outline": "none",
+                            "overflow": "visible",
+                            "padding": 12,
+                            "position": "relative",
+                            "textDecoration": "none",
+                            "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                            "verticalAlign": null,
+                            "width": 48,
+                          }
+                        }
+                        tabIndex={0}
+                        type="button"
+                      >
+                        <div
+                          onMouseDown={[Function]}
+                          onMouseLeave={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchStart={[Function]}
+                        >
+                          <svg
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            style={
+                              Object {
+                                "color": "rgba(0, 0, 0, 0.87)",
+                                "display": "inline-block",
+                                "fill": "currentColor",
+                                "height": 24,
+                                "muiPrepared": true,
+                                "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                "userSelect": "none",
+                                "width": 24,
+                              }
+                            }
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                            />
+                          </svg>
+                        </div>
+                      </button>
+                    </li>
+                    <li
+                      className="li-item-file false"
+                      onClick={[Function]}
+                    >
+                      <a
+                        className="files grey lighten-3\\""
+                        href="/1/5/edit"
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="files grey lighten-3"
+                          type="submit"
+                        >
+                          new file (4)
+                        </button>
+                      </a>
+                      <button
+                        className="button-delete"
+                        disabled={false}
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseOut={[Function]}
+                        onTouchStart={[Function]}
+                        style={
+                          Object {
+                            "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+                            "background": "none",
+                            "border": 10,
+                            "boxSizing": "border-box",
+                            "cursor": "pointer",
+                            "display": "inline-block",
+                            "fontFamily": "Roboto, sans-serif",
+                            "fontSize": 0,
+                            "fontWeight": "inherit",
+                            "height": 48,
+                            "margin": 0,
+                            "muiPrepared": true,
+                            "outline": "none",
+                            "overflow": "visible",
+                            "padding": 12,
+                            "position": "relative",
+                            "textDecoration": "none",
+                            "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                            "verticalAlign": null,
+                            "width": 48,
+                          }
+                        }
+                        tabIndex={0}
+                        type="button"
+                      >
+                        <div
+                          onMouseDown={[Function]}
+                          onMouseLeave={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchStart={[Function]}
+                        >
+                          <svg
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            style={
+                              Object {
+                                "color": "rgba(0, 0, 0, 0.87)",
+                                "display": "inline-block",
+                                "fill": "currentColor",
+                                "height": 24,
+                                "muiPrepared": true,
+                                "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                "userSelect": "none",
+                                "width": 24,
+                              }
+                            }
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                            />
+                          </svg>
+                        </div>
+                      </button>
+                    </li>
+                    <button
+                      className="btn waves-effect waves-light btn-large btn-floating main-icon add-files grey lighten-3"
+                      disabled={false}
+                      icon="add"
+                      onClick={[Function]}
+                    >
+                      <i
+                        className="material-icons"
+                      >
+                        add
+                      </i>
+                    </button>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <button
+              className="btn waves-effect waves-light btn-large btn-floating main-icon add-folder grey"
+              disabled={false}
+              icon="add"
+              onClick={[Function]}
+            >
+              <i
+                className="material-icons"
+              >
+                add
+              </i>
+            </button>
+          </section>
+        </div>
+      </div>
+    </div>
+  </article>
+  <div
+    className="MarkDownEdited"
+  >
+    <div
+      className="mardownViwer"
+    >
+      <h1>
+        Welcome to MDitor
+      </h1>
+      <p>
+        <img
+          alt="Generic badge"
+          src="https://img.shields.io/badge/MDitor-v0.1.0-blue.svg"
+        />
+         
+        
+        <a
+          href="https://github.com/VGamezz19/MDitor"
+        >
+          <img
+            alt="GitHub forks"
+            src="https://img.shields.io/github/forks/VGamezz19/MDitor.svg?style=social&logo=github&label=Fork"
+          />
+        </a>
+      </p>
+      <p>
+        Hey! there is a 
+        <a
+          href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
+        >
+          MarkDown
+        </a>
+         
+        Editor to do you'r  crazy notes! but 
+        <strong>
+          take care
+        </strong>
+         this is just a 
+        <code>
+          alpha
+        </code>
+         and probably you will found some bugs, but we are going to work
+         to get better MDitor 😁 
+      </p>
+      <h3>
+        Support
+      </h3>
+      <table>
+        <thead>
+          <tr>
+            <th
+              style={
+                Object {
+                  "textAlign": "left",
+                }
+              }
+            >
+              Spect
+            </th>
+            <th
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <img
+                alt="Generic badge"
+                src="https://img.shields.io/badge/build-passing-brightgreen.svg"
+              />
+                 /   
+              <img
+                alt="Generic badge"
+                src="https://img.shields.io/badge/build-failure-red.svg"
+              />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              style={
+                Object {
+                  "textAlign": "left",
+                }
+              }
+            >
+              <strong>
+                Bold
+              </strong>
+            </td>
+            <td
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <img
+                alt="Generic badge"
+                src="https://img.shields.io/badge/build-passing-brightgreen.svg"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td
+              style={
+                Object {
+                  "textAlign": "left",
+                }
+              }
+            >
+              <em>
+                Italic
+              </em>
+            </td>
+            <td
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <img
+                alt="Generic badge"
+                src="https://img.shields.io/badge/build-passing-brightgreen.svg"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td
+              style={
+                Object {
+                  "textAlign": "left",
+                }
+              }
+            >
+              <code>
+                Block
+              </code>
+            </td>
+            <td
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <img
+                alt="Generic badge"
+                src="https://img.shields.io/badge/build-passing-brightgreen.svg"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td
+              style={
+                Object {
+                  "textAlign": "left",
+                }
+              }
+            >
+              Heading 
+              <span>
+                &lt;h1&gt;
+              </span>
+               - 
+              <span>
+                &lt;H6&gt;
+              </span>
+            </td>
+            <td
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <img
+                alt="Generic badge"
+                src="https://img.shields.io/badge/build-passing-brightgreen.svg"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td
+              style={
+                Object {
+                  "textAlign": "left",
+                }
+              }
+            >
+              <span>
+                &lt;hr&gt;
+              </span>
+            </td>
+            <td
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              ︎
+              <img
+                alt="Generic badge"
+                src="https://img.shields.io/badge/build-passing-brightgreen.svg"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td
+              style={
+                Object {
+                  "textAlign": "left",
+                }
+              }
+            >
+              blockquote
+            </td>
+            <td
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <img
+                alt="Generic badge"
+                src="https://img.shields.io/badge/build-passing-brightgreen.svg"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td
+              style={
+                Object {
+                  "textAlign": "left",
+                }
+              }
+            >
+              list
+            </td>
+            <td
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <img
+                alt="Generic badge"
+                src="https://img.shields.io/badge/build-passing-brightgreen.svg"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td
+              style={
+                Object {
+                  "textAlign": "left",
+                }
+              }
+            >
+              <a
+                href="www.google.com"
+              >
+                Ancors
+              </a>
+            </td>
+            <td
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <img
+                alt="Generic badge"
+                src="https://img.shields.io/badge/build-passing-brightgreen.svg"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td
+              style={
+                Object {
+                  "textAlign": "left",
+                }
+              }
+            >
+              IMG
+            </td>
+            <td
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <img
+                alt="Generic badge"
+                src="https://img.shields.io/badge/build-passing-brightgreen.svg"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td
+              style={
+                Object {
+                  "textAlign": "left",
+                }
+              }
+            >
+              Table
+            </td>
+            <td
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <img
+                alt="Generic badge"
+                src="https://img.shields.io/badge/build-passing-brightgreen.svg"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td
+              style={
+                Object {
+                  "textAlign": "left",
+                }
+              }
+            >
+              Code
+            </td>
+            <td
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <img
+                alt="Generic badge"
+                src="https://img.shields.io/badge/build-passing-brightgreen.svg"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td
+              style={
+                Object {
+                  "textAlign": "left",
+                }
+              }
+            >
+              Color lenguaje-code
+            </td>
+            <td
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <img
+                alt="Generic badge"
+                src="https://img.shields.io/badge/build-failure-red.svg"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>
+        Helpers
+      </h3>
+      <p>
+        Hey! if you doesn't know how to write in MarkDown, 
+        <strong>
+          be calm
+        </strong>
+        ! we provide you some examples! take easy and pay attention 📝
+      </p>
+      <p>
+        //Todo Examples
+      </p>
+      <h3>
+        Advance Knowledge
+      </h3>
+      <ul>
+        <li>
+          <code>
+            root
+          </code>
+           - Root container element that contains the rendered markdown
+        </li>
+        <li>
+          <code>
+            text
+          </code>
+           - Text rendered inside of other elements, such as paragraphs
+        </li>
+        <li>
+          <code>
+            break
+          </code>
+           - Hard-break (
+          <code>
+            &lt;br&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            paragraph
+          </code>
+           - Paragraph (
+          <code>
+            &lt;p&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            emphasis
+          </code>
+           - Emphasis (
+          <code>
+            &lt;em&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            strong
+          </code>
+           - Strong/bold (
+          <code>
+            &lt;strong&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            thematicBreak
+          </code>
+           - Horizontal rule / thematic break (
+          <code>
+            &lt;hr&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            blockquote
+          </code>
+           - Block quote (
+          <code>
+            &lt;blockquote&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            delete
+          </code>
+           - Deleted/strike-through (
+          <code>
+            &lt;del&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            link
+          </code>
+           - Link (
+          <code>
+            &lt;a&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            image
+          </code>
+           - Image (
+          <code>
+            &lt;img&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            linkReference
+          </code>
+           - Link (through a reference) (
+          <code>
+            &lt;a&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            imageReference
+          </code>
+           - Image (through a reference) (
+          <code>
+            &lt;img&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            table
+          </code>
+           - Table (
+          <code>
+            &lt;table&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            tableHead
+          </code>
+           - Table head (
+          <code>
+            &lt;thead&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            tableBody
+          </code>
+           - Table body (
+          <code>
+            &lt;tbody&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            tableRow
+          </code>
+           - Table row (
+          <code>
+            &lt;tr&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            tableCell
+          </code>
+           - Table cell (
+          <code>
+            &lt;td&gt;
+          </code>
+          /
+          <code>
+            &lt;th&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            list
+          </code>
+           - List (
+          <code>
+            &lt;ul&gt;
+          </code>
+          /
+          <code>
+            &lt;ol&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            listItem
+          </code>
+           - List item (
+          <code>
+            &lt;li&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            heading
+          </code>
+           - Heading (
+          <code>
+            &lt;h1&gt;
+          </code>
+          -
+          <code>
+            &lt;h6&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            inlineCode
+          </code>
+           - Inline code (
+          <code>
+            &lt;code&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            code
+          </code>
+           - Block of code (
+          <code>
+            &lt;pre&gt;&lt;code&gt;
+          </code>
+          )
+        </li>
+        <li>
+          <code>
+            html
+          </code>
+           - HTML node (Best-effort rendering)
+        </li>
+      </ul>
+      <pre>
+        <code
+          className="language-javascript"
+        >
+          console.log("Test Color")
+        </code>
+      </pre>
+    </div>
+  </div>
+</section>
+`;
