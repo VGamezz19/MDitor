@@ -1,10 +1,15 @@
 import VisualFile from './';
 import API from '../../../../api/ApiClient'
+import logicApp from '../../../logicApp'
 
-const folder = API.getFolders()
+const dataFolders = API.getFolders()
+/**
+ * Mandatory prototype File
+ */
+const folders = logicApp.refactorDataToFileType(dataFolders);
 
-const file = folder[0].files[0]
-const folderId = folder[0].id
+const file = folders[0].files[0]
+const folderId = folders[0].getId()
 const logicFile = {
   create: () => console.log("Create file"),
   delete: () => console.log("Delete file")
@@ -17,7 +22,8 @@ export default [{
   props: {
     file,
     folderId,
-    logicFile
+    logicFile,
+    handleToggleSidenav: () => console.log("handle toggle sidenav")
   }
 }, {
   component: VisualFile,
@@ -26,7 +32,8 @@ export default [{
   props: {
     file,
     folderId,
-    logicFile
+    logicFile,
+    handleToggleSidenav: () => console.log("handle toggle sidenav")
   }
 }, {
   component: VisualFile,
@@ -35,6 +42,7 @@ export default [{
   props: {
     file,
     folderId,
-    logicFile
+    logicFile,
+    handleToggleSidenav: () => console.log("handle toggle sidenav")
   }
 }];
