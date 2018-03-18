@@ -1,8 +1,6 @@
 import { Response, Request, NextFunction } from "express";
 
-import dotenv from "dotenv";
-
-dotenv.config();
+require("dotenv").config();
 
 const express = require("express");
 
@@ -20,7 +18,7 @@ app.get("/", (req: Request, res: Response) => {
 
 // ============= 🔥 =============
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => console.log(`server listen in port ${PORT}`));
 

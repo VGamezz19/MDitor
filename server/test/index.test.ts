@@ -1,5 +1,6 @@
 import request from "supertest";
 import { app } from "../src/";
+import "jest";
 
 describe("index.ts app.listen(PORT)", () => {
   it("should return 404", (done) => {
