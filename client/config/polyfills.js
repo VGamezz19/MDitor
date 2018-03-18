@@ -1,4 +1,5 @@
-'use strict';
+import $ from 'jquery';
+global.$ = global.jQuery = $;
 
 if (typeof Promise === 'undefined') {
   // Rejection tracking prevents a common issue where React gets into an

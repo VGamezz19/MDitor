@@ -62,6 +62,7 @@
     "cosmos:export": "cosmos-export"
   },
   "devDependencies": {
+    "materialize-css": "^0.100.2",
     "node-sass": "^4.7.2",
     "react-cosmos": "^3.7.1",
     "react-cosmos-router-proxy": "^3.6.1",
@@ -75,8 +76,8 @@
       "<rootDir>/config/polyfills.js"
     ],
     "testMatch": [
-      "<rootDir>/**/__tests__/**/*.{js,jsx,mjs}",
-      "<rootDir>/**/?(*.)(spec|test).{js,jsx,mjs}"
+      "<rootDir>/tests/**/*.{js,jsx,mjs}",
+      "<rootDir>/tests/?(*.)(spec|test).{js,jsx,mjs}"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
