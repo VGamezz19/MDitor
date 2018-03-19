@@ -35,16 +35,15 @@ const logic = {
             });
     },
 
-    updateFolder: function updateFolder(_id: mongoose.Types.ObjectId, title: string): Promise<mongoose.Types.ObjectId> | never {
+    updateFolder: function updateFolder(_id: mongoose.Types.ObjectId, title: string): Promise<{ n: 1, nModified: 1, ok: 1 }> | never {
         return Promise.resolve()
             .then(() => {
                 validate({ _id, title });
                 return Folder.updateOne({ _id }, { title });
-            })
-            .then(folder => folder._id);
+            });
     },
 
-    updateFile: function updateFile(_id: mongoose.Types.ObjectId, title: string): Promise<mongoose.Types.ObjectId> | never {
+    updateFile: function updateFile(_id: mongoose.Types.ObjectId, title: string): Promise<{}> | never {
         return Promise.resolve()
             .then(() => {
                 validate({ _id, title });
@@ -64,16 +63,5 @@ const logic = {
             });
     }
 };
-
-// getEventsByUserId(userId) {
-//     return new Promise((resolve, reject) => {
-//         User.find({ _id: userId })
-//             .then(user => {
-//                 Event.populate(user, { path: 'events', select: 'company image subtitle title' })
-//                     .then(resolve)
-//             })
-//             .catch(reject)
-//     })
-// },
 
 export { logic };

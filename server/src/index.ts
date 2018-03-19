@@ -39,8 +39,10 @@ async function create () {
     await logic.createFile(idFolder, "pe5463434243neasdasdasd");
         // .then(console.log);
 
-        logic.listFolder(idFolder)
-            .then(console.log);
+        // logic.listFolder(idFolder)
+        //     .then(console.log);
+
+        logic.updateFolder(idFolder, "newTitle").then(console.log);
 }
 
 create();

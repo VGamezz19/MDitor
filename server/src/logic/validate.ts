@@ -4,7 +4,7 @@ import { IFile, IFolder } from "../Models";
  * validate File/Folder;
  * @param item
  */
-function validate(item: object): void | never {
+function validate(item: any): void | never {
     for (const prop in item) {
         const value = item[prop];
 
