@@ -1,4 +1,11 @@
-import * as File from "./File";
-// import * as IFile from "./File.interface";
+/**
+ * Type definitions for File v1.0.0
+ * Project: MDitor/Server
+ */
+import { Document, Schema, Model } from "mongoose";
 
-export { File };
+import { IFileModel } from "./File.interface";
+
+import { FileSchema , File } from "./File";
+
+export {IFileModel, FileSchema, File };

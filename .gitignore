@@ -25,3 +25,4 @@ cosmos-export
 lib
 node_modules
 dist
+.env

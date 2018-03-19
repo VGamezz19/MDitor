@@ -10,64 +10,45 @@ const bodyParsers = require("body-parser");
 
 const formBodyParser = bodyParsers.urlencoded({ extended: false });
 
-// app.use(bodyParsers)
+require("./db");
 
 app.get("/", (req: Request, res: Response) => {
     res.send("Hello World");
 });
 
-const mongoose = require("mongoose");
+import { File } from "./Models/File/";
 
-mongoose.connect("mongodb://localhost/MDitor");
+import { Folder } from "./Models/Folder";
 
-import * as FileModel from "./Models/File";
-
-// FileModel.File.FileModel
-
-const file = new FileModel.File.FileModel({ title: "testing File!" });
-
-file.save(function (err) {
-    if (err) return console.error(err);
-
-    console.log("Save it!");
-});
-
-import * as FolderModel from "./Models/Folder";
-
-// const fileForFoler = new FileModel.File.FileModel({ title: "testing Folder File!" });
-
-// const folder = new FolderModel.Folder.FolderModel({ title: "Folder", file: fileForFoler._id });
+// const folder = new Folder({
+//     _id: new mongoose.Types.ObjectId(),
+//     title: "HellowFolder1",
+//     files: []
+// });
 
 
-const folder = new FolderModel.Folder.FolderModel({
-    _id: new mongoose.Types.ObjectId(),
-    title: "folder inside have files3123233"
-});
+// folder.save((err: never) => {
+//     if (err) return console.error(err);
 
-folder.save(function (err) {
-    if (err) return console.error(err);
+//     const file = new File({
+//         _id: new mongoose.Types.ObjectId(),
+//         title: "Hello Fil1",
+//         folder: folder._id
+//     });
 
-    const file = new FileModel.File.FileModel({
-        title: "file inside folde1231231r",
-        folder: folder._id
-    });
+//     file.save();
 
-    file.save(function (err) {
-        if (err) return console.error(err);
+//     folder.files.push(file._id);
+//     folder.save();
+// });
 
-    });
-});
-FileModel.File.FileModel
-    .findOne({ title: "file inside folde1231231r" })
-    .populate("folder")
-    .exec((err, data) => {
-        if (err) return console.error(err);
+// const id = "5aafa97ac10be1163218488e";
+// File.findById(id).populate("file").exec(function (err: never, file: any ) {
+//     if (err) return console.error(err);
 
-        console.log(data);
-        console.log(data.folder.title);
-    });
-
-
+//     console.log(file);
+//     // prints "The author is Ian Fleming"
+//   });
 // ============= 🔥 =============
 
 const PORT = process.env.PORT || 8080;

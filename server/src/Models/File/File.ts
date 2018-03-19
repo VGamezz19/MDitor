@@ -1,10 +1,9 @@
-import { Document, Schema, Model, model } from "mongoose";
+import { Schema, Model, model } from "mongoose";
+import { IFileModel } from "./File.interface";
 
 export const FileSchema: Schema = new Schema({
-  id: String,
   title: String,
-  content: String,
-  folder: { type: Schema.Types.ObjectId, ref: "Folder" }
+  content: String
 });
 
-export const FileModel = model("File", FileSchema);
+export const File: Model<IFileModel> = model<IFileModel>("File", FileSchema);
