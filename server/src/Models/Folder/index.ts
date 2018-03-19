@@ -4,8 +4,8 @@
  */
 import { Document, Schema, Model } from "mongoose";
 
-import { IFolderModel } from "./Folder.interface";
+import { IFolderModel, IFolder } from "./Folder.interface";
 
 import { FolderSchema , Folder } from "./Folder";
 
-export { IFolderModel, FolderSchema, Folder };
+export { IFolder, IFolderModel, FolderSchema, Folder };

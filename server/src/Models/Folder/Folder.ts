@@ -3,9 +3,8 @@ import { IFolderModel } from "./Folder.interface";
 import { IFileModel } from "../File";
 
 export const FolderSchema: Schema = new Schema({
-
   title: String,
-  files: Array
+  files: [{ type: Schema.Types.ObjectId, ref: "File" }]
 });
 
 // FolderSchema.virtual("files", {

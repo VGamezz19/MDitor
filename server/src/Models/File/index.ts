@@ -4,8 +4,8 @@
  */
 import { Document, Schema, Model } from "mongoose";
 
-import { IFileModel } from "./File.interface";
+import { IFile, IFileModel } from "./File.interface";
 
 import { FileSchema , File } from "./File";
 
-export {IFileModel, FileSchema, File };
+export {IFile, IFileModel, FileSchema, File };

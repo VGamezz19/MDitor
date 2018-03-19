@@ -1,6 +1,13 @@
 import { Document } from "mongoose";
 
-export interface IFileModel extends Document {
+
+export interface IFile {
+    title: String;
+    content: String;
+}
+
+
+export interface IFileModel extends IFile, Document {
     title: String;
     content: String;
 }
