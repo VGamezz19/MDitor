@@ -1,21 +1,6 @@
 import { validate } from "../src/logic";
 import "jest";
 
-
-// function validate(item: any): void | never {
-//     for (const prop in item) {
-//         const value = item[prop];
-
-//         if (typeof value === "undefined") throw Error(`${prop} cannot be undefined or empty`);
-
-//         if (typeof value === "string")  if (!value.trim().length) throw Error(`${prop} cannot be undefined or empty`);
-
-//     }
-//     return;
-// }
-
-// export { validate };
-
 describe("function Validate", () => {
 
     test("Should exist", () => {
@@ -25,7 +10,7 @@ describe("function Validate", () => {
         expect(validate).toBeInstanceOf(Function);
     });
 
-    test("Should throw an Error", () => {
+    test("Should throw an Error when enter no Object", () => {
 
         const valueUndefined = undefined;
 
@@ -55,5 +40,38 @@ describe("function Validate", () => {
         expect(function () { validate(valueEmptyObject); }).not.toThrow("validate(item: Object{}) only use Objects");
 
         expect(function () { validate(valueFunction); }).toThrow("validate(item: Object{}) only use Objects");
+    });
+
+    test("Should throw an Error when enter correct Object {} with invalid prop", () => {
+
+        const objectValueUndefined = {
+            undefinedProp: undefined
+        };
+
+        const objectValueString = {
+            stringProp: ""
+        };
+
+        const objectValueStringSpace = {
+            stringSpaceProp: "    "
+        };
+
+        expect(function () { validate(objectValueUndefined); }).toThrow(`undefinedProp cannot be undefined or empty`);
+
+        expect(function () { validate(objectValueString); }).toThrow(`stringProp cannot be undefined or empty`);
+
+        expect(function () { validate(objectValueStringSpace); }).toThrow(`stringSpaceProp cannot be undefined or empty`);
+    });
+
+    test("Shouldn't return an Error", () => {
+        const correctObjectValidate = {
+            object: {},
+            array: [],
+            string: "asdsad",
+            number: 234324,
+            data: new Date()
+        };
+
+        expect(validate(correctObjectValidate));
     });
 });
