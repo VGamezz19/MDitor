@@ -39,6 +39,7 @@
     "nodemailer": "^4.4.1",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
+    "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-rc.4",
     "request": "^2.83.0",
