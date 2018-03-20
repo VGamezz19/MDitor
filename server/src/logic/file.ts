@@ -1,12 +1,11 @@
-import { File, Folder, IFolder, IFile, IFileModel } from "../Models";
-
+import { File, Folder, IFileModel } from "../Models";
 import { validate } from "./validate";
 import mongoose = require("mongoose");
 
 /**
  * file logic (bussines manager) Object (logic)
  *
- * Defined a logic with manager File Data.
+ * Defined a logic to manager File Data.
  *
  * @version 1.0.0
  */
@@ -21,7 +20,7 @@ const file = {
      *
      * @param {String} title - The title of the new File
      *
-     * @returns {mongoose.Types.ObjectId} file._id - The id from new File
+     * @returns {Promise<mongoose.Types.ObjectId> | never} file._id - The id from new File
      *
      * @throws {Error} - If not valid id or title not found
      */
@@ -55,7 +54,7 @@ const file = {
      *
      * @param {String} content - The content to update File
      *
-     * @returns {mongoose.Types.ObjectId} file._id - The id from updated File
+     * @returns {Promise<mongoose.Types.ObjectId> | never} file._id - The id from updated File
      *
      * @throws {Error} - If not valid id, title or content not found
      */
@@ -90,11 +89,11 @@ const file = {
      *
      * @param {mongoose.Types.ObjectId} _id - The id of the file
      *
-     * @returns {IFileModule} IFileModel
+     * @returns {Promise<IFileModel> | never} IFileModel
      *
      * @throws {Error} - If not valid id not found
      */
-    retrieve: function retrieveFile(_id: mongoose.Types.ObjectId) {
+    retrieve: function retrieveFile(_id: mongoose.Types.ObjectId): Promise<IFileModel> | never {
         return Promise.resolve()
             .then(() => {
 
@@ -108,9 +107,9 @@ const file = {
      *
      * List Files
      *
-     * @returns {Array<IFileModule>} Array of IFileModel
+     * @returns {mongoose.DocumentQuery<IFileModel[], IFileModel>} Array of IFileModel
      */
-    list: function listFile() {
+    list: function listFile(): mongoose.DocumentQuery<IFileModel[], IFileModel> {
 
         return File.find();
     },
@@ -125,11 +124,11 @@ const file = {
      *
      * @param {String} _id - The id of the file to delete
      *
-     * @returns {mongoose.Types.ObjectId} file._id - The id from delete File
+     * @returns {Promise<mongoose.Types.ObjectId> | never} file._id - The id from delete File
      *
      * @throws {Error} - If not valid id not found
      */
-    delete: function deleteFile(folderId: mongoose.Types.ObjectId, _id: mongoose.Types.ObjectId) {
+    delete: function deleteFile(folderId: mongoose.Types.ObjectId, _id: mongoose.Types.ObjectId): Promise<mongoose.Types.ObjectId> | never {
         return Promise.resolve()
             .then(() => {
 

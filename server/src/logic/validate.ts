@@ -1,5 +1,3 @@
-import { IFile, IFolder } from "../Models";
-
 /**
  * validate logic (bussines manager) Fucntion (logic)
  *
@@ -9,7 +7,7 @@ import { IFile, IFolder } from "../Models";
  *
  * @param {Object} item - The item to validate
  *
- * @returns {Boolean} IF all already ok, return true
+ * @returns {boolena | never} IF all already ok, return true
  *
  * @throws {Error} - If not valid throw an Error
  */
