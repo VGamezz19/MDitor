@@ -1,0 +1,154 @@
+{
+	"info": {
+		"name": "Folder API",
+		"_postman_id": "129da80c-585c-a72b-b24e-f5a0b8cbb7e4",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Folder Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"n\",\n  \"surname\": \"s\",\n  \"email\": \"e\",\n  \"username\": \"u\",\n  \"password\": \"p\"\n}"
+				},
+				"url": {
+					"raw": "localhost:5050/api/folder/5ab100acb6ccc06494cd7057",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"folder",
+						"5ab100acb6ccc06494cd7057"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Folder List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:5050/api/folder/",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"folder",
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Folder Retrieve",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:5050/api/folder/5ab0d3c39b2aa934330269a9",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"folder",
+						"5ab0d3c39b2aa934330269a9"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Folder Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\":\"asdsdsdstesting POSTMAN\"\n}"
+				},
+				"url": {
+					"raw": "localhost:5050/api/folder",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"folder"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Folder Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\":\"asdsdsdstesting POSTMAN asdsad dasasdadasdasd ad\"\n}"
+				},
+				"url": {
+					"raw": "localhost:5050/api/folder/5ab1326418f2897fa6dbfda4",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"folder",
+						"5ab1326418f2897fa6dbfda4"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

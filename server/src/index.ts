@@ -1,4 +1,4 @@
-import { folderRouter } from "./routes";
+import { folderRouter, fileRouter } from "./routes";
 
 require("dotenv").config();
 
@@ -9,6 +9,8 @@ const express = require("express");
 const app = express();
 
 app.use("/api", folderRouter);
+
+app.use("/api", fileRouter);
 
 // ============= 🔥 =============
 

@@ -34,7 +34,7 @@ const file = {
             })
             .then(async (folder) => {
 
-                const file = await File.create({ title, content: "" });
+                const file = await File.create({ title, content: "", folder: folder._id });
 
                 folder.files.push(file._id);
 
@@ -120,25 +120,23 @@ const file = {
      *
      * When you delete some File, also, her populate Folder delete to.
      *
-     * @param {mongoose.Types.ObjectId} folderId - The id of the folder
-     *
      * @param {String} _id - The id of the file to delete
      *
      * @returns {Promise<mongoose.Types.ObjectId> | never} file._id - The id from delete File
      *
      * @throws {Error} - If not valid id not found
      */
-    delete: function deleteFile(folderId: mongoose.Types.ObjectId, _id: mongoose.Types.ObjectId): Promise<mongoose.Types.ObjectId> | never {
+    delete: function deleteFile(_id: mongoose.Types.ObjectId): Promise<mongoose.Types.ObjectId> | never {
         return Promise.resolve()
             .then(() => {
 
                 validate({ _id });
 
-                return File.remove({ _id });
+                return File.findOneAndRemove({ _id });
             })
-            .then(() => {
+            .then((file) => {
 
-                return Folder.update({ _id: folderId }, { $pull: { files: _id } });
+                return Folder.update({ _id: file.folder }, { $pull: { files: _id } });
             })
             .then(() => _id);
     }

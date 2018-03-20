@@ -1,4 +1,4 @@
-import { Document } from "mongoose";
+import { Document, Types } from "mongoose";
 
 /**
  * File Data, interface (contract)
@@ -22,4 +22,5 @@ export interface IFile {
 export interface IFileModel extends IFile, Document {
     title: String;
     content: String;
+    folder: Types.ObjectId;
 }

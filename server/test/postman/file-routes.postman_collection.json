@@ -1,0 +1,136 @@
+{
+	"info": {
+		"name": "File API",
+		"_postman_id": "a79ad2b0-9357-3401-e8b6-327e6870d154",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "File List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:5050/api/file/",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"file",
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "File Retrieve",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:5050/api/file/5ab0e4ef0fd38f499862e710",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"file",
+						"5ab0e4ef0fd38f499862e710"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "File Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\":\"UPDATE POSTMON\",\n\t\"content\": \"NEW CONTENT YEYEYE\"\n}"
+				},
+				"url": {
+					"raw": "localhost:5050/api/file/5ab0e4ef0fd38f499862e710",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"file",
+						"5ab0e4ef0fd38f499862e710"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "File Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"folderId\":\"5ab1326418f2897fa6dbfda4\",\n\t\"title\": \"NEW YEYEYE\"\n}"
+				},
+				"url": {
+					"raw": "localhost:5050/api/file/",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"file",
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "File Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:5050/api/file/5ab13efc93b01a8705850d08",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"file",
+						"5ab13efc93b01a8705850d08"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

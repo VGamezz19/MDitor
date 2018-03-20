@@ -541,7 +541,7 @@ describe("Logic File", () => {
                 // done();
                 fileTest = file;
 
-                return logic.file.delete(folderID, fileTest._id);
+                return logic.file.delete(fileTest._id);
             })
             .then(id => {
 
