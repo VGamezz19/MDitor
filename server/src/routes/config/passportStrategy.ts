@@ -3,20 +3,21 @@ import { User } from "../../models/User";
 import { CallbackHandler } from "supertest";
 
 const LocalStrategy = require("passport-local");
+const { Strategy: JwtStrategy, ExtractJwt } = require("passport-jwt");
 
 const secret = process.env.JWT_SECRET;
 
 export const strategyUser = passport.use(
-    new LocalStrategy(
-        function (username: string, password: string, done: any): void {
+    new JwtStrategy(
+        {
+            secretOrKey: secret,
+            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
+        },
+        (payload: any, done: any) => {
+            const { id } = payload;
 
-            User.findOne({ username, password })
-                .then(user => {
-
-                    if (!user) return done(undefined, false);
-
-                    done(undefined, user);
-                })
+            User.findById(id)
+                .then(user => done(undefined, user ? user : false))
                 .catch(done);
         }
     )
