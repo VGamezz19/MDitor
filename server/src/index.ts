@@ -1,26 +1,14 @@
-import { Response, Request, NextFunction } from "express";
-
-import { logic } from "./logic";
-
-import { Folder } from "./Models";
-
-import mongoose from "mongoose";
+import { folderRouter } from "./routes";
 
 require("dotenv").config();
+
+require("./db");
 
 const express = require("express");
 
 const app = express();
 
-const bodyParsers = require("body-parser");
-
-const formBodyParser = bodyParsers.urlencoded({ extended: false });
-
-require("./db");
-
-app.get("/", (req: Request, res: Response) => {
-    res.send("Hello World");
-});
+app.use("/api", folderRouter);
 
 // ============= 🔥 =============
 

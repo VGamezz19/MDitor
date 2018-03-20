@@ -16,8 +16,8 @@ describe("index.ts app.listen(PORT)", () => {
     request(app).get("/random")
       .expect(404, done);
   });
-  it("should return 200", (done) => {
-    request(app).get("/")
-      .expect(200, done);
-  });
+  // it("should return 200", (done) => {
+  //   request(app).get("/")
+  //     .expect(200, done);
+  // });
 });
