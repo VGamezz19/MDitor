@@ -61,4 +61,3 @@ const folder = {
 };
 
 export { folder, validate };
-
