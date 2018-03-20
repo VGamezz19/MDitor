@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { File, Folder, IFolder, IFile } from "../Models";
+import { File, Folder, IFolder, IFile, IFileModel } from "../Models";
 import { validate } from "./validate";
 import mongoose = require("mongoose");
 
@@ -35,19 +35,20 @@ const logic = {
             });
     },
 
-    updateFolder: function updateFolder(_id: mongoose.Types.ObjectId, title: string): Promise<{ n: 1, nModified: 1, ok: 1 }> | never {
+    updateFolder: function updateFolder(_id: mongoose.Types.ObjectId, title: string): Promise<mongoose.Types.ObjectId> | never {
         return Promise.resolve()
             .then(() => {
                 validate({ _id, title });
-                return Folder.updateOne({ _id }, { title });
-            });
+                return Folder.findOneAndUpdate({ _id }, { title });
+            })
+            .then(folder => folder._id);
     },
 
-    updateFile: function updateFile(_id: mongoose.Types.ObjectId, title: string): Promise<{}> | never {
+    updateFile: function updateFile(_id: mongoose.Types.ObjectId, title: string): Promise<mongoose.Types.ObjectId> | never {
         return Promise.resolve()
             .then(() => {
                 validate({ _id, title });
-                return File.updateOne({ _id }, { title });
+                return File.findOneAndUpdate({ _id }, { title });
             })
             .then(file => file._id);
     },
