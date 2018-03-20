@@ -1,6 +1,15 @@
 import request from "supertest";
-import { app } from "../src/";
+import { app, PORT } from "../src/";
 import "jest";
+
+describe(".env", () => {
+  test("should exist", () => {
+
+    expect(process.env.PORT);
+
+    expect(PORT);
+  });
+});
 
 describe("index.ts app.listen(PORT)", () => {
   it("should return 404", (done) => {

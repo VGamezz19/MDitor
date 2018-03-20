@@ -37,19 +37,6 @@ describe(".env", () => {
     });
 });
 
-describe("MongoDB, there is some error?", () => {
-
-    test("Should no throw Error", (done) => {
-
-        mongoose.connection.on("error", function (err) {
-
-            expect(!err);
-
-        });
-        setTimeout(() => done(), 4966);
-    });
-});
-
 describe("function Validate", () => {
 
     test("Should exist", () => {
@@ -62,7 +49,7 @@ describe("Logic Folder", () => {
 
     const title = "new Folder Test Jest";
 
-    test("Should create new Folder", (done) => {
+    test("Should create Folder", (done) => {
         const title = "new Folder Test Jest";
 
         return logic.folder.create(title)
@@ -75,7 +62,7 @@ describe("Logic Folder", () => {
                 done();
             });
     });
-    test("Should retrieve folder", (done) => {
+    test("Should retrieve Folder", (done) => {
 
         const title = "new Folder Test Jest";
 
@@ -110,7 +97,7 @@ describe("Logic Folder", () => {
             });
     });
 
-    test("Should Update Folder", (done) => {
+    test("Should update Folder", (done) => {
 
         const title = "new Folder Test Jest";
 
@@ -185,7 +172,7 @@ describe("Logic Folder", () => {
             });
     });
 
-    test("Should List Folders", () => {
+    test("Should list Folders", (done) => {
 
         //  mongoose.connection.db.collection("folders").drop();
 
@@ -359,14 +346,20 @@ describe("Logic Folder", () => {
                 expect(folders[4].files[1]).toBeInstanceOf(File);
 
                 expect(folders[4].files).toHaveLength(2);
+
+                done();
             });
     });
 
-    test("Should Delete Folders and populate Files", () => {
+    test("Should remove Folders and populate Files", (done) => {
 
         let masterFolder1;
 
         let masterFolder2;
+
+        let fileId1;
+
+        let fileId2;
 
         return logic.folder.list()
             .then((folders: Array<IFolderModel>) => {
@@ -443,6 +436,10 @@ describe("Logic Folder", () => {
 
                 masterFolder2 = folders[4];
 
+                fileId1 = masterFolder1.files[0]._id;
+
+                fileId2 = masterFolder1.files[1]._id;
+
                 return logic.folder.delete(masterFolder1._id);
             })
             .then(id => {
@@ -457,8 +454,20 @@ describe("Logic Folder", () => {
             .then(folders => {
 
                 expect(folders).toHaveLength(4);
-            });
 
-            // TODO, Find File and Expect there is a null value.
+                return logic.file.retrieve(fileId1);
+            })
+            .then(file => {
+
+                expect(!file);
+
+                return logic.file.retrieve(fileId2);
+            })
+            .then(file => {
+
+                expect(!file);
+
+                done();
+            });
     });
 });
