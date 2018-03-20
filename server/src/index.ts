@@ -31,18 +31,18 @@ app.get("/", (req: Request, res: Response) => {
 
 async function create () {
 
-    const idFolder = await logic.createFolder("SomeFolder Logic");
+    const idFolder = await logic.folder.create("SomeFolder Logic");
 
-    await logic.createFile(idFolder, "peneasdasdasd");
-    await logic.createFile(idFolder, "peneasdasdsadsdasdasd");
-    await logic.createFile(idFolder, "p123213e12neasdasdasd");
-    await logic.createFile(idFolder, "pe5463434243neasdasdasd");
+    await logic.file.create(idFolder, "peneasdasdasd");
+    await logic.file.create(idFolder, "peneasdasdsadsdasdasd");
+    await logic.file.create(idFolder, "p123213e12neasdasdasd");
+    await logic.file.create(idFolder, "pe5463434243neasdasdasd");
         // .then(console.log);
 
         // logic.listFolder(idFolder)
         //     .then(console.log);
 
-        logic.updateFolder(idFolder, "newTitle").then(console.log);
+        logic.folder.update(idFolder, "newTitle").then(console.log);
 }
 
 create();

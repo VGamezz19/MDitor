@@ -1,19 +1,33 @@
 import chai from "chai";
-import { logic } from "../src/logic";
+import { logic, validate } from "../src/logic";
 import { Folder, IFolder, IFolderModel } from "../src/Models";
 import mongoose from "mongoose";
 import "jest";
 
 beforeAll(() => {
+
     require("./db");
-    mongoose.connection.once("connected", () => mongoose.connection.db.collection("folders").drop());
+
+    mongoose.connection.once("connected", () => {
+
+        if (process.env.MONGO_DB_TEST === "MDitor") {
+
+            mongoose.disconnect();
+
+            throw new Error("!ERROR: You can't run this test in MDitor Database, you should use MDitor-Test Database");
+        }
+
+        mongoose.connection.db.collection("folders").drop();
+    });
 });
 
 afterAll(() => {
+
     mongoose.disconnect();
 });
 
 describe(".env", () => {
+
     test("Should exist", () => {
 
         expect(process.env.MONGO_HOST_TEST);
@@ -21,21 +35,27 @@ describe(".env", () => {
         expect(process.env.MONGO_PORT_TEST);
 
         expect(process.env.MONGO_DB_TEST);
-
     });
-    test("Should match the same value", () => {
+});
 
-        const mongo = {
-            host: process.env.MONGO_HOST_TEST,
-            port: process.env.MONGO_PORT_TEST,
-            database: process.env.MONGO_DB_TEST,
-        };
+describe("MongoDB, there is some error?", () => {
 
-        expect(process.env.MONGO_HOST_TEST).toEqual(mongo.host);
+    test("Should no throw Error", (done) => {
 
-        expect(process.env.MONGO_PORT_TEST).toEqual(mongo.port);
+        mongoose.connection.on("error", function (err) {
 
-        expect(process.env.MONGO_DB_TEST).toEqual(mongo.database);
+            expect(!err);
+
+        });
+        setTimeout(() => done(), 4966);
+    });
+});
+
+describe("function Validate", () => {
+
+    test("Should exist", () => {
+
+        expect(validate);
     });
 });
 
@@ -46,7 +66,7 @@ describe("Logic Folder", () => {
     test("Should create new Folder", (done) => {
         const title = "new Folder Test Jest";
 
-        return logic.createFolder(title)
+        return logic.folder.create(title)
             .then(id => {
 
                 expect(id);
@@ -60,14 +80,14 @@ describe("Logic Folder", () => {
 
         const title = "new Folder Test Jest";
 
-        return logic.createFolder(title)
+        return logic.folder.create(title)
             .then(id => {
 
                 expect(id);
 
                 expect(id).toBeInstanceOf(mongoose.Types.ObjectId);
 
-                return logic.listFolder(id);
+                return logic.folder.retrieve(id);
             })
             .then((folder: IFolderModel) => {
 
@@ -97,14 +117,14 @@ describe("Logic Folder", () => {
 
         let oldFolder;
 
-        return logic.createFolder(title)
+        return logic.folder.create(title)
             .then(id => {
 
                 expect(id);
 
                 expect(id).toBeInstanceOf(mongoose.Types.ObjectId);
 
-                return logic.listFolder(id);
+                return logic.folder.retrieve(id);
             })
             .then((folder: IFolderModel) => {
 
@@ -128,11 +148,13 @@ describe("Logic Folder", () => {
 
                 expect(folder).toBeInstanceOf(Folder);
 
-                return logic.updateFolder(folder._id, "newString Folder yeye");
+                return logic.folder.update(folder._id, "newString Folder yeye");
             })
-            .then(({ ok }) => {
+            .then((id) => {
 
-                expect(ok);
+                expect(id);
+
+                expect(id).toBeInstanceOf(mongoose.Types.ObjectId);
 
                 expect(oldFolder);
 
@@ -150,7 +172,7 @@ describe("Logic Folder", () => {
 
                 expect(oldFolder).toBeInstanceOf(Folder);
 
-                return logic.listFolder(oldFolder._id);
+                return logic.folder.retrieve(id);
             }).
             then((folder: IFolderModel) => {
 
