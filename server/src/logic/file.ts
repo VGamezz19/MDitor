@@ -10,14 +10,14 @@ const file = {
                 validate({ folderId, title });
                 return Folder.findById({ _id: folderId });
             })
-            .then(folder => {
+            .then(async (folder) => {
                 // console.log("creating-file ....", folder);
-                const file = new File({ title });
+                const file = new File({ title, content: "" });
 
                 folder.files.push(file._id);
 
-                file.save();
-                folder.save();
+                await file.save();
+                await folder.save();
 
                 return file._id;
             });

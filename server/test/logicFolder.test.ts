@@ -1,0 +1,464 @@
+import { logic, validate } from "../src/logic";
+import { File, Folder, IFolder, IFolderModel } from "../src/Models";
+import mongoose from "mongoose";
+import "jest";
+
+beforeAll(() => {
+
+    require("./db");
+
+    mongoose.connection.once("connected", () => {
+
+        if (process.env.MONGO_DB_TEST === "MDitor") {
+
+            mongoose.disconnect();
+
+            throw new Error("!ERROR: You can't run this test in MDitor Database, you should use MDitor-Test Database");
+        }
+
+        mongoose.connection.db.collection("folders").drop();
+    });
+});
+
+afterAll(() => {
+
+    mongoose.disconnect();
+});
+
+describe(".env", () => {
+
+    test("Should exist", () => {
+
+        expect(process.env.MONGO_HOST_TEST);
+
+        expect(process.env.MONGO_PORT_TEST);
+
+        expect(process.env.MONGO_DB_TEST);
+    });
+});
+
+describe("MongoDB, there is some error?", () => {
+
+    test("Should no throw Error", (done) => {
+
+        mongoose.connection.on("error", function (err) {
+
+            expect(!err);
+
+        });
+        setTimeout(() => done(), 4966);
+    });
+});
+
+describe("function Validate", () => {
+
+    test("Should exist", () => {
+
+        expect(validate);
+    });
+});
+
+describe("Logic Folder", () => {
+
+    const title = "new Folder Test Jest";
+
+    test("Should create new Folder", (done) => {
+        const title = "new Folder Test Jest";
+
+        return logic.folder.create(title)
+            .then(id => {
+
+                expect(id);
+
+                expect(id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                done();
+            });
+    });
+    test("Should retrieve folder", (done) => {
+
+        const title = "new Folder Test Jest";
+
+        return logic.folder.create(title)
+            .then(id => {
+
+                expect(id);
+
+                expect(id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                return logic.folder.retrieve(id);
+            })
+            .then((folder: IFolderModel) => {
+
+                expect(folder);
+
+                expect(folder.title);
+
+                expect(typeof (folder.title)).toEqual("string");
+
+                expect(folder.files);
+
+                expect(folder.files).toBeInstanceOf(Array);
+
+                expect(folder._id);
+
+                expect(folder._id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                expect(folder).toBeInstanceOf(Folder);
+
+                done();
+            });
+    });
+
+    test("Should Update Folder", (done) => {
+
+        const title = "new Folder Test Jest";
+
+        let oldFolder;
+
+        return logic.folder.create(title)
+            .then(id => {
+
+                expect(id);
+
+                expect(id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                return logic.folder.retrieve(id);
+            })
+            .then((folder: IFolderModel) => {
+
+                oldFolder = folder;
+
+                expect(oldFolder).toEqual(folder);
+
+                expect(folder);
+
+                expect(folder.title);
+
+                expect(typeof (folder.title)).toEqual("string");
+
+                expect(folder.files);
+
+                expect(folder.files).toBeInstanceOf(Array);
+
+                expect(folder._id);
+
+                expect(folder._id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                expect(folder).toBeInstanceOf(Folder);
+
+                return logic.folder.update(folder._id, "newString Folder yeye");
+            })
+            .then((id) => {
+
+                expect(id);
+
+                expect(id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                expect(oldFolder);
+
+                expect(oldFolder.title);
+
+                expect(typeof (oldFolder.title)).toEqual("string");
+
+                expect(oldFolder.files);
+
+                expect(oldFolder.files).toBeInstanceOf(Array);
+
+                expect(oldFolder._id);
+
+                expect(oldFolder._id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                expect(oldFolder).toBeInstanceOf(Folder);
+
+                return logic.folder.retrieve(id);
+            }).
+            then((folder: IFolderModel) => {
+
+                expect(folder._id).toEqual(oldFolder._id);
+
+                expect(folder).not.toEqual(oldFolder);
+
+                expect(oldFolder.title).not.toEqual(folder.title);
+
+                done();
+            });
+    });
+
+    test("Should List Folders", () => {
+
+        //  mongoose.connection.db.collection("folders").drop();
+
+        const title1 = "New Folder 1 ";
+
+        const title2 = "New Folder 2 ";
+
+        let masterFolder;
+
+        let masterFolder2;
+
+        return logic.folder.create(title1)
+            .then(id => {
+
+                expect(id);
+
+                expect(id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                return logic.folder.retrieve(id);
+            })
+            .then((folder: IFolderModel) => {
+
+                masterFolder = folder;
+
+                expect(masterFolder).toEqual(folder);
+
+                expect(folder);
+
+                expect(folder.title);
+
+                expect(typeof (folder.title)).toEqual("string");
+
+                expect(folder.files);
+
+                expect(folder.files).toBeInstanceOf(Array);
+
+                expect(folder._id);
+
+                expect(folder._id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                expect(folder).toBeInstanceOf(Folder);
+
+                return logic.folder.create(title2);
+            })
+            .then(id => {
+
+                expect(id);
+
+                expect(id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                return logic.folder.retrieve(id);
+            })
+            .then((folder: IFolderModel) => {
+
+                masterFolder2 = folder;
+
+                expect(masterFolder2).toEqual(folder);
+
+                expect(folder);
+
+                expect(folder.title);
+
+                expect(typeof (folder.title)).toEqual("string");
+
+                expect(folder.files);
+
+                expect(folder.files).toBeInstanceOf(Array);
+
+                expect(folder._id);
+
+                expect(folder._id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                expect(folder).toBeInstanceOf(Folder);
+
+                return folder;
+            })
+            .then(() => {
+
+                expect(masterFolder._id);
+
+                expect(masterFolder._id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                return logic.file.create(masterFolder._id, "new File Folder1");
+            })
+            .then(() => {
+
+                return logic.file.create(masterFolder._id, "2cond new File Folder 1");
+            })
+            .then(() => {
+
+                expect(masterFolder2._id);
+
+                expect(masterFolder2._id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                return logic.file.create(masterFolder2._id, "new File Folder 2");
+            })
+            .then(() => {
+
+                return logic.file.create(masterFolder2._id, "2cond New File Folder 2");
+            })
+            .then(() => {
+
+                return logic.folder.list();
+            })
+            .then((folders: Array<IFolderModel>) => {
+
+                expect(folders).toBeInstanceOf(Array);
+
+                expect(folders[3]);
+
+                expect(folders[3].title);
+
+                expect(typeof (folders[3].title)).toEqual("string");
+
+                expect(folders[3].files);
+
+                expect(folders[3].files).toBeInstanceOf(Array);
+
+                expect(folders[3]._id);
+
+                expect(folders[3]._id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                expect(folders[3]).toBeInstanceOf(Folder);
+
+                expect(folders[4]);
+
+                expect(folders[4].title);
+
+                expect(typeof (folders[4].title)).toEqual("string");
+
+                expect(folders[4].files);
+
+                expect(folders[4].files).toBeInstanceOf(Array);
+
+                expect(folders[4]._id);
+
+                expect(folders[4]._id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                expect(folders[4]).toBeInstanceOf(Folder);
+
+                expect(folders).toHaveLength(5);
+
+                expect(folders[3].files).toHaveLength(2);
+
+                expect(folders[3].files[0].title);
+
+                expect(folders[3].files[1].title);
+
+                expect(folders[3].files[0].content);
+
+                expect(folders[3].files[1].content);
+
+                expect(folders[3].files[0]._id);
+
+                expect(folders[3].files[1]._id);
+
+                expect(folders[3].files[0]).toBeInstanceOf(File);
+
+                expect(folders[4].files[0].title);
+
+                expect(folders[4].files[1].title);
+
+                expect(folders[4].files[0].content);
+
+                expect(folders[4].files[1].content);
+
+                expect(folders[4].files[0]._id);
+
+                expect(folders[4].files[1]._id);
+
+                expect(folders[4].files[1]).toBeInstanceOf(File);
+
+                expect(folders[4].files).toHaveLength(2);
+            });
+    });
+
+    test("Should Delete Folders and populate Files", () => {
+
+        let masterFolder1;
+
+        let masterFolder2;
+
+        return logic.folder.list()
+            .then((folders: Array<IFolderModel>) => {
+
+                expect(folders).toBeInstanceOf(Array);
+
+                expect(folders[3]);
+
+                expect(folders[3].title);
+
+                expect(typeof (folders[3].title)).toEqual("string");
+
+                expect(folders[3].files);
+
+                expect(folders[3].files).toBeInstanceOf(Array);
+
+                expect(folders[3]._id);
+
+                expect(folders[3]._id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                expect(folders[3]).toBeInstanceOf(Folder);
+
+                expect(folders[4]);
+
+                expect(folders[4].title);
+
+                expect(typeof (folders[4].title)).toEqual("string");
+
+                expect(folders[4].files);
+
+                expect(folders[4].files).toBeInstanceOf(Array);
+
+                expect(folders[4]._id);
+
+                expect(folders[4]._id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                expect(folders[4]).toBeInstanceOf(Folder);
+
+                expect(folders).toHaveLength(5);
+
+                expect(folders[3].files).toHaveLength(2);
+
+                expect(folders[3].files[0].title);
+
+                expect(folders[3].files[1].title);
+
+                expect(folders[3].files[0].content);
+
+                expect(folders[3].files[1].content);
+
+                expect(folders[3].files[0]._id);
+
+                expect(folders[3].files[1]._id);
+
+                expect(folders[3].files[0]).toBeInstanceOf(File);
+
+                expect(folders[4].files[0].title);
+
+                expect(folders[4].files[1].title);
+
+                expect(folders[4].files[0].content);
+
+                expect(folders[4].files[1].content);
+
+                expect(folders[4].files[0]._id);
+
+                expect(folders[4].files[1]._id);
+
+                expect(folders[4].files[1]).toBeInstanceOf(File);
+
+                expect(folders[4].files).toHaveLength(2);
+
+                masterFolder1 = folders[3];
+
+                masterFolder2 = folders[4];
+
+                return logic.folder.delete(masterFolder1._id);
+            })
+            .then(id => {
+                expect(id);
+
+                expect(id).toBeInstanceOf(mongoose.Types.ObjectId);
+
+                expect(id).toEqual(masterFolder1._id);
+
+                return logic.folder.list();
+            })
+            .then(folders => {
+
+                expect(folders).toHaveLength(4);
+            });
+
+            // TODO, Find File and Expect there is a null value.
+    });
+});

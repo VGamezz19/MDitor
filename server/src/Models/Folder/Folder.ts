@@ -1,6 +1,5 @@
 import { Schema, Model, model } from "mongoose";
 import { IFolderModel } from "./Folder.interface";
-import { IFileModel } from "../File";
 
 export const FolderSchema: Schema = new Schema({
   title: String,

@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { File, Folder, IFolder } from "../Models";
+import { File, Folder, IFolder, IFile } from "../Models";
 import { validate } from "./validate";
 import mongoose = require("mongoose");
 
@@ -33,6 +33,30 @@ const folder = {
             .then(folder => {
                 return File.populate(folder, { path: "files", select: "title" });
             });
+    },
+
+    list: function listFolder() {
+        return Folder.find({}).populate({ path: "files" }).exec();
+    },
+
+    delete: function deleteFolder(_id: mongoose.Types.ObjectId) {
+        return Promise.resolve()
+            .then(() => {
+                validate({ _id });
+
+                return Folder.findById({ _id });
+            })
+            .then(folder => {
+
+                return File.deleteMany({ _id: folder.files })
+                    .then(() => folder);
+            })
+            .then((folder) => {
+
+                return Folder.remove(folder)
+                    .then(() => folder);
+            })
+            .then(folder => folder._id);
     }
 };
 

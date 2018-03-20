@@ -29,23 +29,23 @@ app.get("/", (req: Request, res: Response) => {
 //     files: []
 // });
 
-async function create () {
 
-    const idFolder = await logic.folder.create("SomeFolder Logic");
 
-    await logic.file.create(idFolder, "peneasdasdasd");
-    await logic.file.create(idFolder, "peneasdasdsadsdasdasd");
-    await logic.file.create(idFolder, "p123213e12neasdasdasd");
-    await logic.file.create(idFolder, "pe5463434243neasdasdasd");
-        // .then(console.log);
+logic.folder.create("SomeFolder bla bla bla Logic")
+    .then((id) => {
+        return logic.folder.create("new Folder ble ble");
+    })
+    .then((idFolder) => {
+        return logic.file.create(idFolder, "peneasdasdsadsdasdasd");
+    })
+    .then(() => {
+        return logic.folder.list();
+    })
+    .then(folders => {
+        return logic.folder.delete(folders[1]._id);
+    })
+    .then(console.log);
 
-        // logic.listFolder(idFolder)
-        //     .then(console.log);
-
-        logic.folder.update(idFolder, "newTitle").then(console.log);
-}
-
-create();
 // logic.createFile("File");
 
 // folder.save((err: never) => {
