@@ -27,6 +27,6 @@ app.use("/api", fileRouter);
 // ============= 🔥 =============
 
 
-app.listen(process.env.PORT || 8080, () => console.log(`server listen in port ${process.env.PORT || 8080}`));
+app.listen(process.env.PORT, () => console.log(`server listen in port ${process.env.PORT}`));
 
 export { app };
