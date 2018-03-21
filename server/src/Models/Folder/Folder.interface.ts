@@ -1,4 +1,4 @@
-import { Document } from "mongoose";
+import { Document, Types } from "mongoose";
 import { IFileModel } from "../File";
 
 /**
@@ -22,4 +22,5 @@ export interface IFolder {
 export interface IFolderModel extends IFolder, Document {
     title: String;
     files: Array<IFileModel>;
+    user: Types.ObjectId;
 }
