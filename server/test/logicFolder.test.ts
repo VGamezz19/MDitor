@@ -1,5 +1,5 @@
-import { logic, validate } from "../src/logic";
-import { File, Folder, IFolder, IFolderModel } from "../src/models";
+import { logic } from "../src/logic";
+import { File, User, Folder, IFolder, IFolderModel } from "../src/models";
 import mongoose from "mongoose";
 import "jest";
 
@@ -17,18 +17,15 @@ beforeAll(async () => {
 
             throw new Error("!ERROR: You can't run this test in MDitor Database, you should use MDitor-Test Database");
         }
-
-        mongoose.connection.db.collection("folders").drop();
-        mongoose.connection.db.collection("users").drop();
     });
-
-
 
     masterUsertTestID = await logic.user.register("user", "surname", "email", "adminUATFolders", "adminUATPass");
 });
 
-afterAll(() => {
-
+afterAll(async () => {
+    await User.remove({});
+    await File.remove({});
+    await Folder.remove({});
     mongoose.disconnect();
 });
 
@@ -41,14 +38,6 @@ describe(".env", () => {
         expect(process.env.MONGO_PORT_TEST);
 
         expect(process.env.MONGO_DB_TEST);
-    });
-});
-
-describe("function Validate", () => {
-
-    test("Should exist", () => {
-
-        expect(validate);
     });
 });
 

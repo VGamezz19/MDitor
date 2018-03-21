@@ -26,8 +26,7 @@ app.use("/api", fileRouter);
 
 // ============= 🔥 =============
 
-const PORT = process.env.PORT || 8080;
 
-app.listen(PORT, () => console.log(`server listen in port ${PORT}`));
+app.listen(process.env.PORT || 8080, () => console.log(`server listen in port ${process.env.PORT || 8080}`));
 
-export { app, PORT };
+export { app };

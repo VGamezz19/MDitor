@@ -34,7 +34,7 @@ passport.use(new JwtStrategy(opts, function (payload: any, done: any) {
  */
 passport.use(new LocalStrategy((username: string, password: string, done: any) => {
 
-    logic.user.verift(username, password)
+    logic.user.verify(username, password)
         .then((user: any) => {
 
             if (!user) return done(undefined, false, { "status": "KO" });

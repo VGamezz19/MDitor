@@ -1,7 +1,6 @@
 import { File, Folder, IFileModel } from "../models";
 import { validate } from "./validate";
 import mongoose = require("mongoose");
-import { FILE } from "dns";
 
 /**
  * file logic (bussines manager) Object (logic)

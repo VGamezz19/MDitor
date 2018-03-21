@@ -1,10 +1,6 @@
-import { User, IUserModel } from "../models";
-
+import { User, IUserModel, Folder } from "../models";
 import { validate } from "./validate";
-
-import mongoose from "mongoose";
-import { reject } from "bluebird";
-import { resolve } from "path";
+import mongoose = require("mongoose");
 
 /**
  * user logic (bussines manager) Object (logic)
@@ -26,7 +22,7 @@ const user = {
      *
      * @throws {Error} - If not valid username or password not found
      */
-    verift: function verify(username: string, password: string): any {
+    verify: function verify(username: string, password: string): any {
         return Promise.resolve()
             .then(() => {
 
@@ -48,11 +44,15 @@ const user = {
                             return resolve(user);
                         }
 
-                        reject();
+                        reject(Error("username and/or password wrong"));
                     });
                 });
             })
-            .then(user => user);
+            .then((user: any) => {
+                user.password = undefined;
+
+                return user;
+            });
     },
 
     /**
@@ -98,7 +98,7 @@ const user = {
      *
      * @throws {Error} - If not valid id not found
      */
-    retrieve: function retrieve(_id: string): Promise<IUserModel> {
+    retrieve: function retrieve(_id: mongoose.Types.ObjectId): Promise<{}> | never {
         return Promise.resolve()
             .then(() => {
 
@@ -109,8 +109,14 @@ const user = {
             .then((user: IUserModel) => {
 
                 if (!user) throw Error("user does not exist");
+                // File.populate(folder, { path: "files", select: "title" })
+                return Folder
+                    .populate(user, {
+                        path: "folders",
+                        // Get friends of friends - populate the "friends" array for every friend
+                        populate: { path: "files" }
+                    });
 
-                return user;
             });
     }
 
