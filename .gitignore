@@ -62,6 +62,10 @@ Thumbs.db
 dist/**/*
 dist
 
+
+server/.gitignore
+server/.git
+
 # Ignore output from coverage report
 coverage
 
