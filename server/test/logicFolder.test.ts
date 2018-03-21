@@ -1,9 +1,11 @@
 import { logic, validate } from "../src/logic";
-import { File, Folder, IFolder, IFolderModel } from "../src/Models";
+import { File, Folder, IFolder, IFolderModel } from "../src/models";
 import mongoose from "mongoose";
 import "jest";
 
-beforeAll(() => {
+let masterUsertTestID;
+
+beforeAll(async () => {
 
     require("./db");
 
@@ -17,7 +19,12 @@ beforeAll(() => {
         }
 
         mongoose.connection.db.collection("folders").drop();
+        mongoose.connection.db.collection("users").drop();
     });
+
+
+
+    masterUsertTestID = await logic.user.register("user", "surname", "email", "adminUATFolders", "adminUATPass");
 });
 
 afterAll(() => {
@@ -52,7 +59,7 @@ describe("Logic Folder", () => {
     test("Should create Folder", (done) => {
         const title = "new Folder Test Jest";
 
-        return logic.folder.create(title)
+        return logic.folder.create(masterUsertTestID, title)
             .then(id => {
 
                 expect(id);
@@ -66,7 +73,7 @@ describe("Logic Folder", () => {
 
         const title = "new Folder Test Jest";
 
-        return logic.folder.create(title)
+        return logic.folder.create(masterUsertTestID, title)
             .then(id => {
 
                 expect(id);
@@ -103,7 +110,7 @@ describe("Logic Folder", () => {
 
         let oldFolder;
 
-        return logic.folder.create(title)
+        return logic.folder.create(masterUsertTestID, title)
             .then(id => {
 
                 expect(id);
@@ -184,7 +191,7 @@ describe("Logic Folder", () => {
 
         let masterFolder2;
 
-        return logic.folder.create(title1)
+        return logic.folder.create(masterUsertTestID, title1)
             .then(id => {
 
                 expect(id);
@@ -215,7 +222,7 @@ describe("Logic Folder", () => {
 
                 expect(folder).toBeInstanceOf(Folder);
 
-                return logic.folder.create(title2);
+                return logic.folder.create(masterUsertTestID, title2);
             })
             .then(id => {
 
@@ -442,12 +449,22 @@ describe("Logic Folder", () => {
 
                 return logic.folder.delete(masterFolder1._id);
             })
-            .then(id => {
+            .then(async (id) => {
                 expect(id);
 
                 expect(id).toBeInstanceOf(mongoose.Types.ObjectId);
 
                 expect(id).toEqual(masterFolder1._id);
+
+                try {
+
+                    const tryToDeleteFoldernOtherTime = await logic.folder.delete(id);
+
+                } catch (e) {
+
+                    expect(e).toEqual(new Error("cannot delete folder if doesn't exist"));
+
+                }
 
                 return logic.folder.list();
             })

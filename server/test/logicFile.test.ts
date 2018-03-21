@@ -1,10 +1,11 @@
 import { logic, validate } from "../src/logic";
-import { File, Folder, IFolder, IFolderModel, IFileModel } from "../src/Models";
+import { File, Folder, IFolder, IFolderModel, IFileModel } from "../src/models";
 import mongoose from "mongoose";
 import "jest";
-import { folder } from "../src/logic/folder";
 
-beforeAll(() => {
+let masterUsertTestID;
+
+beforeAll(async () => {
 
     require("./db");
 
@@ -18,7 +19,12 @@ beforeAll(() => {
         }
 
         mongoose.connection.db.collection("files").drop();
+        mongoose.connection.db.collection("users").drop();
     });
+
+
+
+    masterUsertTestID = await logic.user.register("user", "surname", "email", "adminUATFiles", "adminUATPass");
 });
 
 afterAll(() => {
@@ -56,7 +62,7 @@ describe("Logic File", () => {
         const titleFile = "new File Test Jest";
 
         let folderID;
-        return logic.folder.create(title)
+        return logic.folder.create(masterUsertTestID, title)
             .then(id => {
 
                 expect(id);
@@ -87,7 +93,7 @@ describe("Logic File", () => {
 
         let folderID;
 
-        return logic.folder.create(title)
+        return logic.folder.create(masterUsertTestID, title)
             .then(id => {
 
                 expect(id);
@@ -142,7 +148,7 @@ describe("Logic File", () => {
 
         let oldFile;
 
-        return logic.folder.create(title)
+        return logic.folder.create(masterUsertTestID, title)
             .then(id => {
 
                 expect(id);
@@ -232,7 +238,7 @@ describe("Logic File", () => {
 
         let oldFile;
 
-        return logic.folder.create(title)
+        return logic.folder.create(masterUsertTestID, title)
             .then(id => {
 
                 expect(id);
@@ -324,7 +330,7 @@ describe("Logic File", () => {
 
         let oldFile;
 
-        return logic.folder.create(title)
+        return logic.folder.create(masterUsertTestID, title)
             .then(id => {
 
                 expect(id);
@@ -417,7 +423,7 @@ describe("Logic File", () => {
         let oldFile;
 
         try {
-            await logic.folder.create(title)
+            await logic.folder.create(masterUsertTestID, title)
                 .then(id => {
 
                     expect(id);
@@ -492,7 +498,7 @@ describe("Logic File", () => {
 
         let fileTest;
 
-        return logic.folder.create(title)
+        return logic.folder.create(masterUsertTestID, title)
             .then(id => {
 
                 expect(id);
@@ -553,9 +559,19 @@ describe("Logic File", () => {
 
                 return logic.file.retrieve(id);
             })
-            .then(file => {
+            .then(async file => {
 
                 expect(!file);
+
+                try {
+
+                    const tryToDeleteFileAnOtherTime = await logic.file.delete(fileTest._id);
+
+                } catch (e) {
+
+                    expect(e).toEqual(new Error("cannot delete file if doesn't exist"));
+
+                }
 
                 return logic.folder.retrieve(folderID);
             })
