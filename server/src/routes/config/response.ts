@@ -1,4 +1,3 @@
-
 interface ResponseServer {
     status: "OK" | "KO";
     data?: String;

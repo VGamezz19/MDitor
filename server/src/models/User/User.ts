@@ -8,7 +8,7 @@ import { IUserModel } from "./User.interface";
  *
  * @version 1.0.0
  */
-export const UserSchema: Schema = new Schema({
+const UserSchema: Schema = new Schema({
   name: String,
   surname: String,
   email: String,
@@ -17,4 +17,6 @@ export const UserSchema: Schema = new Schema({
   folders: [{ type: Schema.Types.ObjectId, ref: "Folder" }]
 });
 
-export const User: Model<IUserModel> = model<IUserModel>("User", UserSchema);
+const User: Model<IUserModel> = model<IUserModel>("User", UserSchema);
+
+export { User, UserSchema };

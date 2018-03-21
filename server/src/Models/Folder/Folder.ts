@@ -8,9 +8,12 @@ import { IFolderModel } from "./Folder.interface";
  *
  * @version 1.0.0
  */
-export const FolderSchema: Schema = new Schema({
+const FolderSchema: Schema = new Schema({
   title: String,
-  files: [{ type: Schema.Types.ObjectId, ref: "File" }]
+  files: [{ type: Schema.Types.ObjectId, ref: "File" }],
+  user: { type: Schema.Types.ObjectId, ref: "User" }
 });
 
-export const Folder: Model<IFolderModel> = model<IFolderModel>("Folder", FolderSchema);
+const Folder: Model<IFolderModel> = model<IFolderModel>("Folder", FolderSchema);
+
+export { FolderSchema, Folder };

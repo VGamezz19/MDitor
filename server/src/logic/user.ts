@@ -1,4 +1,4 @@
-import { User, Folder, IUserModel } from "../models";
+import { User, IUserModel } from "../models";
 import { validate } from "./validate";
 import mongoose = require("mongoose");
 
@@ -17,13 +17,13 @@ const user = {
 
                 validate({ username, password });
 
-                return User.findOne({ username, password });
+                return User.findOne({ username, password }, { password: 0 });
             })
             .then(user => {
 
                 if (!user) throw Error("username and/or password wrong");
 
-                return true;
+                return user;
             });
     },
 
@@ -40,7 +40,7 @@ const user = {
                 if (user) throw Error("username already exists");
 
                 return User.create({ name, surname, email, username, password })
-                    .then((user) => user._id);
+                    .then((user: any) => user._id);
             });
     },
 

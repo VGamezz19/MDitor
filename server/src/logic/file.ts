@@ -1,4 +1,4 @@
-import { File, Folder, IFileModel } from "../Models";
+import { File, Folder, IFileModel } from "../models";
 import { validate } from "./validate";
 import mongoose = require("mongoose");
 

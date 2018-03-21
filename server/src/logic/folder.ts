@@ -1,4 +1,4 @@
-import { File, Folder, IFolder, IFolderModel } from "../Models";
+import { File, Folder, IFolder, IFolderModel } from "../models";
 import { validate } from "./validate";
 import mongoose = require("mongoose");
 
@@ -110,6 +110,8 @@ const folder = {
                 return Folder.findById({ _id });
             })
             .then(folder => {
+
+                if (!folder) throw new Error("cannot folder if doesn't exist");
 
                 return File.deleteMany({ _id: folder.files })
                     .then(() => folder);
