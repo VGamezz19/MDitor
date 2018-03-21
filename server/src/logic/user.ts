@@ -3,6 +3,8 @@ import { User, IUserModel } from "../models";
 import { validate } from "./validate";
 
 import mongoose from "mongoose";
+import { reject } from "bluebird";
+import { resolve } from "path";
 
 /**
  * user logic (bussines manager) Object (logic)
@@ -24,20 +26,33 @@ const user = {
      *
      * @throws {Error} - If not valid username or password not found
      */
-    verift: function verify(username: string, password: string): Promise<IUserModel> {
+    verift: function verify(username: string, password: string): any {
         return Promise.resolve()
             .then(() => {
 
                 validate({ username, password });
 
-                return User.findOne({ username, password }, { password: 0 });
+                return User.findOne({ username });
             })
-            .then((user: IUserModel) => {
+            .then((user: any) => {
 
                 if (!user) throw Error("username and/or password wrong");
 
-                return user;
-            });
+                return new Promise((resolve, reject) => {
+                    user.comparePassword(password, (err: Error, isMatch: boolean) => {
+
+                        if (err) { return reject(err); }
+
+                        if (isMatch) {
+
+                            return resolve(user);
+                        }
+
+                        reject();
+                    });
+                });
+            })
+            .then(user => user);
     },
 
     /**

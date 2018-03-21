@@ -15,9 +15,7 @@ function create(req: Request, res: Response) {
     logic.user.register(name, surname, email, username, password)
         .then(id => {
 
-            const { user: { _id, username } } = req;
-
-            const token = jwt.sign({ _id, username }, secret);
+            const token = jwt.sign({ id, username }, secret);
 
             res.json(success({ token }));
         })
