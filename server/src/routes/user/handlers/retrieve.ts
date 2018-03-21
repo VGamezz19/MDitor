@@ -4,9 +4,9 @@ import { logic } from "../../../logic";
 
 function retrieve(req: Request, res: Response) {
 
-    const { params: { id } } = req;
+    const { user: { _id } } = req;
 
-    logic.user.retrieve(id)
+    logic.user.retrieve(_id)
         .then(user => {
 
             res.json(success(user));

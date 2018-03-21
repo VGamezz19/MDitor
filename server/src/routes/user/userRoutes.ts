@@ -1,4 +1,4 @@
-import { create, login } from "./handlers";
+import { create, login, retrieve } from "./handlers";
 
 import { Router } from "express";
 
@@ -13,6 +13,8 @@ const userRouter: Router = Router();
 userRouter.post("/login", [jsonBodyParser, passport.authenticate("local", { session: false })], login);
 
 userRouter.post("/register", jsonBodyParser, create);
+
+userRouter.get("/retrieve/", passport.authenticate("jwt", { session: false }), retrieve);
 
 // userRouter.put("/user/:id",  jsonBodyParser, update);
 

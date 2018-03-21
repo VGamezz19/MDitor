@@ -4,7 +4,7 @@ import { logic } from "../../../logic";
 
 function remove (req: Request, res: Response) {
 
-    const { params: { folderId, id } } = req;
+    const { params: { id } } = req;
 
     logic.file.delete(id)
         .then(() => {

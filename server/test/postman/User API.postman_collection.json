@@ -1,0 +1,110 @@
+{
+	"info": {
+		"name": "User API",
+		"_postman_id": "5c5456bf-96b5-2736-a0b0-b89954428b14",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"u\",\n\t\"password\": \"p\"\n}"
+				},
+				"url": {
+					"raw": "localhost:5050/user/login/",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"user",
+						"login",
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"besamelo\",\n\t\"surname\": \"s\",\n\t\"email\":\"e\",\n\t\"username\":\"ddee\",\n\t\"password\": \"123hola\"\n}"
+				},
+				"url": {
+					"raw": "localhost:5050/user/register/",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"user",
+						"register",
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User Retrieve",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWIyNWYzNmY4ZTA4YzZmZDUyYTlkNjIiLCJ1c2VybmFtZSI6ImRkZWUiLCJpYXQiOjE1MjE2MzkyMzl9.YABvLx0lN36Q-mN7AMBfk6Jqj4SjPcaNjwn3HICPGjA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"ddee\",\n\t\"password\": \"123hola\"\n}"
+				},
+				"url": {
+					"raw": "localhost:5050/user/retrieve/",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"user",
+						"retrieve",
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

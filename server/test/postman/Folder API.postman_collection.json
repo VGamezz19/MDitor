@@ -14,7 +14,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWIyNWYzNmY4ZTA4YzZmZDUyYTlkNjIiLCJ1c2VybmFtZSI6ImRkZWUiLCJpYXQiOjE1MjE2MzkyMzl9.YABvLx0lN36Q-mN7AMBfk6Jqj4SjPcaNjwn3HICPGjA",
 							"type": "string"
 						}
 					]
@@ -32,7 +32,7 @@
 					"raw": "{\n  \"name\": \"n\",\n  \"surname\": \"s\",\n  \"email\": \"e\",\n  \"username\": \"u\",\n  \"password\": \"p\"\n}"
 				},
 				"url": {
-					"raw": "localhost:5050/api/folder/5ab100acb6ccc06494cd7057",
+					"raw": "localhost:5050/api/folder/5ab26153df0ef07297c0ed6e",
 					"host": [
 						"localhost"
 					],
@@ -40,7 +40,7 @@
 					"path": [
 						"api",
 						"folder",
-						"5ab100acb6ccc06494cd7057"
+						"5ab26153df0ef07297c0ed6e"
 					]
 				},
 				"description": ""
@@ -50,6 +50,16 @@
 		{
 			"name": "Folder List",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWIxNjY2YzE4ZDZmNWFkMmY1NGQzYzciLCJ1c2VybmFtZSI6InUiLCJpYXQiOjE1MjE2MTgzNzV9.o3ZPfPwuMFFcLAEsCT0vAbcfnPdbdxT-tH974Gfv8fo",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -72,11 +82,21 @@
 		{
 			"name": "Folder Retrieve",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWIyNWYzNmY4ZTA4YzZmZDUyYTlkNjIiLCJ1c2VybmFtZSI6ImRkZWUiLCJpYXQiOjE1MjE2MzkyMzl9.YABvLx0lN36Q-mN7AMBfk6Jqj4SjPcaNjwn3HICPGjA",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:5050/api/folder/5ab0d3c39b2aa934330269a9",
+					"raw": "localhost:5050/api/folder/5ab26153df0ef07297c0ed6e",
 					"host": [
 						"localhost"
 					],
@@ -84,7 +104,7 @@
 					"path": [
 						"api",
 						"folder",
-						"5ab0d3c39b2aa934330269a9"
+						"5ab26153df0ef07297c0ed6e"
 					]
 				},
 				"description": ""
@@ -94,6 +114,16 @@
 		{
 			"name": "Folder Create",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWIyNWYzNmY4ZTA4YzZmZDUyYTlkNjIiLCJ1c2VybmFtZSI6ImRkZWUiLCJpYXQiOjE1MjE2MzkyMzl9.YABvLx0lN36Q-mN7AMBfk6Jqj4SjPcaNjwn3HICPGjA",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -123,6 +153,16 @@
 		{
 			"name": "Folder Update",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWIyNWYzNmY4ZTA4YzZmZDUyYTlkNjIiLCJ1c2VybmFtZSI6ImRkZWUiLCJpYXQiOjE1MjE2MzkyMzl9.YABvLx0lN36Q-mN7AMBfk6Jqj4SjPcaNjwn3HICPGjA",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [
 					{
@@ -135,7 +175,7 @@
 					"raw": "{\n\t\"title\":\"asdsdsdstesting POSTMAN asdsad dasasdadasdasd ad\"\n}"
 				},
 				"url": {
-					"raw": "localhost:5050/api/folder/5ab1326418f2897fa6dbfda4",
+					"raw": "localhost:5050/api/folder/5ab26153df0ef07297c0ed6e",
 					"host": [
 						"localhost"
 					],
@@ -143,7 +183,7 @@
 					"path": [
 						"api",
 						"folder",
-						"5ab1326418f2897fa6dbfda4"
+						"5ab26153df0ef07297c0ed6e"
 					]
 				},
 				"description": ""

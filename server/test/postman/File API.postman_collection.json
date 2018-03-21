@@ -9,6 +9,16 @@
 		{
 			"name": "File List",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWIyNWYzNmY4ZTA4YzZmZDUyYTlkNjIiLCJ1c2VybmFtZSI6ImRkZWUiLCJpYXQiOjE1MjE2MzkyMzl9.YABvLx0lN36Q-mN7AMBfk6Jqj4SjPcaNjwn3HICPGjA",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -31,11 +41,21 @@
 		{
 			"name": "File Retrieve",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWIyNWYzNmY4ZTA4YzZmZDUyYTlkNjIiLCJ1c2VybmFtZSI6ImRkZWUiLCJpYXQiOjE1MjE2MzkyMzl9.YABvLx0lN36Q-mN7AMBfk6Jqj4SjPcaNjwn3HICPGjA",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:5050/api/file/5ab0e4ef0fd38f499862e710",
+					"raw": "localhost:5050/api/file/5ab2621fdf0ef07297c0ed72",
 					"host": [
 						"localhost"
 					],
@@ -43,7 +63,7 @@
 					"path": [
 						"api",
 						"file",
-						"5ab0e4ef0fd38f499862e710"
+						"5ab2621fdf0ef07297c0ed72"
 					]
 				},
 				"description": ""
@@ -53,6 +73,16 @@
 		{
 			"name": "File Update",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWIyNWYzNmY4ZTA4YzZmZDUyYTlkNjIiLCJ1c2VybmFtZSI6ImRkZWUiLCJpYXQiOjE1MjE2MzkyMzl9.YABvLx0lN36Q-mN7AMBfk6Jqj4SjPcaNjwn3HICPGjA",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [
 					{
@@ -65,7 +95,7 @@
 					"raw": "{\n\t\"title\":\"UPDATE POSTMON\",\n\t\"content\": \"NEW CONTENT YEYEYE\"\n}"
 				},
 				"url": {
-					"raw": "localhost:5050/api/file/5ab0e4ef0fd38f499862e710",
+					"raw": "localhost:5050/api/file/5ab2621fdf0ef07297c0ed72",
 					"host": [
 						"localhost"
 					],
@@ -73,7 +103,7 @@
 					"path": [
 						"api",
 						"file",
-						"5ab0e4ef0fd38f499862e710"
+						"5ab2621fdf0ef07297c0ed72"
 					]
 				},
 				"description": ""
@@ -83,6 +113,16 @@
 		{
 			"name": "File Create",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWIyNWYzNmY4ZTA4YzZmZDUyYTlkNjIiLCJ1c2VybmFtZSI6ImRkZWUiLCJpYXQiOjE1MjE2MzkyMzl9.YABvLx0lN36Q-mN7AMBfk6Jqj4SjPcaNjwn3HICPGjA",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -92,7 +132,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"folderId\":\"5ab1326418f2897fa6dbfda4\",\n\t\"title\": \"NEW YEYEYE\"\n}"
+					"raw": "{\n\t\"folderId\":\"5ab2612fdf0ef07297c0ed6a\",\n\t\"title\": \"NEW YEYEYE\"\n}"
 				},
 				"url": {
 					"raw": "localhost:5050/api/file/",
@@ -113,11 +153,21 @@
 		{
 			"name": "File Delete",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWIyNWYzNmY4ZTA4YzZmZDUyYTlkNjIiLCJ1c2VybmFtZSI6ImRkZWUiLCJpYXQiOjE1MjE2MzkyMzl9.YABvLx0lN36Q-mN7AMBfk6Jqj4SjPcaNjwn3HICPGjA",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:5050/api/file/5ab13efc93b01a8705850d08",
+					"raw": "localhost:5050/api/file/5ab2621fdf0ef07297c0ed72",
 					"host": [
 						"localhost"
 					],
@@ -125,7 +175,7 @@
 					"path": [
 						"api",
 						"file",
-						"5ab13efc93b01a8705850d08"
+						"5ab2621fdf0ef07297c0ed72"
 					]
 				},
 				"description": ""

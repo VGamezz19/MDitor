@@ -4,9 +4,10 @@ import { logic } from "../../../logic";
 
 function create (req: Request, res: Response) {
 
-    const { body: { title } } = req;
+    const { body: { userId, title }, user: { _id } } = req;
 
-    logic.folder.create(title)
+
+    logic.folder.create(_id, title)
         .then(id => {
 
             res.json(success({ id }));
