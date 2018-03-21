@@ -1,4 +1,4 @@
-import { File, Folder, IFolder, IFolderModel } from "../models";
+import { User, File, Folder, IFolder, IFolderModel, IUserModel } from "../models";
 import { validate } from "./validate";
 import mongoose = require("mongoose");
 
@@ -12,26 +12,36 @@ import mongoose = require("mongoose");
 const folder = {
 
     /**
+     * Create a Folder
      *
-     * Create Folder
+     * You need userId becouse Folder is a populate of User. User {one} - Folder {to many} ralation
      *
-     * When you delete some File, also, her populate Folder delete to.
+     * @param {mongoose.Types.ObjectId} userId - The id of the user
      *
-     * @param {String} title - The title for new Folder
+     * @param {String} title - The title of the new Folder
      *
-     * @returns {Promise<mongoose.Types.ObjectId> | never } folder._id - The id from new Folder
+     * @returns {Promise<mongoose.Types.ObjectId> | never} folder._id - The id from new Folder
      *
-     * @throws {Error} - If not valid title not found
+     * @throws {Error} - If not valid id or title not found
      */
-    create: function createFolder(title: string): Promise<mongoose.Types.ObjectId> | never {
+    create: function createFile(userId: mongoose.Types.ObjectId, title: string): Promise<mongoose.Types.ObjectId> | never {
         return Promise.resolve()
             .then(() => {
 
-                validate({ title });
+                validate({ userId, title });
 
-                return Folder.create({ title, files: [] });
+                return User.findById({ _id: userId });
             })
-            .then(folder => folder._id);
+            .then(async (user: IUserModel) => {
+
+                const folder = await Folder.create({ title, content: "", user: user._id });
+
+                user.folders.push(folder._id);
+
+                await user.save();
+
+                return folder._id;
+            });
     },
 
     /**
@@ -109,19 +119,18 @@ const folder = {
 
                 return Folder.findById({ _id });
             })
-            .then(folder => {
+            .then( async (folder) => {
 
-                if (!folder) throw new Error("cannot folder if doesn't exist");
+                if (!folder) throw Error("cannot delete folder if doesn't exist");
 
-                return File.deleteMany({ _id: folder.files })
-                    .then(() => folder);
-            })
-            .then((folder) => {
+                await User.update({ _id: folder.user }, { $pull: { folders: _id } });
 
-                return Folder.remove(folder)
-                    .then(() => folder);
-            })
-            .then(folder => folder._id);
+                await File.deleteMany({ _id: folder.files });
+
+                await Folder.remove(folder);
+
+                return folder._id;
+            });
     }
 };
 

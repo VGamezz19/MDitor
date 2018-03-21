@@ -1,6 +1,7 @@
 import { File, Folder, IFileModel } from "../models";
 import { validate } from "./validate";
 import mongoose = require("mongoose");
+import { FILE } from "dns";
 
 /**
  * file logic (bussines manager) Object (logic)
@@ -134,11 +135,14 @@ const file = {
 
                 return File.findOneAndRemove({ _id });
             })
-            .then((file) => {
+            .then(async (file: IFileModel) => {
 
-                return Folder.update({ _id: file.folder }, { $pull: { files: _id } });
-            })
-            .then(() => _id);
+                if (!file) throw Error("cannot delete file if doesn't exist");
+
+                await Folder.update({ _id: file.folder }, { $pull: { files: _id } });
+
+                return file._id;
+            });
     }
 };
 

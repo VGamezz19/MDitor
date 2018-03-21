@@ -1,6 +1,8 @@
 import { User, IUserModel } from "../models";
+
 import { validate } from "./validate";
-import mongoose = require("mongoose");
+
+import mongoose from "mongoose";
 
 /**
  * user logic (bussines manager) Object (logic)
@@ -11,7 +13,18 @@ import mongoose = require("mongoose");
  */
 const user = {
 
-    verift: function verify(username: string, password: string) {
+    /**
+     * Verify/Login a User
+     *
+     * @param {String} username - The username to verify User
+     *
+     * @param {String} password - The password to verify User
+     *
+     * @returns {Promise<IUserModel>} file._id - The id from new File
+     *
+     * @throws {Error} - If not valid username or password not found
+     */
+    verift: function verify(username: string, password: string): Promise<IUserModel> {
         return Promise.resolve()
             .then(() => {
 
@@ -19,7 +32,7 @@ const user = {
 
                 return User.findOne({ username, password }, { password: 0 });
             })
-            .then(user => {
+            .then((user: IUserModel) => {
 
                 if (!user) throw Error("username and/or password wrong");
 
@@ -27,7 +40,24 @@ const user = {
             });
     },
 
-    register: function register(name: string, surname: string, email: string, username: string, password: string) {
+    /**
+     * Register/Create a User
+     *
+     * @param {String} name - The name for new User
+     *
+     * @param {String} surname - The surname for new User
+     *
+     * @param {String} email - The email for new User
+     *
+     * @param {String} username - The username for new User
+     *
+     * @param {String} password - The password for new User
+     *
+     * @returns {Promise<mongoose.Types.ObjectId>| never} file._id - The id from new File
+     *
+     * @throws {Error} - If not valid name, surname, email, username, password not found
+     */
+    register: function register(name: string, surname: string, email: string, username: string, password: string): Promise<mongoose.Types.ObjectId> | never {
         return Promise.resolve()
             .then(() => {
 
@@ -35,45 +65,25 @@ const user = {
 
                 return User.findOne({ username });
             })
-            .then(user => {
+            .then((user: IUserModel) => {
 
                 if (user) throw Error("username already exists");
 
                 return User.create({ name, surname, email, username, password })
-                    .then((user: any) => user._id);
+                    .then((user: IUserModel) => user._id);
             });
     },
 
-    list: function list() {
-
-        return User.find({}, { _id: 1, name: 1, surname: 1, email: 1, username: 1 });
-    },
-
-    update: function update(_id: string, name: string, surname: string, email: string, username: string, password: string, newUsername: string, newPassword: string) {
-        return Promise.resolve()
-            .then(() => {
-
-                validate({ _id, name, surname, email, username, password, newUsername, newPassword });
-
-                return User.findOne({ username: newUsername });
-            })
-            .then(user => {
-
-                if (user) throw Error("username already exists");
-
-                return User.findOne({ _id });
-            })
-            .then(user => {
-
-                if (!user) throw Error("user does not exists");
-
-                if (user.username !== username || user.password !== password) throw Error("username and/or password wrong");
-
-                return User.updateOne({ _id }, { name, surname, email, username: newUsername, password: newPassword });
-            });
-    },
-
-    retrieve: function retrieve(_id: string) {
+    /**
+     * Retrieve a User
+     *
+     * @param {mongoose.Types.ObjectId} _id - User Id
+     *
+     * @returns {Promise<IUserModel>} file._id - The id from new File
+     *
+     * @throws {Error} - If not valid id not found
+     */
+    retrieve: function retrieve(_id: string): Promise<IUserModel> {
         return Promise.resolve()
             .then(() => {
 
@@ -81,30 +91,64 @@ const user = {
 
                 return User.findOne({ _id }, { password: 0 });
             })
-            .then(user => {
+            .then((user: IUserModel) => {
+
                 if (!user) throw Error("user does not exist");
 
                 return user;
             });
-    },
-
-    remove: function remove(_id: string, username: string, password: string) {
-        return Promise.resolve()
-            .then(() => {
-
-                validate({ _id, username, password });
-
-                return User.findOne({ _id });
-            })
-            .then(user => {
-
-                if (!user) throw Error("user does not exist");
-
-                if (user.username !== username || user.password !== password) throw Error("username and/or password wrong");
-
-                return User.deleteOne({ _id });
-            });
     }
+
+    /**
+     * No implemented
+     *
+     */
+    // list: function list() {
+
+    //     return User.find({}, { _id: 1, name: 1, surname: 1, email: 1, username: 1 });
+    // },
+
+    // update: function update(_id: string, name: string, surname: string, email: string, username: string, password: string, newUsername: string, newPassword: string) {
+    //     return Promise.resolve()
+    //         .then(() => {
+
+    //             validate({ _id, name, surname, email, username, password, newUsername, newPassword });
+
+    //             return User.findOne({ username: newUsername });
+    //         })
+    //         .then(user => {
+
+    //             if (user) throw Error("username already exists");
+
+    //             return User.findOne({ _id });
+    //         })
+    //         .then(user => {
+
+    //             if (!user) throw Error("user does not exists");
+
+    //             if (user.username !== username || user.password !== password) throw Error("username and/or password wrong");
+
+    //             return User.updateOne({ _id }, { name, surname, email, username: newUsername, password: newPassword });
+    //         });
+    // },
+
+    // remove: function remove(_id: string, username: string, password: string) {
+    //     return Promise.resolve()
+    //         .then(() => {
+
+    //             validate({ _id, username, password });
+
+    //             return User.findOne({ _id });
+    //         })
+    //         .then(user => {
+
+    //             if (!user) throw Error("user does not exist");
+
+    //             if (user.username !== username || user.password !== password) throw Error("username and/or password wrong");
+
+    //             return User.deleteOne({ _id });
+    //         });
+    // }
 };
 
 export { user, validate };
