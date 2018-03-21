@@ -1,7 +1,5 @@
 import { create, remove, update, retrieve, list } from "./handlers";
 
-// import { strategyUser } from "../config";
-
 import { Router } from "express";
 
 const bodyParser = require("body-parser");
@@ -12,10 +10,7 @@ const passport = require("passport");
 
 const fileRouter: Router = Router();
 
-// fileRouter.use(strategyUser.authenticate("jwt", { session: false }));
-
 fileRouter.use(passport.authenticate("jwt", { session: false }));
-
 
 fileRouter.get("/file", list);
 

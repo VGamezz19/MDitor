@@ -8,7 +8,8 @@ import { ExtractJwt, StrategyOptions } from "passport-jwt";
 
 const secret = process.env.JWT_SECRET;
 
-import { logic } from "../../logic";
+import { logic } from "../logic";
+
 /**
  * JWT Strategy
  * Auth all methods File and Folder logic (Routes)

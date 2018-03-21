@@ -1,6 +1,8 @@
 import { Response, Request } from "express";
-import { success, fail } from "../../config";
-import { logic } from "../../../logic";
+
+import { success, fail } from "../../../config";
+
+// import { logic } from "../../../logic";
 
 const jwt = require("jsonwebtoken");
 
@@ -10,15 +12,18 @@ const expiresIn = parseInt(expiration);
 
 function login(req: Request, res: Response) {
 
-    const { user: { _id, username } } = req;
+    try {
 
-    const token = jwt.sign({
-        _id,
-        username
-    }, secret);
+        const { user: { _id, username } } = req;
 
-    res.json(success({ token }));
+        const token = jwt.sign({ _id, username }, secret);
 
+        res.json(success({ token }));
+
+    } catch (err) {
+
+        res.json(fail(err));
+    }
 }
 
 export { login };

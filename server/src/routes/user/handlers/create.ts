@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { success, fail } from "../../config";
+import { success, fail } from "../../../config";
 import { logic } from "../../../logic";
 
 const jwt = require("jsonwebtoken");
@@ -15,9 +15,11 @@ function create(req: Request, res: Response) {
     logic.user.register(name, surname, email, username, password)
         .then(id => {
 
-            const token = jwt.sign({ username }, secret, { expiresIn });
+            const { user: { _id, username } } = req;
 
-            res.json(success({ id, token }));
+            const token = jwt.sign({ _id, username }, secret);
+
+            res.json(success({ token }));
         })
         .catch(err => {
 

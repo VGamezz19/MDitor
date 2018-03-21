@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { success, fail } from "../../config";
+import { success, fail } from "../../../config";
 import { logic } from "../../../logic";
 
 function create (req: Request, res: Response) {

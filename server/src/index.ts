@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 
 const passport = require("passport");
 
-require("./routes/config/passportStrategy");
+require("./config/passportStrategy");
 
 require("./db");
 
