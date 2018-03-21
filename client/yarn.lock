@@ -2,6 +2,9 @@
 # yarn lockfile v1
 
 
+"@types/mditor-types@../mditor-types":
+  version "0.1.0"
+
 "@types/node@*":
   version "9.4.7"
   resolved "http://registry.npmjs.org/@types/node/-/node-9.4.7.tgz#57d81cd98719df2c9de118f2d5f3b1120dcd7275"
