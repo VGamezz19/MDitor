@@ -7,17 +7,11 @@ let masterUsertTestID;
 
 beforeAll(async (done) => {
 
-    require("./db");
+    await require("./db");
 
-    mongoose.connection.once("connected", () => {
-
-        if (process.env.MONGO_DB_TEST === "MDitor") {
-
-            mongoose.disconnect();
-
-            throw new Error("!ERROR: You can't run this test in MDitor Database, you should use MDitor-Test Database");
-        }
-    });
+    await User.remove({});
+    await File.remove({});
+    await Folder.remove({});
 
     masterUsertTestID = await logic.user.register("user", "surname", "email", "adminUATFiles", "adminUATPass");
 
@@ -26,33 +20,9 @@ beforeAll(async (done) => {
 
 afterAll(async (done) => {
 
-    await mongoose.connection.db.dropCollection("users", async function (err, result) {
-        if (err) done(err);
-    });
+    await mongoose.disconnect();
 
-    await mongoose.connection.db.dropCollection("folders", function (err, result) {
-        if (err) done(err);
-    });
-
-    await mongoose.connection.db.dropCollection("files", function (err, result) {
-        if (err) done(err);
-    });
-
-    mongoose.disconnect();
     done();
-});
-
-
-describe(".env", () => {
-
-    test("Should exist", () => {
-
-        expect(process.env.MONGO_HOST_TEST);
-
-        expect(process.env.MONGO_PORT_TEST);
-
-        expect(process.env.MONGO_DB_TEST);
-    });
 });
 
 describe("Logic File", () => {

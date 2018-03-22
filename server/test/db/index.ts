@@ -8,4 +8,4 @@ const mongo = {
     database: process.env.MONGO_DB_TEST,
 };
 
-mongoose.connect(`mongodb://${mongo.host}:${mongo.port}/${mongo.database}`);
+export = mongoose.connect(`mongodb://${mongo.host}:${mongo.port}/${mongo.database}`);
