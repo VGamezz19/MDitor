@@ -5,7 +5,7 @@ import "jest";
 
 let masterUsertTestID;
 
-beforeAll(async () => {
+beforeAll(async (done) => {
 
     require("./db");
 
@@ -20,14 +20,28 @@ beforeAll(async () => {
     });
 
     masterUsertTestID = await logic.user.register("user", "surname", "email", "adminUATFiles", "adminUATPass");
+
+    done();
 });
 
-afterAll(async () => {
-    await User.remove({});
-    await File.remove({});
-    await Folder.remove({});
+afterAll(async (done) => {
+
+    await mongoose.connection.db.dropCollection("users", async function (err, result) {
+        if (err) done(err);
+    });
+
+    await mongoose.connection.db.dropCollection("folders", function (err, result) {
+        if (err) done(err);
+    });
+
+    await mongoose.connection.db.dropCollection("files", function (err, result) {
+        if (err) done(err);
+    });
+
     mongoose.disconnect();
+    done();
 });
+
 
 describe(".env", () => {
 

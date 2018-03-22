@@ -16,6 +16,10 @@ const jsonBodyParser = bodyParser.json();
 
 const app = express();
 
+const cors = require("cors");
+
+app.use(cors());
+
 app.use(passport.initialize());
 
 app.use("/user", userRouter);

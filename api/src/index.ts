@@ -51,8 +51,8 @@
 
 // export  { api } ;
 
-import { user } from "./user";
+import { UserAPI } from "./user";
 
-const api = { user };
+// const api = { user };
 
-export { api };
+export { UserAPI };

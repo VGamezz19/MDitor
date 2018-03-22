@@ -29,11 +29,11 @@ class Call implements ICallAPI {
         return this.baseurl;
     }
 
-    _request(method: string, path: string, body?: object, headers?: Headers) {
+    _request(method: string, collection: string, path: string, body?: object, headers?: Headers) {
 
         const opts: OptionsWithUrl = {
             method,
-            url: `${this.getBaseUrl()}/${path}`,
+            url: `${this.getBaseUrl()}/${collection}/${path}`,
             headers,
             body,
             json: true
