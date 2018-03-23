@@ -2,8 +2,9 @@
   "name": "mditor-types",
   "version": "0.1.0",
   "license": "MIT",
-  "main": "src/",
+  "main": "build/",
   "scripts": {
+    "preinstall": "yarn tsc",
     "type-check": "tsc",
     "build": "babel src --out-dir src --extensions \".ts,.tsx\"",
     "test": "mocha -r ts-node/register tests/*.spec.ts"
