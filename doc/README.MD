@@ -84,7 +84,9 @@ remove(childr: File)
 
 ## ApiClient
 
-... Doing
+Check CodeCoverage here http://reflective-string.surge.sh/
+
+![Imgur](https://i.imgur.com/ViAf1LA.png)
 
 ## Server Site
 

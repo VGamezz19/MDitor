@@ -16,8 +16,6 @@ afterAll(async (done) => {
 
     await require("./db");
 
-    await mongoose.connection.db.dropCollection("users");
-
     done();
 });
 
