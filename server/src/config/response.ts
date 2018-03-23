@@ -22,4 +22,4 @@ function fail(error?: any) {
     return res;
 }
 
-export { success, fail, ResponseServer };
+export { success, fail };
