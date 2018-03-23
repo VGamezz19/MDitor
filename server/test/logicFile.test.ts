@@ -1,5 +1,5 @@
 import { logic } from "../src/logic";
-import { File, User, Folder, IFolder, IFolderModel, IFileModel } from "../src/models";
+import { File, User, Folder, IFolderModel, IFileModel } from "../src/models";
 import mongoose from "mongoose";
 import "jest";
 
@@ -9,16 +9,16 @@ beforeAll(async (done) => {
 
     await require("./db");
 
-    await User.remove({});
-    await File.remove({});
-    await Folder.remove({});
-
     masterUsertTestID = await logic.user.register("user", "surname", "email", "adminUATFiles", "adminUATPass");
 
     done();
 });
 
 afterAll(async (done) => {
+
+    await User.remove({});
+    await File.remove({});
+    await Folder.remove({});
 
     await mongoose.disconnect();
 

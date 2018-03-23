@@ -1,5 +1,5 @@
 import { logic } from "../src/logic";
-import { File, Folder, User, IUserModel, IFolder, IFolderModel } from "../src/models";
+import { File, Folder, User, IUserModel, IFolderModel } from "../src/models";
 import mongoose from "mongoose";
 import "jest";
 
@@ -7,14 +7,14 @@ beforeAll(async (done) => {
 
     await require("./db");
 
-    await User.remove({});
-    await File.remove({});
-    await Folder.remove({});
-
     done();
 });
 
 afterAll(async (done) => {
+
+    await User.remove({});
+    await File.remove({});
+    await Folder.remove({});
 
     await mongoose.disconnect();
 
