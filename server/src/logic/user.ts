@@ -1,5 +1,7 @@
 import { User, IUserModel, Folder } from "../models";
+
 import { validate } from "./validate";
+
 import mongoose = require("mongoose");
 
 /**
@@ -22,7 +24,7 @@ const user = {
      *
      * @throws {Error} - If not valid username or password not found
      */
-    verify: function verify(username: string, password: string): any {
+    verify: function verify(username: string, password: string): Promise<IUserModel> | never {
         return Promise.resolve()
             .then(() => {
 
@@ -49,6 +51,7 @@ const user = {
                 });
             })
             .then((user: any) => {
+
                 user.password = undefined;
 
                 return user;
@@ -94,7 +97,7 @@ const user = {
      *
      * @param {mongoose.Types.ObjectId} _id - User Id
      *
-     * @returns {Promise<IUserModel>} file._id - The id from new File
+     * @returns {Promise<{}>} return populate User --> Folders frin User --> Files from Folder;
      *
      * @throws {Error} - If not valid id not found
      */
@@ -109,11 +112,10 @@ const user = {
             .then((user: IUserModel) => {
 
                 if (!user) throw Error("user does not exist");
-                // File.populate(folder, { path: "files", select: "title" })
+
                 return Folder
                     .populate(user, {
                         path: "folders",
-                        // Get friends of friends - populate the "friends" array for every friend
                         populate: { path: "files" }
                     });
 

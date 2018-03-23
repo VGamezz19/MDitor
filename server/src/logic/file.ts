@@ -145,4 +145,4 @@ const file = {
     }
 };
 
-export { file, validate };
+export { file };

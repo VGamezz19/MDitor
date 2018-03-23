@@ -1,4 +1,4 @@
-import { User, File, Folder, IFolder, IFolderModel, IUserModel } from "../models";
+import { User, File, Folder, IFolderModel, IUserModel } from "../models";
 import { validate } from "./validate";
 import mongoose = require("mongoose");
 
@@ -134,4 +134,4 @@ const folder = {
     }
 };
 
-export { folder, validate };
+export { folder };
