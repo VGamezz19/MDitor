@@ -322,3 +322,75 @@ describe("Type File as a Folder", () => {
 
   });
 });
+
+describe("Errors Types Files", () => {
+  it("Should throw an error when try to get Content in Folder type", () => {
+    const type = "folder";
+    const id = "zsd23e1das";
+    const title = "title Folder";
+
+    const folder = new File(type, id, title, undefined);
+
+    expect(function () { folder.getContent(); }).to.throw();
+  });
+
+  it("Should throw an error when try to set Content in Folder type", () => {
+    const type = "folder";
+    const id = "zsd23e1das";
+    const title = "title Folder";
+
+    const folder = new File(type, id, title, undefined);
+
+    expect(function () { folder.setContent("bla bla bla new content"); }).to.throw();
+  });
+
+  it("Should throw an error when try to add new File in File type", () => {
+    const typeFile = "file";
+    const idFile = "asdasfasdas";
+    const titleFile = "title File";
+    const content = "initial Content";
+
+    const file = new File(typeFile, idFile, titleFile, content);
+
+    expect(function () { file.add(new File("file", "asda", "asdas", "asd")); }).to.throw();
+  });
+
+  it("Should throw an error when try to getFile in File type", () => {
+    const typeFile = "file";
+    const idFile = "asdasfasdas";
+    const titleFile = "title File";
+    const content = "initial Content";
+
+    const file = new File(typeFile, idFile, titleFile, content);
+
+    expect(function () { file.getFile("asdsd"); }).to.throw();
+  });
+
+  it("Should throw an error when try to remove File in File type", () => {
+    const typeFile = "file";
+    const idFile = "asdasfasdas";
+    const titleFile = "title File";
+    const content = "initial Content";
+
+    const file = new File(typeFile, idFile, titleFile, content);
+
+    expect(function () { file.remove(new File("file", "asd", "asd", "asd")); }).to.throw();
+  });
+
+  it("Should throw an error when try to new File without Type", () => {
+    const idFile = "asdasfasdas";
+    const titleFile = "title File";
+    const content = "initial Content";
+
+    expect(function () { const file = new File("", idFile, titleFile, content); }).to.throw();
+  });
+
+  it("Should throw an error function error", () => {
+    const idFile = "asdasfasdas";
+    const titleFile = "title File";
+    const content = "initial Content";
+
+    const file = new File("file", idFile, titleFile, content);
+    expect(function () { file.throwError("testing", "typeTesting"); }).to.throw();
+  });
+});

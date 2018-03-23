@@ -9,10 +9,7 @@ class File {
 
         if (_type !== "folder" && _type !== "file") {
 
-            const type = "new File(type: string, id: string, title: string, content?: string, files?: File)";
-            const message = "only accepts 'folder' || 'file'";
-
-            this.throwError(message, type);
+            this.throwError("new File(type: string, id: string, title: string, content?: string, files?: File)", "only accepts 'folder' || 'file'");
         }
 
         if (_type == "folder") {
