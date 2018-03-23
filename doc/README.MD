@@ -8,6 +8,12 @@
 | [Materialize](https://react-materialize.github.io/#/) | ES6  | TS  | [Mocha](https://mochajs.org/)
 | [Flex](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) | mditot-type  | RestFul  | [Cosmos](https://github.com/react-cosmos/react-cosmos)
 
+## UML
+
+You can [preview It](https://drive.google.com/file/d/1tad0wKucvZKmhCi6kJr_NYMFJVokqn6o/view?usp=sharing) in draw.io
+
+![Imgur](https://i.imgur.com/v0DzY7P.png)
+
 ## Client Site
 
 ### Design - Mockup
@@ -19,6 +25,12 @@ the mockup has been done with  [Sketch](https://www.sketchapp.com/)
 ## Mditor-Types Site (Mandatory data type in Client Site)
 
 Mditor use strict a custom type `File`. All **Client Site** use this type.
+
+### Test mditor-types && Coverage
+
+Check CodeCoverage here http://unwritten-jump.surge.sh/
+
+![Imgur](https://i.imgur.com/nuWS3fA.png)
 
 ### More about File
 
@@ -45,44 +57,9 @@ Files contain children File, and children File, contains more children Files.
 new File(type: "(file|folder)", id: string, title: string, content?: string, files?: File)
 ```
 
-### API File
-
-```ts
-getId(): string
-
-getTitle(): string
-
-getType(): string
-
-/**
-  * Only with file Type
-**/
-getContent(): string | never
-
-/**
- * Only with folder Type
-**/
-getFile(id: string): File | never
-
-setTitle(title: string)
-
-/**
- * Only with file Type
-**/
-setContent(content: string)
-
-/**
- * Only with folder Type
-**/
-add(childr: File)
-
-/**
- * Only with folder Type
-**/
-remove(childr: File)
-```
-
 ## ApiClient
+
+### Test api && Coverage
 
 Check CodeCoverage here http://reflective-string.surge.sh/
 
@@ -90,26 +67,26 @@ Check CodeCoverage here http://reflective-string.surge.sh/
 
 ## Server Site
 
-Check CodeCoverage here http://coverage-serversite-mditor.surge.sh/
-
-![Imgur](https://i.imgur.com/rA4v6H8.png)
-
-## Data Model
+### Data Model
 
 It only need three data model, User, Folder and File.
 `Users` will have {N}  `Folder`, and the Folders will contains {N} `Files`.
 
 To check out more my data model, __[see It here](https://github.com/VGamezz19/MDitor/tree/master/doc/dataModel/)__
 
-## UML
+### Test server && Coverage
 
-__[Click here](https://github.com/VGamezz19/MDitor/tree/master/doc/UML/)__ to see project UML
+Check CodeCoverage here http://coverage-serversite-mditor.surge.sh/
+
+![Imgur](https://i.imgur.com/rA4v6H8.png)
 
 ## Work Flow
 
 ### TimeLine
 
-__[Click here](https://github.com/VGamezz19/MDitor/tree/master/doc/timeLine/)__ to see project timeline
+You can [preview It](https://drive.google.com/file/d/1uGGHUBiyll8flWdE9xBCHDdYodnnzY0n/view?usp=sharing) in draw.io
+
+![Imgur](https://i.imgur.com/ULB38Pu.png)
 
 ### Agile methodologies / Scrum
 

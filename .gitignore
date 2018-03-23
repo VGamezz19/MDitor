@@ -69,5 +69,7 @@ server/.git
 # Ignore output from coverage report
 coverage
 
+.nyc_output
+
 # Ignore snapshots
 __snapshots__
