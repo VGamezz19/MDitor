@@ -10,7 +10,11 @@ const passport = require("passport");
 
 const folderRouter: Router = Router();
 
+import { handlerError } from "../../config";
+
 folderRouter.use(passport.authenticate("jwt", { session: false }));
+
+folderRouter.use(handlerError);
 
 folderRouter.get("/folder", list);
 

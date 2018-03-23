@@ -1,23 +1,23 @@
-import { Response, Request } from "express";
-import { success, fail } from "../../../config";
-import { logic } from "../../../logic";
+// import { Response, Request } from "express";
+// import { success, fail } from "../../../config";
+// import { logic } from "../../../logic";
 
 
-function update(req: Request, res: Response) {
+// function update(req: Request, res: Response) {
 
-    const { body: { name, surname, email, username, password, newUsername, newPassword } } = req;
+//     const { body: { name, surname, email, username, password, newUsername, newPassword } } = req;
 
-    const { params: { id } } = req;
+//     const { params: { id } } = req;
 
-    logic.user.update(id, name, surname, email, username, password, newUsername, newPassword)
-        .then(() => {
+//     logic.user.update(id, name, surname, email, username, password, newUsername, newPassword)
+//         .then(() => {
 
-            res.json(success());
-        })
-        .catch(err => {
+//             res.json(success());
+//         })
+//         .catch(err => {
 
-            res.json(fail(err.message));
-        });
-}
+//             res.json(fail(err.message));
+//         });
+// }
 
-export { update };
+// export { update };

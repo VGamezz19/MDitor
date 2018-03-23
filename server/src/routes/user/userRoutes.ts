@@ -10,11 +10,13 @@ const passport = require("passport");
 
 const userRouter: Router = Router();
 
-userRouter.post("/login", [jsonBodyParser, passport.authenticate("local", { session: false })], login);
+import { handlerError } from "../../config";
+
+userRouter.post("/login", [jsonBodyParser, passport.authenticate("local", { session: false }), handlerError], login);
 
 userRouter.post("/register", jsonBodyParser, create);
 
-userRouter.get("/retrieve/", passport.authenticate("jwt", { session: false }), retrieve);
+userRouter.get("/retrieve/", [passport.authenticate("jwt", { session: false }), handlerError], retrieve);
 
 // userRouter.put("/user/:id",  jsonBodyParser, update);
 
