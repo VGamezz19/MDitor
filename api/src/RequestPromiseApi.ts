@@ -1,10 +1,17 @@
-import rp, { OptionsWithUrl, RequestPromiseOptions } from "request-promise";
+import rp, { OptionsWithUrl, RequestPromiseOptions, RequestPromise } from "request-promise";
 
 import { Headers, } from "request";
 
-import { ICallAPI } from "./interfaces/";
+import { IApiClient } from "./interfaces";
 
-class Call implements ICallAPI {
+/**
+ * RequestPromiseApi class. (logic)
+ *
+ * Define the standar properties and methods for User/File/Folder API
+ *
+ * @version 1.0.0
+ */
+export class RequestPromiseApi implements IApiClient {
     protocol: ("http" | "https");
     host: string;
     port?: string;
@@ -29,11 +36,11 @@ class Call implements ICallAPI {
         return this.baseurl;
     }
 
-    _request(method: string, collection: string, path: string, body?: object, headers?: Headers) {
+    request(method: string, path: string, body?: object, headers?: object): RequestPromise {
 
         const opts: OptionsWithUrl = {
             method,
-            url: `${this.getBaseUrl()}/${collection}/${path}`,
+            url: `${this.getBaseUrl()}/${path}`,
             headers,
             body,
             json: true
@@ -42,5 +49,3 @@ class Call implements ICallAPI {
         return rp(opts);
     }
 }
-
-export { Call };

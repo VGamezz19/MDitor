@@ -47,12 +47,6 @@
 //     // }
 // };
 
+import { UserApi } from "./UserApi";
 
-
-// export  { api } ;
-
-import { UserAPI } from "./user";
-
-// const api = { user };
-
-export { UserAPI };
+export { UserApi };
