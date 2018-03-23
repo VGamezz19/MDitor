@@ -1,5 +1,5 @@
 import { Schema, Model, model } from "mongoose";
-import { IFolderModel } from "./Folder.interface";
+import { IFolderModel } from "./IFolderModel.interface";
 
 /**
  * Folder Schema, Object Mongoose (Object)
@@ -16,4 +16,4 @@ const FolderSchema: Schema = new Schema({
 
 const Folder: Model<IFolderModel> = model<IFolderModel>("Folder", FolderSchema);
 
-export { FolderSchema, Folder };
+export { Folder };

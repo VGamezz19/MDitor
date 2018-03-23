@@ -1,5 +1,5 @@
-import { IFolderModel, IFolder } from "./Folder.interface";
+import { IFolderModel } from "./IFolderModel.interface";
 
-import { FolderSchema , Folder } from "./Folder";
+import { Folder } from "./Folder";
 
-export { IFolder, IFolderModel, FolderSchema, Folder };
+export { IFolderModel, Folder };

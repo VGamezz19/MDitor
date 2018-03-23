@@ -1,5 +1,5 @@
-import { IFile, IFileModel } from "./File.interface";
+import { IFileModel } from "./IFileModel.interface";
 
-import { FileSchema , File } from "./File";
+import { File } from "./File";
 
-export {IFile, IFileModel, FileSchema, File };
+export { IFileModel, File };

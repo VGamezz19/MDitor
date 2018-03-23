@@ -1,5 +1,5 @@
 import { Schema, Model, model } from "mongoose";
-import { IFileModel } from "./File.interface";
+import { IFileModel } from "./IFileModel.interface";
 
 /**
  * File Schema, Object Mongoose (Object)

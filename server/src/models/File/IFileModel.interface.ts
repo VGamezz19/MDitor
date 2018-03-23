@@ -1,16 +1,6 @@
 import { Document, Types } from "mongoose";
 
-/**
- * File Data, interface (contract)
- *
- * Defines contrat to use type of data File
- *
- * @version 1.0.0
- */
-export interface IFile {
-    title: String;
-    content: String;
-}
+import { IFile } from "./IFile.interfaces";
 
 /**
  * File Modal, interface (contract) extends IFile
@@ -20,7 +10,5 @@ export interface IFile {
  * @version 1.0.0
  */
 export interface IFileModel extends IFile, Document {
-    title: String;
-    content: String;
     folder: Types.ObjectId;
 }

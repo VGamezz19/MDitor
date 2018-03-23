@@ -1,5 +1,5 @@
-import { IUserModel, IUser } from "./User.interface";
+import { IUserModel } from "./IUserModel.interface";
 
-import { UserSchema , User } from "./User";
+import { User } from "./User";
 
-export { IUser, IUserModel, UserSchema, User };
+export { IUserModel, User };
