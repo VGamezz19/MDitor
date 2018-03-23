@@ -14,8 +14,6 @@ function handlerError(req: Request, res: Response, next: NextFunction) {
 
     const { user } = req;
 
-    console.log(user);
-
     if (user instanceof Error) {
 
         const err = user.toString();

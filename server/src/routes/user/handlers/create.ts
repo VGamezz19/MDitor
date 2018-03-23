@@ -15,8 +15,6 @@ function create(req: Request, res: Response) {
     logic.user.register(name, surname, email, username, password)
         .then(_id => {
 
-            console.log(_id);
-
             jwt.sign({ _id, username }, secret, (err: Error, token: Object) => {
 
                 if (err) return res.json(fail(err));

@@ -12,8 +12,6 @@ function login(req: Request, res: Response) {
 
     const { user: { _id, username } } = req;
 
-    console.log(_id);
-
     jwt.sign({ _id, username }, secret, (err: Error, token: Object) => {
 
         if (err) return res.json(fail(err));
