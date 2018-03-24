@@ -7,6 +7,8 @@ body,
 main {
     height: 100%;
     width: 100%;
+    display: flex;
+    align-items: center;
     body {
         @extend %main-font-app;
         margin: 0;

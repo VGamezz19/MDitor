@@ -1,5 +1,13 @@
 @import '../sass/_variables';
 @import '../sass/_extends';
+
+.pre-loader-home {
+    background-color: $file-item-color !important;
+    div {
+        background-color: $folder-item-color !important;
+    }
+}
+
 .App {
     padding: 2em;
     @extend %capsuleStandar;
@@ -7,7 +15,7 @@
         display: flex;
         justify-content: space-between;
     }
-    .MarkDownEdited {
+    .mark-down-edited {
         display: flex;
         flex-wrap: wrap;
         @extend %capsuleStandar;

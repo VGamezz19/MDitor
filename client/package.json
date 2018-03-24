@@ -33,6 +33,7 @@
     "jquery": "^3.3.1",
     "markdown-draft-js": "^0.6.2",
     "material-ui": "^0.20.0",
+    "mditor-api": "../api",
     "mditor-types": "../mditor-types",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",

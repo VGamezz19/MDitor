@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
+import { ProgressBar } from "react-materialize";
 import CircleButton from './CircleButton'
 import Sidenav from './Sidenav'
 import MyEditor from './MyEditor/'
 import MarkDown from './MarkDown'
 
-import API from '../api/ApiClient'
-import logicApp from './logicApp'
+import logic from "../logic";
 
-// import File from 'mditor-types'
+console.log(logic)
 
 class App extends Component {
 
@@ -21,31 +21,48 @@ class App extends Component {
         fileId: undefined,
       },
       folders: [],
-      user: {}
+      user: {},
+      loader: true
     }
   }
 
-  createFolder = (title) => this.setState(({ folders }) => ({ folders: logicApp.createFolder(title, folders) }))
+  createFolder = async (title) => {
 
-  updateFolder = (id, title) => this.setState(({ folders }) => ({ folders: logicApp.updateFolder(id, title, folders) }))
+    const addedNewFolder = await logic.folder.create(title, this.state.folders);
 
-  deleteFolder = (id) => this.setState(({ folders }) => ({ folders: logicApp.removeFolder(id, folders) }))
+    this.setState({ folders: addedNewFolder })
+  }
 
-  createFile = (folderId, title) => this.setState(({ folders }) => ({ folders: logicApp.createFile(folderId, title, folders) }))
+  updateFolder = (id, title) => this.setState(({ folders }) => ({ folders: logic.folder.update(id, title, folders) }))
 
-  deleteFile = (folderId, id) => this.setState(({ folders }) => ({ folders: logicApp.removeFile(folderId, id, folders) }))
+  deleteFolder = (id) => this.setState(({ folders }) => ({ folders: logic.folder.remove(id, folders) }))
 
-  writeFile = (folderId, id, content) => this.setState(({ folders }) => ({ folders: logicApp.writeFile(folderId, id, content, folders) }))
+  createFile = async (folderId, title) => {
+
+    const addedNewFileInFolder = await logic.file.create(folderId, title, this.state.folders);
+
+    this.setState({ folders: addedNewFileInFolder })
+  }
+
+  deleteFile = (folderId, id) => this.setState(({ folders }) => ({ folders: logic.file.remove(folderId, id, folders) }))
+
+  writeFile = (folderId, id, content) => this.setState(({ folders }) => ({ folders: logic.file.write(folderId, id, content, folders) }))
 
   //===== EVENTS, Handlers and Helpers APP
-  componentDidMount = () => {
-    const folderDataAPI = API.getFolders()
-    const user = API.getUser()
-    const folders = logicApp.refactorDataToFileType(folderDataAPI)
+
+  componentDidMount = async () => {
+
+    const tokenUser = await logic.user.login("vgamez","123");
+
+    const user = await logic.user.retrieve(tokenUser);
+
+    const folderDataAPI = user.folders
+
+    const folders = logic.refactorDataToFileType(folderDataAPI)
+
+    await this.setState({ folders, user, loader:false })
 
     this.onChangeTargetSelected(this.extractParamsFromRoute(this.props), folders)
-
-    this.setState({ folders, user })
   }
 
   componentWillReceiveProps = (props, state) => {
@@ -59,8 +76,8 @@ class App extends Component {
     //If URL have some ID Folder/File, then change target selected
     if (match.path !== '/') {
 
-      const folderId = parseInt(params.folderId, 0)
-      const fileId = parseInt(params.fileId, 0)
+      const folderId = params.folderId
+      const fileId = params.fileId
 
       return { folderId, fileId, match }
     }
@@ -77,7 +94,7 @@ class App extends Component {
 
   checkFileExist = ({ folderId, fileId, match }, folders) => {
 
-    const retrieve = logicApp.retrieveFolder(folderId, folders) && logicApp.retrieveFile(folderId, fileId, folders)
+    const retrieve = logic.folder.retrieve(folderId, folders) && logic.file.retrieve(folderId, fileId, folders)
 
     if (!retrieve && match.path !== '/') {
 
@@ -103,7 +120,7 @@ class App extends Component {
   render() {
 
     const { match, match: { params } } = this.props
-    const { currentSelected: { folderId, fileId }, user: { name, surname }, folders } = this.state
+    const { currentSelected: { folderId, fileId }, user: { name, surname }, folders, loader } = this.state
 
     const logicFolder = {
       create: this.createFolder,
@@ -116,7 +133,8 @@ class App extends Component {
     }
 
     return (
-      <section className="App">
+      !loader ?
+        <section className="App">
         <article>
           <Sidenav
             buttonTriggerStyle={{ className: 'grey lighten-2', icon: 'menu' }}
@@ -139,22 +157,23 @@ class App extends Component {
                 onClick={() => this.onHandlerRouteToView(this.props, folderId, fileId)} />}
 
         </article>
-        <div className='MarkDownEdited'>
+        <div className='mark-down-edited'>
           {folderId !== undefined ?
             match.path === '/' ?
               <MarkDown showInitialMarkDown={true} />
               :
-              this.checkFileExist({ folderId, fileId, match }, folders) ?
+              this.checkFileExist({ folderId, fileId, match }, this.state.folders) ?
                 params.action === 'view' ?
-                  <MarkDown file={logicApp.retrieveFile(folderId, fileId, folders)} />
+                  <MarkDown file={logic.file.retrieve(folderId, fileId, folders)} />
                   :
                   <MyEditor
-                    file={logicApp.retrieveFile(folderId, fileId, folders)}
+                    file={logic.file.retrieve(folderId, fileId, folders)}
                     emitCurrentContent={this.onHandlerMyEditor} />
                 : false
             : <MarkDown showInitialMarkDown={true} />}
         </div>
-      </section>
+      </section> 
+      : <ProgressBar className={"pre-loader-home"} />
     );
   }
 }
