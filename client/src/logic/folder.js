@@ -9,12 +9,13 @@ const folderApilogic = new FolderApi("http", "localhost", "5050");
 const folderLogic = {
 
     create: (title, folders) => {
-        console.log(tokenUser)
+
         return folderApilogic.create(title, tokenUser)
             .then(res => [...folders, new File('folder', res.data.id, title)]);
     },
 
     retrieve: (id, folders) => {
+        
         const folder = folders.find(folder => folder.id === id)
         return folder
     },
