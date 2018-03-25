@@ -1,15 +1,29 @@
 import VisualFile from './';
-import API from '../../../../api/ApiClient'
-import logicApp from '../../../logicApp'
 
-const dataFolders = API.getFolders()
-/**
- * Mandatory prototype File
- */
-const folders = logicApp.refactorDataToFileType(dataFolders);
+import logic from '../../../../logic'
 
-const file = folders[0].files[0]
-const folderId = folders[0].getId()
+let folders = logic.refactorDataToFileType([{
+  files: [
+    {
+      content: "Hellow New File 1 as dasds das ds",
+      _id:"5ab6s9e5c3d56cb0b34899ff2", 
+      title:"newFile12"
+    },
+    {
+      content: "Hellow New File 2 as dasds das ds",
+      _id:"sad0b34899543", 
+      title:"newFile2"
+    }
+  ],
+  _id:"5ab6sd9e513d56cb0b34899ff1",
+  title: "HelloWorld",
+}])
+
+let file = folders[0].files[0]
+let folderId = folders[0].getId()
+
+let url = `/${folderId}/${file.getId()}`
+
 const logicFile = {
   create: () => console.log("Create file"),
   delete: () => console.log("Delete file")
@@ -18,7 +32,7 @@ const logicFile = {
 export default [{
   component: VisualFile,
   name: "File View route",
-  url: '/0/2/view',
+  url: url +'/view',
   props: {
     file,
     folderId,
@@ -28,7 +42,7 @@ export default [{
 }, {
   component: VisualFile,
   name: "File Edit route",
-  url: '/0/2/edit',
+  url: url + '/edit',
   props: {
     file,
     folderId,
@@ -38,7 +52,7 @@ export default [{
 }, {
   component: VisualFile,
   name: "No selected File",
-  url: '/1/2/view',
+  url: 'random/random/view',
   props: {
     file,
     folderId,

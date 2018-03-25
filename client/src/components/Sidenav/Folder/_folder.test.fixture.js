@@ -1,16 +1,28 @@
 import Folder from './';
 import './Folder.scss';
-import API from '../../../api/ApiClient'
+
 import File from 'mditor-types'
-import logicApp from '../../logicApp'
+import logic from '../../../logic'
 
-const dataFolders = API.getFolders()
-const folders = logicApp.refactorDataToFileType(dataFolders);
+let folders = logic.refactorDataToFileType([{
+  files: [
+    {
+      content: "Hellow New File 1 as dasds das ds",
+      _id:"5ab6s9e5c3d56cb0b34899ff2", 
+      title:"newFile1"
+    },
+    {
+      content: "Hellow New File 2 as dasds das ds",
+      _id:"sad0b34899543", 
+      title:"newFile2"
+    }
+  ],
+  _id:"5ab6sd9e513d56cb0b34899ff1",
+  title: "HelloWorld",
+}])
 
-const folder = folders[0]
-/**
- * Mandatory prototype File
- */
+let folder = folders[0];
+
 const folderWithoutFile = new File("folder", 2, "new Folder(2)")
 
 const logicFolder = {
