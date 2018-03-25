@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 
 import { ProgressBar } from "react-materialize";
+
 import CircleButton from './CircleButton'
 import Sidenav from './Sidenav'
 import MyEditor from './MyEditor/'
 import MarkDown from './MarkDown'
 
 import logic from "../logic";
-
-console.log(logic)
 
 class App extends Component {
 
@@ -26,6 +25,19 @@ class App extends Component {
     }
   }
 
+  /**
+   * 
+   * Business App.js function creeateFolder
+   *
+   * async funtion to create a new folder. When logic.folder.create promise has finished
+   * then state from component will update
+   * 
+   * @param {String} title title for new Folder
+   *
+   * @returns {RenderDOM} will update DOM with new folder
+   *
+   * @version 1.0.0
+   */
   createFolder = async (title) => {
 
     const addedNewFolder = await logic.folder.create(title, this.state.folders);
@@ -33,10 +45,49 @@ class App extends Component {
     this.setState({ folders: addedNewFolder })
   }
 
+  /**
+   * 
+   * Business App.js function updateFolder
+   *
+   * function to update the specifict title folder. It will update component state
+   * 
+   * @param {String} id id from updated Folder
+   * @param {String} title title for to rename Folder
+   *
+   * @returns {RenderDOM} will update DOM with folder renamed
+   *
+   * @version 1.0.0
+   */
   updateFolder = (id, title) => this.setState(({ folders }) => ({ folders: logic.folder.update(id, title, folders) }))
 
+  /**
+   * 
+   * Business App.js function deleteFolder
+   *
+   * function to delete the specifict folder. It will update component state
+   * 
+   * @param {String} id id from delete Folder
+   *
+   * @returns {RenderDOM} will update DOM with folder delted
+   *
+   * @version 1.0.0
+   */
   deleteFolder = (id) => this.setState(({ folders }) => ({ folders: logic.folder.remove(id, folders) }))
 
+  /**
+   * 
+   * Business App.js function createFile
+   *
+   * async funtion to create a new file. When logic.file.create promise has finished
+   * then state from component will update
+   * 
+   * @param {String} id id of the Folder that will contain the file
+   * @param {String} title title for new File
+   *
+   * @returns {RenderDOM} will update DOM with new file
+   *
+   * @version 1.0.0
+   */
   createFile = async (folderId, title) => {
 
     const addedNewFileInFolder = await logic.file.create(folderId, title, this.state.folders);
@@ -44,12 +95,44 @@ class App extends Component {
     this.setState({ folders: addedNewFileInFolder })
   }
 
+  /**
+   * 
+   * Business App.js function deleteFile
+   *
+   * function to delete the specifict file. It will update component state
+   * 
+   * @param {String} folderId id of the Folder that will contain the file
+   * @param {String} id id from delete file
+   *
+   * @returns {RenderDOM} will update DOM with file deleted
+   *
+   * @version 1.0.0
+   */
   deleteFile = (folderId, id) => this.setState(({ folders }) => ({ folders: logic.file.remove(folderId, id, folders) }))
 
+  /**
+   * 
+   * Business App.js function writeFile
+   *
+   * function to write in the specifict file the updated content. It will update component state
+   * 
+   * @param {String} folderId id of the Folder that will contain the file
+   * @param {String} id id from updated file
+   * @param {String} content content updated from file
+   *
+   * @returns {RenderDOM} will update DOM with file renamed
+   *
+   * @version 1.0.0
+   */
   writeFile = (folderId, id, content) => this.setState(({ folders }) => ({ folders: logic.file.write(folderId, id, content, folders) }))
 
-  //===== EVENTS, Handlers and Helpers APP
-
+  //---------------------------------------
+  /**
+   * 
+   * Event, Handlers and Helpers for App.js
+   * 
+   * @version 1.0.0
+   */
   componentDidMount = async () => {
 
     const tokenUser = await logic.user.login("vgamez","123");
@@ -73,7 +156,6 @@ class App extends Component {
   extractParamsFromRoute = (props) => {
     const { match, match: { params } } = props
 
-    //If URL have some ID Folder/File, then change target selected
     if (match.path !== '/') {
 
       const folderId = params.folderId
@@ -117,6 +199,12 @@ class App extends Component {
 
   onHandlerRouteToRoot = (props) => props.history.push('/')
 
+  /**
+   * 
+   * Render ReactDOM
+   * 
+   * @version 1.0.0
+   */
   render() {
 
     const { match, match: { params } } = this.props
