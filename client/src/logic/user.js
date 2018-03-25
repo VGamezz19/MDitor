@@ -35,10 +35,6 @@ const userLogic = {
             .then(res => {
                 return tokenUser = res.data.token
             })
-        // tokenUser = await userApilogic.login(user, pass)
-        //     .then(res => res.data.token);
-
-        // return tokenUser
     },
 
     /**
