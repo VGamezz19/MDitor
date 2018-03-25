@@ -1,0 +1,29 @@
+{
+  "name": "mditor",
+  "version": "0.8.0",
+  "description": "There is a MarkDown Editor to do you'r crazy notes! ",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VGamezz19/MDitor.git"
+  },
+  "keywords": [
+    "reactjs",
+    "typescript",
+    "nodejs",
+    "md",
+    "markdown",
+    "editor",
+    "restful",
+    "composite-pattern"
+  ],
+  "author": "Victor Gamez <victor.gamez1596@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VGamezz19/MDitor/issues"
+  },
+  "homepage": "https://github.com/VGamezz19/MDitor#readme"
+}
