@@ -3,15 +3,15 @@
  */
 import File from 'mditor-types'
 
+/**
+ * Business FileApi, from mditor-api module (../api/ project)
+ */
 import { FileApi } from "mditor-api";
 
 import folderLogic from "./folder";
 
 import { tokenUser } from "./user";
 
-/**
- * Business FileApi, from mditor-api module (../api/ project)
- */
 const fileApilogic = new FileApi("http", "localhost", "5050");
 
 /**
