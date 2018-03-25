@@ -31,9 +31,9 @@ const fileLogic = {
      * when server has responsed with here ID, It will return all 
      * folders with the last folder update with new File
      * 
-     * @param {String} folderId id of the Folder that will contain the file
+     * @param {String} folderId id of the Folder which contain the file
      * @param {String} title title for new File
-     * @param {Array<File>} folders array with all folders in Client side
+     * @param {Array<File>} folders array with all folders in client side
      *
      * @returns {Promise<Array[File]>} will return a promise with array of Files
      *
@@ -58,8 +58,8 @@ const fileLogic = {
      *
      * function to retrieve some file, in data client side
      * 
-     * @param {String} folderId id of the Folder that will contain the file
-     * @param {String} id id from retrieved File
+     * @param {String} folderId id of the Folder which contain the file
+     * @param {String} id id to retrieve a file
      * @param {Array<File>} folders array with all data folders client side
      *
      * @returns {File} retrieved File
@@ -85,8 +85,8 @@ const fileLogic = {
      * and then, It will updated data client side like sincronouse function.
      * It will be productive for the User Experience
      * 
-     * @param {String} folderId id of the Folder that will contain the file
-     * @param {String} id id from remove File
+     * @param {String} folderId id of the Folder which contain the file
+     * @param {String} id id to remove a file
      * @param {Array<File>} folders array with all folders in Client side
      *
      * @returns {Array<File>} array with all data folders client updated
@@ -119,8 +119,8 @@ const fileLogic = {
      * asynchronous promise and then, It will updated data client side like 
      * synchronous function. It will be productive for the User Experience
      * 
-     * @param {String} folderId id of the Folder that will contain the file
-     * @param {String} id id from update File
+     * @param {String} folderId id of the Folder which contain the file
+     * @param {String} id id to update a file
      * @param {String} content content from updated File
      * @param {Array<File>} folders array with all folders in Client side
      *
