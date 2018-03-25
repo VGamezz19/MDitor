@@ -4,8 +4,8 @@
   "license": "MIT",
   "main": "build/",
   "scripts": {
-    "type-check": "tsc",
-    "build": "babel src --out-dir src --extensions \".ts,.tsx\"",
+    "type-check": "tsc -p ./src",
+    "build": "tsc",
     "test": "nyc mocha"
   },
   "nyc": {
@@ -25,6 +25,9 @@
     ],
     "sourceMap": true,
     "instrument": true
+  },
+  "dependencies": {
+    "typescript": "^2.7.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.32",

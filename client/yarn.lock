@@ -62,6 +62,8 @@
 
 "@types/mditor-types@../mditor-types":
   version "0.1.0"
+  dependencies:
+    typescript "^2.7.2"
 
 "@types/mime@*":
   version "2.0.0"
@@ -5250,6 +5252,8 @@ mditor-api@../api:
 
 mditor-types@../mditor-types:
   version "0.1.0"
+  dependencies:
+    typescript "^2.7.2"
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -8371,6 +8375,10 @@ type-is@~1.6.15, type-is@~1.6.16:
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
+
+typescript@^2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.7.2.tgz#2d615a1ef4aee4f574425cdff7026edf81919836"
 
 ua-parser-js@^0.7.9:
   version "0.7.17"

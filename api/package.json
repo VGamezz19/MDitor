@@ -5,8 +5,8 @@
   "main": "dist/",
   "scripts": {
     "test": "jest --forceExit --coverage --verbose",
-    "build-ts": "tsc",
-    "watch-ts": "tsc -w",
+    "build": "tsc",
+    "watch": "tsc -w",
     "debug": "npm run build && npm run watch-debug",
     "serve-debug": "nodemon --inspect dist",
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-ts\" \"npm run serve-debug\""
