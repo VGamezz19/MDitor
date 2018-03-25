@@ -4,15 +4,25 @@ import renderer from 'react-test-renderer';
 import { MemoryRouter } from 'react-router';
 
 import Sidenav from '../../src/components/Sidenav';
-import API from '../../src/api/ApiClient';
-import logicApp from '../../src/components/logicApp';
 
-const dataFolders = API.getFolders()
+import logic from '../../src/logic';
 
-/**
- * Mandatory data type FILE
- */
-const folders = logicApp.refactorDataToFileType(dataFolders)
+let folders = logic.refactorDataToFileType([{
+    files: [
+      {
+        content: "Hellow New File 1 as dasds das ds",
+        _id:"5ab6s9e5c3d56cb0b34899ff2", 
+        title:"newFile1"
+      },
+      {
+        content: "Hellow New File 2 as dasds das ds",
+        _id:"sad0b34899543", 
+        title:"newFile2"
+      }
+    ],
+    _id:"5ab6sd9e513d56cb0b34899ff1",
+    title: "HelloWorld",
+  }])
 
 const logicFolder = {
     create: () => console.log("Create Folder"),
