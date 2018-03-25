@@ -22,6 +22,12 @@ the mockup has been done with  [Sketch](https://www.sketchapp.com/)
 
 [Demo - Mockup MDitor](https://github.com/VGamezz19/MDitor/tree/master/doc/design/mockup)
 
+### Test client && Cosmos demo
+
+Check Cosmos demo here http://nappy-cosmos.surge.sh/
+
+![Imgur](https://i.imgur.com/q6GofTo.png)
+
 ## Mditor-Types Site (Mandatory data type in Client Site)
 
 Mditor use strict a custom type `File`. All **Client Site** use this type.

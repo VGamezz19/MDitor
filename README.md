@@ -10,40 +10,78 @@ There is a MarkDown Editor to do you'r crazy notes! but **take it care** this is
 
 ⚡️ If you just want to know how dowload it, test or add new features, follow theses steps  ⬇️
 
-> ... Developing
-
-<!-- ## Getting Started
+## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Necesita estas tecnologías para ejecutar el proyecto EDitor en su máquina local
 
-```
-Give examples
+- Install [Node](https://nodejs.org/en/download/)
+- Install [MongoDB](https://docs.mongodb.com/manual/installation/)
+- npm TypeScript
+
+```sh
+npm install -g typescript
 ```
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+Clone gitHub repo in your local machine
 
-Say what the step will be
-
-```
-Give the example
+```sh
+git clone https://github.com/VGamezz19/MDitor.git
 ```
 
-And repeat
+go inside! 🧐
+
+```sh
+cd /MDitor
+```
+
+then, enter in `./api` and `./mditor-types` and install and build project
+
+#### api
+
+```sh
+cd /api
+
+yarn || npm install
+
+yarn build || npm run build
+```
+
+#### mditor-types
+
+```sh
+cd ../mditor-types
+
+yarn || npm install
+
+yarn build || npm run build
+```
+
+Finally, go inside `./client` and install dependencies
+
+#### client
+
+```sh
+cd ../client
+
+yarn || npm install
+
+yarn start || npm run start
 
 ```
-until finished
-```
 
-End with an example of getting some data out of the system or using it for a little demo
+this last command will open new windows in your default browser with MDitor! 😁 🤩
 
 ## Running the tests
 
+> ... Developing
+
+<!--
 Explain how to run the automated tests for this system
 
 ### Break down into end to end tests
