@@ -133,9 +133,19 @@ class App extends Component {
    * 
    * @version 1.0.0
    */
+
+  //   componentDidMount() {
+  //     document.addEventListener('keydown', this._handleEscKey, false);
+  // }
+
+  // componentWillUnmount() {
+  //     document.removeEventListener('keydown', this._handleEscKey, false);
+  // }
+
+  // _handleEscKey = event => event.keyCode === 27 ? this.handlerCancel() : false;
   componentDidMount = async () => {
 
-    const tokenUser = await logic.user.login("vgamez","123");
+    const tokenUser = await logic.user.login("vgamez", "123");
 
     const user = await logic.user.retrieve(tokenUser);
 
@@ -143,14 +153,21 @@ class App extends Component {
 
     const folders = logic.refactorDataToFileType(folderDataAPI)
 
-    await this.setState({ folders, user, loader:false })
+    await this.setState({ folders, user, loader: false })
 
     this.onChangeTargetSelected(this.extractParamsFromRoute(this.props), folders)
+
+    document.addEventListener('keydown', this._hanlderEditOrView, false);
   }
 
   componentWillReceiveProps = (props, state) => {
 
     this.onChangeTargetSelected(this.extractParamsFromRoute(props), this.state.folders)
+  }
+
+  componentWillUnmount = () => {
+
+    document.removeEventListener('keydown', this._hanlderEditOrView, false);
   }
 
   extractParamsFromRoute = (props) => {
@@ -199,6 +216,24 @@ class App extends Component {
 
   onHandlerRouteToRoot = (props) => props.history.push('/')
 
+  _hanlderEditOrView = (event) => {
+    if ((event.ctrlKey ||  event.metaKey) && event.keyCode === 13) {
+      event.preventDefault();
+
+      const { match: { params } } = this.props
+      
+      const { currentSelected: { folderId, fileId } }= this.state
+
+      if(params.action === "view") {
+
+        return this.onHandlerRouteToEdit(this.props, folderId, fileId);
+      } else {
+
+        return this.onHandlerRouteToView(this.props, folderId, fileId);
+      }
+    }
+  }
+
   /**
    * 
    * Render ReactDOM
@@ -223,45 +258,45 @@ class App extends Component {
     return (
       !loader ?
         <section className="App">
-        <article>
-          <Sidenav
-            buttonTriggerStyle={{ className: 'grey lighten-2', icon: 'menu' }}
-            buttonDropStyle={{ className: 'grey lighten-2', icon: 'close' }}
-            user={{ name, surname }}
-            folders={folders}
-            logicFolder={logicFolder} />
+          <article>
+            <Sidenav
+              buttonTriggerStyle={{ className: 'grey lighten-2', icon: 'menu' }}
+              buttonDropStyle={{ className: 'grey lighten-2', icon: 'close' }}
+              user={{ name, surname }}
+              folders={folders}
+              logicFolder={logicFolder} />
 
-          {match.path === '/' ?
-            false
-            : params.action === 'view' ?
-              <CircleButton
-                className='grey lighten-2'
-                icon='edit'
-                onClick={() => this.onHandlerRouteToEdit(this.props, folderId, fileId)} />
-              :
-              <CircleButton
-                className='grey lighten-2'
-                icon='remove_red_eye'
-                onClick={() => this.onHandlerRouteToView(this.props, folderId, fileId)} />}
+            {match.path === '/' ?
+              false
+              : params.action === 'view' ?
+                <CircleButton
+                  className='grey lighten-2'
+                  icon='edit'
+                  onClick={() => this.onHandlerRouteToEdit(this.props, folderId, fileId)} />
+                :
+                <CircleButton
+                  className='grey lighten-2'
+                  icon='remove_red_eye'
+                  onClick={() => this.onHandlerRouteToView(this.props, folderId, fileId)} />}
 
-        </article>
-        <div className='mark-down-edited'>
-          {folderId !== undefined ?
-            match.path === '/' ?
-              <MarkDown showInitialMarkDown={true} />
-              :
-              this.checkFileExist({ folderId, fileId, match }, this.state.folders) ?
-                params.action === 'view' ?
-                  <MarkDown file={logic.file.retrieve(folderId, fileId, folders)} />
-                  :
-                  <MyEditor
-                    file={logic.file.retrieve(folderId, fileId, folders)}
-                    emitCurrentContent={this.onHandlerMyEditor} />
-                : false
-            : <MarkDown showInitialMarkDown={true} />}
-        </div>
-      </section> 
-      : <ProgressBar className={"pre-loader-home"} />
+          </article>
+          <div className='mark-down-edited'>
+            {folderId !== undefined ?
+              match.path === '/' ?
+                <MarkDown showInitialMarkDown={true} />
+                :
+                this.checkFileExist({ folderId, fileId, match }, this.state.folders) ?
+                  params.action === 'view' ?
+                    <MarkDown file={logic.file.retrieve(folderId, fileId, folders)} />
+                    :
+                    <MyEditor
+                      file={logic.file.retrieve(folderId, fileId, folders)}
+                      emitCurrentContent={this.onHandlerMyEditor} />
+                  : false
+              : <MarkDown showInitialMarkDown={true} />}
+          </div>
+        </section>
+        : <ProgressBar className={"pre-loader-home"} />
     );
   }
 }

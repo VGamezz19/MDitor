@@ -7,6 +7,16 @@ class MyEditor extends React.Component {
     constructor(props) {
         super(props);
 
+        /**
+         * Next Feature...
+         * 
+         * Remember focus Editor
+         * 
+         * this.setDomEditorRef = ref => this.domEditor = ref;
+         * https://github.com/facebook/draft-js/blob/master/examples/draft-0-10-0/plaintext/plaintext.html
+         * 
+         */
+
         this.state = {
             editorState: Draft.EditorState.createEmpty(),
             fileId: undefined
@@ -53,7 +63,10 @@ class MyEditor extends React.Component {
 
     render() {
         return (
-            <Editor editorState={this.state.editorState} onChange={this.onChange} />
+            <Editor 
+                placeholder="Type yout note!"
+                editorState={this.state.editorState}
+                onChange={this.onChange} />
         );
     }
 }
