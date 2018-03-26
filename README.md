@@ -75,7 +75,7 @@ yarn start || npm run start
 
 ```
 
-this last command will open new windows in your default browser with MDitor! 😁 🤩
+this last command will open new windows in your default browser with MDitor! 😁 👍
 
 ## Running the tests
 

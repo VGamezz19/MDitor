@@ -19,8 +19,6 @@
 | id | `String` | `false` | MongoId
 | title | `String` | `false` | "folder without title"
 | files | `Array<File>` | `true` | []
-| remove | `Boolean` | `false` | false
-| JWTShare | `String` | `true` | ---
 
 ## File
 
@@ -29,10 +27,9 @@
 | id | `String` | `false` | MongoId
 | title | `String` | `false` | "file without title"
 | content | `String` | `true` | ---
-| remove | `Boolean` | `false` | false
 
 ## Draw.io
 
-You can [check it here](https://drive.google.com/file/d/1JNCK6L30wAo3_30VOl6llrdGyUGqZhMo/view?usp=sharing)
+You can [check it in draw.io format](https://drive.google.com/file/d/1JNCK6L30wAo3_30VOl6llrdGyUGqZhMo/view?usp=sharing)
 
-![Imgur](https://i.imgur.com/UjdkArA.png)
+![Imgur](https://i.imgur.com/1yZEM3x.png)

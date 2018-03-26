@@ -12,9 +12,9 @@
 
 You can [preview It](https://drive.google.com/file/d/1tad0wKucvZKmhCi6kJr_NYMFJVokqn6o/view?usp=sharing) in draw.io
 
-![Imgur](https://i.imgur.com/v0DzY7P.png)
+![Imgur](https://i.imgur.com/DXp3SZG.png)
 
-## Client Site
+## Client Side
 
 ### Design - Mockup
 
@@ -22,21 +22,19 @@ the mockup has been done with  [Sketch](https://www.sketchapp.com/)
 
 [Demo - Mockup MDitor](https://github.com/VGamezz19/MDitor/tree/master/doc/design/mockup)
 
+### UML Client
+
+![Imgur](https://i.imgur.com/SJiLT3L.png)
+
 ### Test client && Cosmos demo
 
 Check Cosmos demo here http://nappy-cosmos.surge.sh/
 
 ![Imgur](https://i.imgur.com/q6GofTo.png)
 
-## Mditor-Types Site (Mandatory data type in Client Site)
+## Mditor-Types (Mandatory data type in Client Side)
 
-Mditor use strict a custom type `File`. All **Client Site** use this type.
-
-### Test mditor-types && Coverage
-
-Check CodeCoverage here http://unwritten-jump.surge.sh/
-
-![Imgur](https://i.imgur.com/nuWS3fA.png)
+Mditor use strict a custom type `File`. All **Client Side** use this type.
 
 ### More about File
 
@@ -57,11 +55,21 @@ As you can see, `composite` pattern is a composition groups of same objects.
 
 Files contain children File, and children File, contains more children Files.
 
+### UML Composite pattern
+
+![Imgur](https://i.imgur.com/kXhmKbA.png)
+
 ### Sintaxis
 
 ```ts
 new File(type: "(file|folder)", id: string, title: string, content?: string, files?: File)
 ```
+
+### Test mditor-types && Coverage
+
+Check CodeCoverage here http://unwritten-jump.surge.sh/
+
+![Imgur](https://i.imgur.com/nuWS3fA.png)
 
 ## ApiClient
 
@@ -71,14 +79,46 @@ Check CodeCoverage here http://reflective-string.surge.sh/
 
 ![Imgur](https://i.imgur.com/ViAf1LA.png)
 
-## Server Site
+## Server Side
 
 ### Data Model
 
 It only need three data model, User, Folder and File.
 `Users` will have {N}  `Folder`, and the Folders will contains {N} `Files`.
 
+#### User
+
+|  | Type | Null | Default
+| :--- | :---: | :---:| :---:
+| id | `String` | `false` | MongoId
+| name | `String` | `false` | ---
+| surname | `String` | `false` | ---
+| username | `String` | `false` | ---
+| email | `String` | `false` | ---
+| password | `String` | `false` | ---
+| folders | `Array<Folder>` | `true` | []
+
+#### Folder
+
+|  | Type | Null | Default
+| :--- | :---: | :---:| :---:
+| id | `String` | `false` | MongoId
+| title | `String` | `false` | "folder without title"
+| files | `Array<File>` | `true` | []
+
+#### File
+
+|  | Type | Null | Default
+| :--- | :---: | :---:| :---:
+| id | `String` | `false` | MongoId
+| title | `String` | `false` | "file without title"
+| content | `String` | `true` | ---
+
 To check out more my data model, __[see It here](https://github.com/VGamezz19/MDitor/tree/master/doc/dataModel/)__
+
+### UML Server
+
+![Imgur](https://i.imgur.com/pRvRCpO.png)
 
 ### Test server && Coverage
 
