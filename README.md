@@ -79,47 +79,77 @@ this last command will open new windows in your default browser with MDitor! �
 
 ## Running the tests
 
-> ... Developing
+### Client
 
-<!--
-Explain how to run the automated tests for this system
+navigate to `./client` and then ejecute this command:
 
-### Break down into end to end tests
+```sh
 
-Explain what these tests test and why
+cd MDitor/client
 
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
+yarn test || npm run test
 
 ```
-Give an example
+
+It will ejecute Jest test and verify if all components mount correctly.
+
+Then, you can open Cosmos 👨‍🚀 Demo:
+
+```sh
+
+yarn cosmos || npm run cosmos
+
 ```
 
-## Deployment
+Enter URL `127.0.0.1:8989` in your browsert and test it! 👍
 
-Add additional notes about how to deploy this on a live system
+### API-Client
 
-## Built With
+navigate to `./api` and then ejecute this command:
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+```sh
 
-## Contributing
+cd MDitor/api
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+yarn test || npm run test
 
-## Versioning
+```
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+It will test all api logic (file, folder and user)
+
+### MDitor-types
+
+navigate to `./mditor-types` and then ejecute this command:
+
+```sh
+
+cd MDitor/mditor-types
+
+yarn test || npm run test
+
+```
+
+It will test the data type File
+
+### Server
+
+navigate to `./server` and then ejecute this command:
+
+```sh
+
+cd MDitor/server
+
+yarn test || npm run test
+
+```
+
+It will test all server logic (file, folder and user)
 
 ## Authors
 
+> ... Developing
+
+<!--
 * **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
@@ -127,9 +157,4 @@ See also the list of [contributors](https://github.com/your/project/contributors
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc -->
+-->
