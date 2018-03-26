@@ -1,5 +1,5 @@
 export default `
-# Welcome to MDitor 
+# Welcome to MDitor ![Imgur](https://i.imgur.com/tT0v9n3.png)
 ![Generic badge](https://img.shields.io/badge/MDitor-v0.8.0-blue.svg) 
 [![GitHub forks](https://img.shields.io/github/forks/VGamezz19/MDitor.svg?style=social&logo=github&label=Fork)](https://github.com/VGamezz19/MDitor)
 

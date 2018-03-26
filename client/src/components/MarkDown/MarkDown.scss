@@ -1,6 +1,10 @@
 .mardownViwer {
     width: 100%;
     padding: 0px 7em;
+    h1 {
+        display: flex;
+        align-items: center;
+    }
     hr {
         border: 1px solid grey !important;
     }
@@ -16,21 +20,21 @@
     }
     pre {
         padding: 1.5em;
-        background-color: rgba(27,31,35,0.05);
+        background-color: rgba(27, 31, 35, 0.05);
         code {
             margin: 0;
             padding: 0 !important;
             border-radius: 0 !important;
-            font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace !important;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace !important;
         }
     }
     code {
         padding: 0.2em 0.4em;
         margin: 0;
         font-size: 85%;
-        background-color: rgba(27,31,35,0.05);
+        background-color: rgba(27, 31, 35, 0.05);
         border-radius: 3px;
-        font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace !important;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace !important;
     }
     p {
         img {
