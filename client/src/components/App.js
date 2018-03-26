@@ -134,15 +134,6 @@ class App extends Component {
    * @version 1.0.0
    */
 
-  //   componentDidMount() {
-  //     document.addEventListener('keydown', this._handleEscKey, false);
-  // }
-
-  // componentWillUnmount() {
-  //     document.removeEventListener('keydown', this._handleEscKey, false);
-  // }
-
-  // _handleEscKey = event => event.keyCode === 27 ? this.handlerCancel() : false;
   componentDidMount = async () => {
 
     const tokenUser = await logic.user.login("vgamez", "123");
@@ -217,14 +208,14 @@ class App extends Component {
   onHandlerRouteToRoot = (props) => props.history.push('/')
 
   _hanlderEditOrView = (event) => {
-    if ((event.ctrlKey ||  event.metaKey) && event.keyCode === 13) {
-      event.preventDefault();
+    if ((event.ctrlKey || event.metaKey) && event.keyCode === 13) {
+      event.preventDefault()
 
       const { match: { params } } = this.props
 
-      const { currentSelected: { folderId, fileId } }= this.state
+      const { currentSelected: { folderId, fileId } } = this.state
 
-      if(params.action === "view") {
+      if (params.action === "view") {
 
         return this.onHandlerRouteToEdit(this.props, folderId, fileId);
       } else {
@@ -269,8 +260,8 @@ class App extends Component {
               user={{ name, surname }}
               folders={folders}
               logicFolder={logicFolder} />
-            {matchExist ?  <h3 className ='title-current-file'>{logic.file.retrieve(folderId, fileId, folders).getTitle()}</h3>  : false}
-          
+            {matchExist ? <h3 className='title-current-file'>{logic.file.retrieve(folderId, fileId, folders).getTitle()}</h3> : false}
+
             {match.path === '/' ?
               false
               : params.action === 'view' ?
