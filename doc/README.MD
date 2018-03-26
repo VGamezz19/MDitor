@@ -2,11 +2,11 @@
 
 ## Technologies
 
-| styles| Front-End | Back-End| TDD|
+| styles| Front-End | Back-End| Test|
 | :----------: | :----------: | :----------: | :----------: |
 | [Sass](https://sass-lang.com/) | [ReactJS](https://reactjs.org/)  | Node   | [Jest](https://facebook.github.io/jest/)
 | [Materialize](https://react-materialize.github.io/#/) | ES6  | TS  | [Mocha](https://mochajs.org/)
-| [Flex](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) | mditot-type  | RestFul  | [Cosmos](https://github.com/react-cosmos/react-cosmos)
+| [css-Flex](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) | mditot-type  | RestFul  | [Cosmos](https://github.com/react-cosmos/react-cosmos)
 
 ## UML
 
