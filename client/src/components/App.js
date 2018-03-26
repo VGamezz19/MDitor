@@ -221,7 +221,7 @@ class App extends Component {
       event.preventDefault();
 
       const { match: { params } } = this.props
-      
+
       const { currentSelected: { folderId, fileId } }= this.state
 
       if(params.action === "view") {
@@ -255,6 +255,10 @@ class App extends Component {
       }
     }
 
+    let matchExist
+
+    if (match.path !== '/') matchExist = this.checkFileExist({ folderId, fileId, match }, folders)
+
     return (
       !loader ?
         <section className="App">
@@ -265,7 +269,8 @@ class App extends Component {
               user={{ name, surname }}
               folders={folders}
               logicFolder={logicFolder} />
-
+            {matchExist ?  <h3 className ='title-current-file'>{logic.file.retrieve(folderId, fileId, folders).getTitle()}</h3>  : false}
+          
             {match.path === '/' ?
               false
               : params.action === 'view' ?
@@ -285,7 +290,7 @@ class App extends Component {
               match.path === '/' ?
                 <MarkDown showInitialMarkDown={true} />
                 :
-                this.checkFileExist({ folderId, fileId, match }, this.state.folders) ?
+                matchExist ?
                   params.action === 'view' ?
                     <MarkDown file={logic.file.retrieve(folderId, fileId, folders)} />
                     :
