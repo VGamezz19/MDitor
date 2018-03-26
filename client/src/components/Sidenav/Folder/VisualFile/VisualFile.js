@@ -16,8 +16,11 @@ class VisualFile extends Component {
             <Route
                 path={`/${folderId}/${fileId}/(view|edit)`}
                 children={({ match }) => (
-                    <li className={`li-item-file ${match ? 'focus-file' : false}`} onClick={() => handleToggleSidenav()}>
-                        <Link className='files grey lighten-3"' to={`/${folderId}/${fileId}/edit`}>
+                    <li className={`li-item-file ${match ? 'focus-file' : false}`}>
+                        <Link 
+                            className='files grey lighten-3' 
+                            to={`/${folderId}/${fileId}/edit`}
+                            onClick={() => handleToggleSidenav()}>
                             <button type='submit' className="files grey lighten-3">
                                 {fileTitle}
                             </button>

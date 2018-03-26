@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import File from 'mditor-types';
 import Drawer from 'material-ui/Drawer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Link } from "react-router-dom"
 
 import CircleButton from '../CircleButton'
 import Folder from './Folder'
@@ -87,8 +88,11 @@ class Sidenav extends Component {
                         className={`delete-sidenav ${className}`}
                         onClick={this.handleToggle}
                         icon={icon} />
-                    <h4 id={'user-header'}>{name[0]}{surname[0]}</h4>
-                    <h5>Welcome</h5>
+                    <Link to='/' onClick={this.handleToggle}>
+                        <h4 id={'user-header'}>{name[0]}{surname[0]}</h4>
+                        <h5>Welcome</h5>
+                    </Link>
+
                 </header>)
         }
         return false

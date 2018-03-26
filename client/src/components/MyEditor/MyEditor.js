@@ -64,7 +64,6 @@ class MyEditor extends React.Component {
     render() {
         return (
             <Editor 
-                placeholder="Type yout note!"
                 editorState={this.state.editorState}
                 onChange={this.onChange} />
         );
