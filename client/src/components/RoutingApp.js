@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+import { BrowserRouter as HashRouter, Route, Redirect, Switch } from "react-router-dom";
 
 const Routing = (props) => {
-    return <Router>
+    return <HashRouter>
       
         <Switch>
           <Route exact path='/:folderId/:fileId/:action(view|edit)' component={props.app} />
@@ -13,7 +13,7 @@ const Routing = (props) => {
         </Switch>
   
      
-    </Router>
+    </HashRouter>
 }
 
 export default Routing
