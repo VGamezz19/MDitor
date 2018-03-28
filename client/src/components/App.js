@@ -273,10 +273,6 @@ class App extends Component {
       }
     }
 
-    // let matchExist
-
-    // if (match.path !== '/' && folders.length > 0) matchExist = this.checkFileExist({ folderId : params.folderId, fileId : params.fileId, match }, folders)
-
     return (
       !loader ?
         <section className="App">
