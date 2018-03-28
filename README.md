@@ -2,9 +2,9 @@
 
 There is a MarkDown Editor to do you'r crazy notes! but **take it care** this is just a alpha, we are going to work to get better MDitor📝
 
-- 🎨 Check Demo MDitor <http://mditor.surge.sh>
+- 🎨 Check Demo MDitor <http://mditor.surge.sh/#/>
 
-- 👨‍🚀 Check Demo Cosmos MDitor <http://typical-faucet.surge.sh/>
+- 👨‍🚀 Check Demo Cosmos MDitor <http://cosmos-mditor.surge.sh/>
 
 ⚠️ Hey! if you want to know how we have done `MDitor`, you can navigate to [./doc](https://github.com/VGamezz19/MDitor/tree/master/doc/)
 

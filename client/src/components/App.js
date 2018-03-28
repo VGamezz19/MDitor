@@ -110,7 +110,21 @@ class App extends Component {
    *
    * @version 1.0.0
    */
-  deleteFile = (folderId, id) => this.setState(({ folders }) => ({ folders: logic.file.remove(folderId, id, folders, this.onErrorPromise) }))
+  deleteFile = (folderId, id) => this.setState(({ folders }) => {
+
+    const { match: { params: { fileId } } } = this.props
+
+    if (fileId === id) return {
+
+      folders: logic.file.remove(folderId, id, folders, this.onErrorPromise),
+      currentSelected: { folderId: undefined, fileId: undefined }
+    }
+
+    return {
+
+      folders: logic.file.remove(folderId, id, folders, this.onErrorPromise),
+    }
+  })
 
   /**
    * 
@@ -214,9 +228,9 @@ class App extends Component {
 
   onErrorPromise = (error) => {
 
-    if(error) {
+    if (error) {
 
-      this.setState({errorModalNet: true})
+      this.setState({ errorModalNet: true })
     }
   }
 
@@ -314,7 +328,7 @@ class App extends Component {
                   : false
               : <MarkDown showInitialMarkDown={true} />}
           </div>
-              {this._renderModalErrorNet(errorModalNet)}
+          {this._renderModalErrorNet(errorModalNet)}
         </section>
         : <ProgressBar className={"pre-loader-home"} />
     );
