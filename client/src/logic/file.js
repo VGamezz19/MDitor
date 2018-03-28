@@ -50,8 +50,9 @@ const fileLogic = {
                     folder.add(new File('file', res.data.id, title))
                 }
                 return folder
-            })
-                .catch(callbackError))
+            }))
+
+            .catch(callbackError)
     },
 
     /**

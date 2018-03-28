@@ -15,7 +15,7 @@ class Folder extends Component {
         super(props)
         this.state = {
             folderIcon: ['chevron_right', 'folder'],
-            creatingFile: false
+            creatingFile: false,
         }
     }
 
