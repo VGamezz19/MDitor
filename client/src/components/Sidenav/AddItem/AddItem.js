@@ -54,6 +54,7 @@ class AddItem extends Component {
                 <input
                     className='inputItem'
                     autoFocus
+                    required
                     type={inputType}
                     value={value}
                     onChange={(event) => {

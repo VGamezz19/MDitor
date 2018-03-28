@@ -87,6 +87,7 @@ function FormModal(props) {
     <form onSubmit={event => { event.preventDefault(); submitModal() }}>
       <input
         autoFocus
+        required
         type='text'
         value={inputValue}
         onChange={(event) => handlerInput(event.target.value)} />
