@@ -62,6 +62,18 @@ yarn || npm install
 yarn build || npm run build
 ```
 
+#### server
+
+```sh
+cd ../server
+
+yarn || npm install
+
+yarn build || npm run build
+
+yarn start || npm run start
+```
+
 Finally, go inside `./client` and install dependencies
 
 #### client
