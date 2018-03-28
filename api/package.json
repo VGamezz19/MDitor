@@ -2,7 +2,7 @@
   "name": "mditor-api",
   "version": "1.0.0",
   "description": "api-client for project MDitor",
-  "main": "dist/",
+  "main": "build/",
   "scripts": {
     "test": "jest --forceExit --coverage --verbose",
     "build": "tsc",

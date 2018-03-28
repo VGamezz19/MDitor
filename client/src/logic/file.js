@@ -12,7 +12,7 @@ import folderLogic from "./folder";
 
 import { tokenUser } from "./user";
 
-const fileApilogic = new FileApi("http", "localhost", "5050");
+const fileApilogic = new FileApi("https", "server-mditor.herokuapp.com");
 
 /**
  * file logic client side (bussines manager)

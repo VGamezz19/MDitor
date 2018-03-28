@@ -2,10 +2,10 @@
   "name": "mditor-types",
   "version": "0.1.0",
   "license": "MIT",
-  "main": "build/",
+  "main": "build",
   "scripts": {
     "type-check": "tsc -p ./src",
-    "build": "tsc",
+    "build": "tsc --emitDeclarationOnly && babel src --out-dir lib --extensions \".ts,.tsx\"",
     "test": "nyc mocha"
   },
   "nyc": {
@@ -31,14 +31,19 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.32",
-    "@babel/core": "^7.0.0-beta.32",
+    "@babel/core": "^7.0.0-beta.42",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.32",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.32",
     "@babel/preset-env": "^7.0.0-beta.32",
+    "@babel/preset-react": "^7.0.0-beta.42",
+    "@babel/preset-stage-3": "^7.0.0-beta.42",
     "@babel/preset-typescript": "^7.0.0-beta.32",
     "@types/chai": "^4.1.2",
     "@types/mocha": "^2.2.48",
+    "babel-core": "^6.26.0",
     "babel-loader": "^8.0.0-beta.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
     "chai": "^4.1.2",
     "mocha": "^5.0.4",
     "nyc": "^11.6.0",

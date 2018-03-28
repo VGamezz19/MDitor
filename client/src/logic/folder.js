@@ -10,7 +10,7 @@ import { FolderApi } from "mditor-api";
 
 import { tokenUser } from "./user";
 
-const folderApilogic = new FolderApi("http", "localhost", "5050");
+const folderApilogic = new FolderApi("https", "server-mditor.herokuapp.com");
 
 /**
  * folder logic client side (bussines manager)

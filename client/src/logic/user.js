@@ -3,7 +3,7 @@
  */
 import { UserApi } from "mditor-api";
 
-const userApilogic = new UserApi("http", "localhost", "5050");
+const userApilogic = new UserApi("https", "server-mditor.herokuapp.com");
 
 export let tokenUser;
 
