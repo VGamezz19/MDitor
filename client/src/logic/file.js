@@ -34,12 +34,13 @@ const fileLogic = {
      * @param {String} folderId id of the Folder which contain the file
      * @param {String} title title for new File
      * @param {Array<File>} folders array with all folders in client side
+     * @param {Function} callbackError handler to error request promise
      *
      * @returns {Promise<Array[File]>} will return a promise with array of Files
      *
      * @version 1.0.0
      */
-    create: (folderId, title, folders) => {
+    create: (folderId, title, folders, callbackError) => {
 
         return fileApilogic.create(folderId, title, tokenUser)
             .then(res => folders.map(folder => {
@@ -49,7 +50,8 @@ const fileLogic = {
                     folder.add(new File('file', res.data.id, title))
                 }
                 return folder
-            }))
+            })
+                .catch(callbackError))
     },
 
     /**
@@ -88,17 +90,19 @@ const fileLogic = {
      * @param {String} folderId id of the Folder which contain the file
      * @param {String} id id to remove a file
      * @param {Array<File>} folders array with all folders in Client side
+     * @param {Function} callbackError handler to error request promise
      *
      * @returns {Array<File>} array with all data folders client updated
      *
      * @version 1.0.0
      */
-    remove: (folderId, id, folders) => {
+    remove: (folderId, id, folders, callbackError) => {
 
         /**
          * Send to Server side
          */
-        fileApilogic.remove(id, tokenUser);
+        fileApilogic.remove(id, tokenUser)
+            .catch(callbackError);;
 
         /**
          * Interactuation with user
@@ -122,17 +126,19 @@ const fileLogic = {
      * @param {String} id id to update a file
      * @param {String} title content from updated File
      * @param {Array<File>} folders array with all folders in Client side
+     * @param {Function} callbackError handler to error request promise
      *
      * @returns {Array<File>} array with all data folders client updated
      *
      * @version 1.0.0
      */
-    update: (folderId, id, title, folders) => {
+    update: (folderId, id, title, folders, callbackError) => {
 
         /**
          * Send to Server side
          */
         fileApilogic.update(id, tokenUser, title)
+            .catch(callbackError);
 
         /**
          * Interactuation with user
@@ -160,17 +166,19 @@ const fileLogic = {
      * @param {String} id id to update a file
      * @param {String} content content from updated File
      * @param {Array<File>} folders array with all folders in Client side
+     * @param {Function} callbackError handler to error request promise
      *
      * @returns {Array<File>} array with all data folders client updated
      *
      * @version 1.0.0
      */
-    write: (folderId, id, content, folders) => {
+    write: (folderId, id, content, folders, callbackError) => {
 
         /**
          * Send to Server side
          */
         fileApilogic.update(id, tokenUser, undefined, content)
+            .catch(callbackError);
 
         /**
          * Interactuation with user

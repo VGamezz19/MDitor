@@ -31,15 +31,17 @@ const folderLogic = {
      * 
      * @param {String} title title for new Folder
      * @param {Array<File>} folders array with all folders in Client side
+     * @param {Function} callbackError handler to error request promise
      *
      * @returns {Promise<Array[File]>} will return a promise with array of Files
      *
      * @version 1.0.0
      */
-    create: (title, folders) => {
+    create: (title, folders, callbackError) => {
 
         return folderApilogic.create(title, tokenUser)
-            .then(res => [...folders, new File('folder', res.data.id, title)]);
+            .then(res => [...folders, new File('folder', res.data.id, title)])
+            .catch(callbackError);
     },
 
     /**
@@ -73,17 +75,19 @@ const folderLogic = {
      * @param {String} id id to update a folder
      * @param {String} title title from updated Folder
      * @param {Array<File>} folders array with all folders in Client side
+     * @param {Function} callbackError handler to error request promise
      *
      * @returns {Array<File>} array with all data folders client updated
      *
      * @version 1.0.0
      */
-    update: (id, title, folders) => {
+    update: (id, title, folders, callbackError) => {
 
         /**
          * Send to Server side
          */
-        folderApilogic.update(id, title, tokenUser);
+        folderApilogic.update(id, title, tokenUser)
+            .catch(callbackError);
 
         /**
          * Interactuation with user
@@ -104,17 +108,19 @@ const folderLogic = {
      * 
      * @param {String} id id to remove a folder
      * @param {Array<File>} folders array with all folders in Client side
+     * @param {Function} callbackError handler to error request promise
      *
      * @returns {Array<File>} array with all data folders client updated
      *
      * @version 1.0.0
      */
-    remove: (id, folders) => {
+    remove: (id, folders, callbackError) => {
 
         /**
          * Send to Server side
          */
-        folderApilogic.remove(id, tokenUser);
+        folderApilogic.remove(id, tokenUser)
+            .catch(callbackError);
 
         /**
          * Interactuation with user

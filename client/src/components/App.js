@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import { ProgressBar } from "react-materialize";
-
+import Dialog from 'material-ui/Dialog';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import CircleButton from './CircleButton'
 import Sidenav from './Sidenav'
 import MyEditor from './MyEditor/'
@@ -13,12 +14,13 @@ class App extends Component {
 
   constructor() {
     super();
- 
+
     this.state = {
       currentSelected: {
         folderId: undefined,
         fileId: undefined,
       },
+      errorModalNet: false,
       folders: [],
       user: {},
       loader: true
@@ -40,7 +42,7 @@ class App extends Component {
    */
   createFolder = async (title) => {
 
-    const addedNewFolder = await logic.folder.create(title, this.state.folders);
+    const addedNewFolder = await logic.folder.create(title, this.state.folders, this.onErrorPromise);
 
     this.setState({ folders: addedNewFolder })
   }
@@ -58,7 +60,7 @@ class App extends Component {
    *
    * @version 1.0.0
    */
-  updateFolder = (id, title) => this.setState(({ folders }) => ({ folders: logic.folder.update(id, title, folders) }))
+  updateFolder = (id, title) => this.setState(({ folders }) => ({ folders: logic.folder.update(id, title, folders, this.onErrorPromise) }))
 
   /**
    * 
@@ -72,7 +74,7 @@ class App extends Component {
    *
    * @version 1.0.0
    */
-  deleteFolder = (id) => this.setState(({ folders }) => ({ folders: logic.folder.remove(id, folders) }))
+  deleteFolder = (id) => this.setState(({ folders }) => ({ folders: logic.folder.remove(id, folders, this.onErrorPromise) }))
 
   /**
    * 
@@ -90,7 +92,7 @@ class App extends Component {
    */
   createFile = async (folderId, title) => {
 
-    const addedNewFileInFolder = await logic.file.create(folderId, title, this.state.folders);
+    const addedNewFileInFolder = await logic.file.create(folderId, title, this.state.folders, this.onErrorPromise);
 
     this.setState({ folders: addedNewFileInFolder })
   }
@@ -108,7 +110,7 @@ class App extends Component {
    *
    * @version 1.0.0
    */
-  deleteFile = (folderId, id) => this.setState(({ folders }) => ({ folders: logic.file.remove(folderId, id, folders) }))
+  deleteFile = (folderId, id) => this.setState(({ folders }) => ({ folders: logic.file.remove(folderId, id, folders, this.onErrorPromise) }))
 
   /**
    * 
@@ -124,7 +126,7 @@ class App extends Component {
    *
    * @version 1.0.0
    */
-  updateFile = (id, title, folderId) => this.setState(({ folders }) => ({ folders: logic.file.update(folderId, id, title, folders) }))
+  updateFile = (id, title, folderId) => this.setState(({ folders }) => ({ folders: logic.file.update(folderId, id, title, folders, this.onErrorPromise) }))
 
   /**
    * 
@@ -140,7 +142,7 @@ class App extends Component {
    *
    * @version 1.0.0
    */
-  writeFile = (folderId, id, content) => this.setState(({ folders }) => ({ folders: logic.file.write(folderId, id, content, folders) }))
+  writeFile = (folderId, id, content) => this.setState(({ folders }) => ({ folders: logic.file.write(folderId, id, content, folders, this.onErrorPromise) }))
 
   //---------------------------------------
   /**
@@ -210,6 +212,14 @@ class App extends Component {
     return true
   }
 
+  onErrorPromise = (error) => {
+
+    if(error) {
+
+      this.setState({errorModalNet: true})
+    }
+  }
+
   onHandlerMyEditor = (content) => {
 
     const { currentSelected: { folderId, fileId } } = this.state
@@ -250,7 +260,7 @@ class App extends Component {
   render() {
 
     const { match, match: { params } } = this.props
-    const { currentSelected: { folderId, fileId }, user: { name, surname }, folders, loader } = this.state
+    const { currentSelected: { folderId, fileId }, user: { name, surname }, folders, loader, errorModalNet } = this.state
 
     const logicFolder = {
       create: this.createFolder,
@@ -308,10 +318,26 @@ class App extends Component {
                   : false
               : <MarkDown showInitialMarkDown={true} />}
           </div>
+              {this._renderModalErrorNet(errorModalNet)}
         </section>
         : <ProgressBar className={"pre-loader-home"} />
     );
   }
+
+  _renderModalErrorNet(errorModalNet) {
+    return (
+      <MuiThemeProvider>
+        <Dialog
+          title="Error Internet"
+          modal={false}
+          open={errorModalNet}
+          contentStyle={{ width: '30%', maxWidth: 'none' }}>
+          We have problems with your internet. Please, reload page
+        </ Dialog>
+      </MuiThemeProvider>);
+  }
 }
+
+
 
 export default App;
