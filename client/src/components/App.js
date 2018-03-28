@@ -273,9 +273,9 @@ class App extends Component {
       }
     }
 
-    let matchExist
+    // let matchExist
 
-    if (match.path !== '/') matchExist = this.checkFileExist({ folderId, fileId, match }, folders)
+    // if (match.path !== '/' && folders.length > 0) matchExist = this.checkFileExist({ folderId : params.folderId, fileId : params.fileId, match }, folders)
 
     return (
       !loader ?
@@ -287,7 +287,7 @@ class App extends Component {
               user={{ name, surname }}
               folders={folders}
               logicFolder={logicFolder} />
-            {matchExist ? <h3 className='title-current-file'>{logic.file.retrieve(folderId, fileId, folders).getTitle()}</h3> : false}
+            {fileId ? <h3 className='title-current-file'>{logic.file.retrieve(folderId, fileId, folders).getTitle()}</h3> : false}
 
             {match.path === '/' ?
               false
@@ -308,7 +308,7 @@ class App extends Component {
               match.path === '/' ?
                 <MarkDown showInitialMarkDown={true} />
                 :
-                matchExist ?
+                fileId ?
                   params.action === 'view' ?
                     <MarkDown file={logic.file.retrieve(folderId, fileId, folders)} />
                     :
