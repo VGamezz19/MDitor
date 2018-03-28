@@ -112,6 +112,22 @@ class App extends Component {
 
   /**
    * 
+   * Business App.js function updateFile
+   *
+   * function to update the specifict file. It will update component state
+   * 
+   * @param {String} folderId id of the Folder that will contain the file
+   * @param {String} id id from delete file
+   * @param {String} title title  to update file
+   *
+   * @returns {RenderDOM} will update DOM with file deleted
+   *
+   * @version 1.0.0
+   */
+  updateFile = (id, title, folderId) => this.setState(({ folders }) => ({ folders: logic.file.update(folderId, id, title, folders) }))
+
+  /**
+   * 
    * Business App.js function writeFile
    *
    * function to write in the specifict file the updated content. It will update component state
@@ -242,6 +258,7 @@ class App extends Component {
       delete: this.deleteFolder,
       logicFile: {
         create: this.createFile,
+        update: this.updateFile,
         delete: this.deleteFile,
       }
     }

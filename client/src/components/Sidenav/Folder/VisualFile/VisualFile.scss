@@ -10,7 +10,6 @@
     }
 }
 
-
 .li-item-file {
     @extend %flex-in-column;
     position: relative;
@@ -20,20 +19,29 @@
     }
     .button-delete {
         position: absolute !important;
-        top:10px;
+        top: 10px;
+    }
+    .button-update {
+        position: absolute !important;
+        right: 45px;
+        top: 13px;
     }
     .button-delete:hover {
         div {
-            svg{
-                color:$delete-color !important;
+            svg {
+                color: $delete-color !important;
             }
         }
-        
+    }
+    .button-update:hover {
+        div {
+            svg {
+                color: $update-color !important;
+            }
+        }
     }
     .files {
-
         @extend %rectangle-container;
-
         border-bottom: 1px solid $main-border-color !important;
         border-top: unset !important;
     }

@@ -6,7 +6,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 class ModalEdit extends Component {
   state = {
     open: false,
-    inputValue: ''
+    inputValue: '',
+    itemId: undefined,
+    fatherId: undefined,
   };
 
   componentWillReceiveProps(props) {
@@ -16,9 +18,9 @@ class ModalEdit extends Component {
   }
 
   componentDidMount() {
-    const { open, itemTitle: inputValue, itemId } = this.props
+    const { open, itemTitle: inputValue, itemId, fatherId } = this.props
 
-    this.setState({ open, inputValue, itemId })
+    this.setState({ open, inputValue, itemId, fatherId })
   }
 
   handleClose = () => {
@@ -31,12 +33,12 @@ class ModalEdit extends Component {
   actionerModal = () => {
 
     const { handlerEdit } = this.props
-    const { itemId, inputValue } = this.state
+    const { itemId, inputValue, fatherId } = this.state
 
     if (inputValue) {
 
       this.handleClose();
-      return handlerEdit(itemId, inputValue)
+      return handlerEdit(itemId, inputValue, fatherId)
     }
 
     return false

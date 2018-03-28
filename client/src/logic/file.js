@@ -110,6 +110,43 @@ const fileLogic = {
             return folder
         })
     },
+    /**
+     * 
+     * Logic File function update
+     *
+     * function to update content file. First It will send to Server side like
+     * asynchronous promise and then, It will updated data client side like 
+     * synchronous function. It will be productive for the User Experience
+     * 
+     * @param {String} folderId id of the Folder which contain the file
+     * @param {String} id id to update a file
+     * @param {String} title content from updated File
+     * @param {Array<File>} folders array with all folders in Client side
+     *
+     * @returns {Array<File>} array with all data folders client updated
+     *
+     * @version 1.0.0
+     */
+    update: (folderId, id, title, folders) => {
+
+        /**
+         * Send to Server side
+         */
+        fileApilogic.update(id, tokenUser, title)
+
+        /**
+         * Interactuation with user
+         */
+        return folders.map(folder => {
+
+            if (folder.id === folderId) {
+
+                folder.getFile(id).setTitle(title)
+            }
+            return folder
+        })
+
+    },
 
     /**
      * 
