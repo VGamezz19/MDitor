@@ -18,7 +18,7 @@ You can [preview It](https://drive.google.com/file/d/1tad0wKucvZKmhCi6kJr_NYMFJV
 
 ### Design - Mockup
 
-the mockup has been done with  [Sketch](https://www.sketchapp.com/)
+mockup done with  [Sketch](https://www.sketchapp.com/)
 
 [Demo - Mockup MDitor](https://github.com/VGamezz19/MDitor/tree/master/doc/design/mockup)
 
@@ -28,17 +28,17 @@ the mockup has been done with  [Sketch](https://www.sketchapp.com/)
 
 ### Test client && Cosmos demo
 
-Check Cosmos demo here http://nappy-cosmos.surge.sh/
+Check Cosmos demo here <http://cosmos-mditor.surge.sh/>
 
 ![Imgur](https://i.imgur.com/q6GofTo.png)
 
 ## Mditor-Types (Mandatory data type in Client Side)
 
-Mditor use strict a custom type `File`. All **Client Side** use this type.
+Mditor uses strict a custom type `File`. All **Client Side** uses this type.
 
 ### More about File
 
-File folow the software patter [**Composite**](https://en.wikipedia.org/wiki/Composite_pattern)
+File follow the software pattern [**Composite**](https://en.wikipedia.org/wiki/Composite_pattern)
 
 ```sh
     - File("folder", "someID", "my-project")
@@ -82,9 +82,9 @@ Check CodeCoverage here http://reflective-string.surge.sh/
 ## Server Side
 
 ### Data Model
-
-It only need three data model, User, Folder and File.
-`Users` will have {N}  `Folder`, and the Folders will contains {N} `Files`.
+ 
+It only needs three data model, User, Folder and File.
+`Users` will have {N}  `Folder`, and the Folders will contain {N} `Files`.
 
 #### User
 
@@ -114,7 +114,7 @@ It only need three data model, User, Folder and File.
 | title | `String` | `false` | "file without title"
 | content | `String` | `true` | ---
 
-To check out more my data model, __[see It here](https://github.com/VGamezz19/MDitor/tree/master/doc/dataModel/)__
+To check out more of my data model, __[see It here](https://github.com/VGamezz19/MDitor/tree/master/doc/dataModel/)__
 
 ### UML Server
 
@@ -136,6 +136,6 @@ You can [preview It](https://drive.google.com/file/d/1uGGHUBiyll8flWdE9xBCHDdYod
 
 ### Agile methodologies / Scrum
 
-Kanban board realase with **4 sections**, `TOOD, DOING, REVIEW and DONE` like a `Scrum` Kanban
+Kanban board realase with **4 sections**, `TODO, DOING, REVIEW and DONE` like a `Scrum` Kanban
 
-See it in Trelo, URL: [https://trello.com/b/XFltOxOW](https://trello.com/b/XFltOxOW)
+See it in Trello, URL: [https://trello.com/b/XFltOxOW](https://trello.com/b/XFltOxOW)

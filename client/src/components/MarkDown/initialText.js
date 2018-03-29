@@ -3,9 +3,9 @@ export default `
 ![Generic badge](https://img.shields.io/badge/MDitor-v0.8.0-blue.svg) 
 [![GitHub forks](https://img.shields.io/github/forks/VGamezz19/MDitor.svg?style=social&logo=github&label=Fork)](https://github.com/VGamezz19/MDitor)
 
-Hey! there is a [MarkDown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) 
-Editor to do you'r  crazy notes! but **take care** this is just a \` alpha \` and probably you will found some bugs, but we are going to work
- to get better MDitor 😁 
+Hey! here is a [MarkDown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) 
+Editor to make your  crazy notes! but **take care** this is just an \` alpha \` and probably you will find some bugs, but we are working on getting
+MDitor better 😁 
 
 ### Support
 
@@ -26,7 +26,7 @@ Editor to do you'r  crazy notes! but **take care** this is just a \` alpha \` an
 
 ### Helpers
 
-Hey! if you doesn't know how to write in MarkDown, **be calm**! we provide you some examples! take easy and pay attention 📝
+Hey! if you don't know how to write in MarkDown, ** keep calm **! we provide you some examples! take it easy and pay attention 📝
 
 ## Headers
 
