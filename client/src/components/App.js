@@ -258,9 +258,6 @@ class App extends Component {
       if (params.action === "view") {
 
         return this.onHandlerRouteToEdit(this.props, folderId, fileId);
-      } else {
-
-        return this.onHandlerRouteToView(this.props, folderId, fileId);
       }
     }
   }
