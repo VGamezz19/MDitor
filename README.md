@@ -1,6 +1,6 @@
 # MDitor
 
-There is a MarkDown Editor to do you'r crazy notes! but **take it care** this is just a alpha, we are going to work to get better MDitor📝
+Hey! here is a MarkDown Editor to make your crazy notes! but **take it care** this is just an alpha,  we are working on getting MDitor better 😁
 
 - 🎨 Check Demo MDitor <http://mditor.surge.sh/#/>
 
