@@ -16,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Necesita estas tecnologías para ejecutar el proyecto EDitor en su máquina local
+You need these technologies to run the EDitor project on your local machine
 
 - Install [Node](https://nodejs.org/en/download/)
 - Install [MongoDB](https://docs.mongodb.com/manual/installation/)
